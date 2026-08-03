@@ -1,0 +1,63 @@
+# Past-month alcohol use, United States, ages 12+ (SAMHSA NSDUH).
+# NSDUH headlines alcohol as past-MONTH (current) use, not past-year, so this
+# dataset honestly tracks the published measure instead of an unpublished one.
+# Series starts at 2021 for the same multimode-methodology reason as cannabis.
+
+id: usage.alcohol.us.past_month
+substance: ALCOHOL
+geo: US
+metric: past_month_use
+unit: percent_population_12_plus
+title: Past-month alcohol use, United States, ages 12 or older
+verification: cross-checked
+description: >-
+  Share of the U.S. civilian, noninstitutionalized population aged 12 or older
+  reporting alcohol use in the past 30 days, from the National Survey on Drug
+  Use and Health annual national reports. Directly comparable with the
+  cannabis series only with care - cannabis is a past-YEAR measure while this
+  is past-MONTH, because those are the headline measures each report publishes.
+
+observations:
+  - year: 2021
+    val: 47.5
+    src: nsduh_2021_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2021_annual_report
+        val: 47.5
+        quote: Among people aged 12 or older in 2021, 47.5 percent (or 133.1 million people) drank alcohol in the past month.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2021).
+
+  - year: 2022
+    val: 48.7
+    src: nsduh_2022_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2022_annual_report
+        val: 48.7
+        quote: Among people aged 12 or older in 2022, 48.7 percent (or 137.4 million people) drank alcohol in the past month.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2022).
+
+  - year: 2023
+    val: 47.5
+    src: nsduh_2023_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        val: 47.5
+        quote: Among people aged 12 or older in 2023, 47.5 percent (or 134.7 million people) drank alcohol in the past month.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).
+
+  - year: 2024
+    val: 46.6
+    src: nsduh_2024_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2024_annual_report
+        val: 46.6
+        quote: Among people aged 12 or older in 2024, 46.6 percent (or 134.3 million people) used alcohol in the past month.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2024).

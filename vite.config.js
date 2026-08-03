@@ -13,6 +13,8 @@ export default defineConfig(({ mode }) => ({
     tailwindcss(),
     svelte()
   ],
+  // The SPA's public/ assets (favicon etc.) have no business inside the npm package.
+  publicDir: mode === 'lib' ? false : 'public',
   build: mode === 'lib'
     ? {
         lib: {

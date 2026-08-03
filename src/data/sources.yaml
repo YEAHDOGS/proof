@@ -1,0 +1,61 @@
+# Central source catalog. Every observation's `src` and citation anchors
+# resolve against the keys in this file. Add a source here first, then cite it.
+#
+# Catalog entries are typed as SourceCitation (src/types.js).
+
+samhsa_nsduh:
+  name: National Survey on Drug Use and Health (NSDUH)
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/data-we-collect/nsduh-national-survey-drug-use-and-health
+  data_tool: https://datatools.samhsa.gov/das
+  note: Annual survey of the U.S. civilian, noninstitutionalized population aged 12 or older. Multimode collection began in 2021; SAMHSA cautions against trend comparisons with 2020-and-earlier surveys.
+
+nsduh_2021_annual_report:
+  name: Key Substance Use and Mental Health Indicators in the United States - Results from the 2021 NSDUH
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/sites/default/files/reports/rpt39443/2021NSDUHNNR122322/2021NSDUHNNR122322.htm
+  year: 2022
+
+nsduh_2022_annual_report:
+  name: Key Substance Use and Mental Health Indicators in the United States - Results from the 2022 NSDUH
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/sites/default/files/reports/rpt42731/2022-nsduh-annual-national-web-110923/2022-nsduh-nnr.htm
+  year: 2023
+
+nsduh_2023_annual_report:
+  name: Key Substance Use and Mental Health Indicators in the United States - Results from the 2023 NSDUH
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
+  year: 2024
+
+nsduh_2024_annual_report:
+  name: Key Substance Use and Mental Health Indicators in the United States - Results from the 2024 NSDUH
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/sites/default/files/reports/rpt56287/2024-nsduh-annual-national/2024-nsduh-annual-national-html-071425-edited/2024-nsduh-annual-national.htm
+  year: 2025
+
+nsduh_2023_sae_texas:
+  name: 2022-2023 NSDUH State-Level Estimates - Texas State Tables
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/sites/default/files/reports/rpt56188/2023-nsduh-sae-state-tables_0/2023-nsduh-sae-state-tabs-texas.pdf
+  year: 2024
+  note: Small-area estimates; percentages are 2022-2023 annual averages, not single-year figures.
+
+nsduh_2023_sae_percent_tables:
+  name: 2022-2023 NSDUH State Estimates of Substance Use - Percentages Tables
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/sites/default/files/reports/rpt56185/2023-nsduh-sae-tables-percents/2023-nsduh-sae-tables-percent.pdf
+  year: 2024
+  note: National compilation; Table 2 is Marijuana Use in the Past Year by age group and state.
+
+nhtsa_fars:
+  name: Fatality Analysis Reporting System (FARS)
+  publisher: NHTSA
+  url: https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars
+  note: Reserved for planned safety datasets (impaired-driving fatalities, DUIs).
+
+umich_mtf:
+  name: Monitoring the Future
+  publisher: University of Michigan
+  url: https://monitoringthefuture.org/
+  note: Reserved for planned school-age usage datasets.
