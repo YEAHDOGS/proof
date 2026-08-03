@@ -1,0 +1,36 @@
+# Past-year cannabis use, Texas, ages 12+ (SAMHSA NSDUH state estimates).
+# State-level NSDUH figures are published as TWO-YEAR ANNUAL AVERAGES via
+# small-area estimation - never as single years. The `period` field carries
+# the true window so nobody plots this as a single-year point.
+
+id: usage.cannabis.tx.past_year
+substance: CANNABIS
+geo: TX
+metric: past_year_use
+unit: percent_population_12_plus
+title: Past-year cannabis use, Texas, ages 12 or older
+verification: cross-checked
+description: >-
+  Share of the Texas civilian, noninstitutionalized population aged 12 or
+  older reporting any marijuana use (including vaping) in the past year, from
+  the NSDUH state-level small-area estimates. The 2022-2023 average of 16.41
+  percent (about 4.09 million Texans) sits well below the national past-year
+  rate of roughly 22 percent for the same window. Values extracted directly
+  from the SAMHSA Texas state table PDF; the same estimate appears in the
+  national percentages compilation (Table 2).
+
+observations:
+  - year: 2023
+    val: 16.41
+    src: nsduh_2023_sae_texas
+    basis: reported
+    period: 2022-2023 annual average
+    citations:
+      - src: nsduh_2023_sae_texas
+        val: 16.41
+        locator: Texas state table, Marijuana Use in the Past Year, 12 or Older column
+        note: Companion count table gives 4,094 thousand people. Age splits are 9.40 percent (12-17), 28.69 percent (18-25), 15.24 percent (26 or older).
+      - src: nsduh_2023_sae_percent_tables
+        val: 16.41
+        locator: Table 2 - Marijuana Use in the Past Year among People Aged 12 or Older, by State
+        note: Same small-area estimation program as the state table, published in the national compilation.

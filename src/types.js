@@ -46,6 +46,15 @@
  */
 
 /**
+ * How much weight a figure holds (adopted from the wearedogs stats convention):
+ *   - 'reported'  published as-is by an agency or named study.
+ *   - 'derived'   arithmetic on reported figures; inputs must be cited.
+ *   - 'modelled'  an estimate with no per-item source.
+ *   - 'contested' sources materially disagree; see citations for the spread.
+ * @typedef {'reported' | 'derived' | 'modelled' | 'contested'} Basis
+ */
+
+/**
  * One time-series observation.
  * @typedef {Object} DataPoint
  * @property {number} year            Calendar/survey year of the observation.
@@ -54,6 +63,11 @@
  *                                    is an absolute count (e.g. millions of people).
  * @property {string} src             Primary source anchor (must also appear in `citations`).
  * @property {Citation[]} citations   All source claims for this observation.
+ * @property {Basis} [basis]          Weight of the figure; defaults to 'reported'.
+ * @property {string} [period]        Exact period covered when it is not a plain
+ *                                    calendar year, e.g. 'FY2025' or
+ *                                    '2022-2023 annual average'. Prevents
+ *                                    fiscal-vs-calendar and average-vs-single-year mixups.
  */
 
 /**

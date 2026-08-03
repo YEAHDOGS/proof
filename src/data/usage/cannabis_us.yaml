@@ -1,0 +1,66 @@
+# Past-year cannabis use, United States, ages 12+ (SAMHSA NSDUH).
+# Series starts at 2021: NSDUH moved to multimode collection that year and
+# SAMHSA cautions against comparing with 2020-and-earlier estimates, so
+# pre-2021 figures are deliberately excluded rather than charted misleadingly.
+
+id: usage.cannabis.us.past_year
+substance: CANNABIS
+geo: US
+metric: past_year_use
+unit: percent_population_12_plus
+title: Past-year cannabis use, United States, ages 12 or older
+verification: cross-checked
+description: >-
+  Share of the U.S. civilian, noninstitutionalized population aged 12 or older
+  reporting any marijuana use (including vaping) in the past year, from the
+  National Survey on Drug Use and Health. Each observation quotes the annual
+  national report it came from. Note the 2021 estimate is contested between
+  publications - the 2021 report says 18.7 percent while the 2024 report
+  retrospectively restates 2021 as 19.0 percent.
+
+observations:
+  - year: 2021
+    val: 18.7
+    src: nsduh_2021_annual_report
+    basis: contested
+    citations:
+      - src: nsduh_2021_annual_report
+        val: 18.7
+        quote: In 2021, 18.7 percent of people aged 12 or older (or 52.5 million people) used marijuana in the past year.
+      - src: nsduh_2024_annual_report
+        val: 19.0
+        quote: Among people aged 12 or older, the percentage who used marijuana in the past year increased from 19.0 percent (or 53.2 million people) in 2021 to 22.3 percent (or 64.2 million people) in 2024.
+        note: Retrospective restatement of the 2021 estimate in the 2024 report trend text.
+
+  - year: 2022
+    val: 22.0
+    src: nsduh_2022_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2022_annual_report
+        val: 22.0
+        quote: In 2022, 22.0 percent of people aged 12 or older (or 61.9 million people) used marijuana in the past year.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2022).
+
+  - year: 2023
+    val: 21.8
+    src: nsduh_2023_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        val: 21.8
+        quote: In 2023, 21.8 percent of people aged 12 or older (or 61.8 million people) used marijuana in the past year.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).
+
+  - year: 2024
+    val: 22.3
+    src: nsduh_2024_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2024_annual_report
+        val: 22.3
+        quote: Among people aged 12 or older, the percentage who used marijuana in the past year increased from 19.0 percent (or 53.2 million people) in 2021 to 22.3 percent (or 64.2 million people) in 2024.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2024).

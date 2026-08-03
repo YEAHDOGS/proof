@@ -23,5 +23,12 @@ Questions to answer:
 - THC brands, and classifications since 2018 (Delta-8, 9, 10, THCP, THCA, etc.)
     - THC producers for the brands
 - Current regulations about oversight, health, safety, federal/state/city
-- 
+
+
+- Representation
+    - Federal, State, City/District representation stats
+    - Senators, House of Representatives
+    - Party Affiliation, viewpoint on thc, influence
+    - Biographies
+    - Timelines and histories of legislation events
 
