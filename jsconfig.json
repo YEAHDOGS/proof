@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": [
+      "vite/client",
+      "@modyfi/vite-plugin-yaml/modules"
+    ]
+  },
+  "include": [
+    "src/index.js",
+    "src/types.js",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.js",
+    "dist",
+    "node_modules"
+  ]
+}
