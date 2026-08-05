@@ -1,0 +1,29 @@
+# Past-year cocaine use, United States, ages 12+ (SAMHSA NSDUH).
+# SEEDED from the 2023 NSDUH annual report headline; verify the exact quote
+# and add the 2024 observation during the cross-check pass.
+
+id: usage.cocaine.us.past_year
+substance: COCAINE
+geo: US
+metric: past_year_use
+unit: percent_population_12_plus
+title: Past-year cocaine use, United States, ages 12 or older
+verification: seeded
+description: >-
+  Share of the U.S. civilian, noninstitutionalized population aged 12 or
+  older reporting cocaine use (any form, including crack) in the past year,
+  from the NSDUH annual national reports. Series starts at 2023 pending the
+  cross-check pass; NSDUH's multimode break means nothing before 2021 will
+  ever be added.
+
+observations:
+  - year: 2023
+    val: 1.8
+    src: nsduh_2023_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        val: 1.8
+        note: About 1.8 percent (roughly 5.0 million people) aged 12 or older used cocaine in the past year, 2023. Verify exact wording against the report.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

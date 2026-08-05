@@ -1,0 +1,33 @@
+# Texas hemp-derived cannabinoid retail sales (Whitney Economics).
+# The only comprehensive market sizing of the Texas THC/hemp retail market;
+# industry-commissioned, so basis is 'modelled' by policy even though the
+# figure is widely quoted. SEEDED from the wearedogs hempStats migration
+# inventory; re-verify against the published Whitney report before flipping
+# to cross-checked.
+
+id: sales.cannabis.tx.retail
+substance: CANNABIS
+geo: TX
+metric: retail_sales
+unit: usd_per_year
+title: Hemp-derived cannabinoid retail sales, Texas
+verification: seeded
+description: >-
+  Estimated annual retail sales of hemp-derived cannabinoid (THC) products in
+  Texas, from Whitney Economics' 2025 market analysis. The same report
+  estimates $10.3 billion total economic impact, roughly 53,300 jobs, 8,500+
+  licensed businesses, and 7,500+ retail locations - those companion figures
+  will become their own metrics during the wearedogs sales migration. Values
+  predate the July 31, 2026 DSHS retail shelf-pull, which this series will
+  show when 2026 data exists.
+
+observations:
+  - year: 2025
+    val: 5500000000
+    src: whitney_tx_hemp_2025
+    basis: modelled
+    period: 2025 estimate (pre-ban market)
+    citations:
+      - src: whitney_tx_hemp_2025
+        val: 5500000000
+        note: Whitney Economics estimate of annual Texas hemp-derived cannabinoid retail sales ($5.5 billion), as used across the wearedogs campaign stats.

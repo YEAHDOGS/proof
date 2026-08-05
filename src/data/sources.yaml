@@ -59,3 +59,80 @@ umich_mtf:
   publisher: University of Michigan
   url: https://monitoringthefuture.org/
   note: Reserved for planned school-age usage datasets.
+
+dea_scheduling:
+  name: Drug Scheduling
+  publisher: DEA
+  url: https://www.dea.gov/drug-information/drug-scheduling
+  note: Federal Controlled Substances Act schedule definitions and drug lists.
+
+usc_farm_bill_2018:
+  name: Agriculture Improvement Act of 2018 (Public Law 115-334)
+  publisher: U.S. Congress
+  url: https://www.congress.gov/bill/115th-congress/house-bill/2
+  year: 2018
+  note: Removed hemp (cannabis at or below 0.3 percent delta-9 THC by dry weight) from the CSA definition of marijuana.
+
+tx_hb_1325_2019:
+  name: House Bill 1325 (86R) - Texas consumable hemp program
+  publisher: Texas Legislature
+  url: https://capitol.texas.gov/BillLookup/History.aspx?LegSess=86R&Bill=HB1325
+  year: 2019
+  note: Authorized consumable hemp products in Texas, mirroring the 2018 Farm Bill threshold.
+
+tx_hsc_481:
+  name: Texas Health and Safety Code Chapter 481 (Texas Controlled Substances Act)
+  publisher: Texas Legislature
+  url: https://statutes.capitol.texas.gov/Docs/HS/htm/HS.481.htm
+  note: State scheduling, penalty groups, and possession offenses.
+
+nida_cannabis:
+  name: Cannabis (Marijuana) DrugFacts
+  publisher: NIDA
+  url: https://nida.nih.gov/research-topics/cannabis-marijuana
+  note: Compound descriptions and health-effect summaries.
+
+cdc_wonder:
+  name: CDC WONDER - Multiple Cause of Death database
+  publisher: CDC / NCHS
+  url: https://wonder.cdc.gov/mcd.html
+  data_tool: https://wonder.cdc.gov/
+  note: Underlying mortality microdata for all drug-overdose death series (ICD-10 T-codes). Final data lag about two years.
+
+nida_overdose_rates:
+  name: Drug Overdose Death Rates (trends and statistics)
+  publisher: NIDA
+  url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+  note: Republishes NCHS/CDC WONDER national overdose death counts per drug category (opioids, synthetic opioids, cocaine, heroin, psychostimulants) with charts; convenient citable rollup of the WONDER data.
+
+cdc_ardi:
+  name: Alcohol-Related Disease Impact (ARDI) application
+  publisher: CDC
+  url: https://www.cdc.gov/ardi/index.html
+  data_tool: https://nccd.cdc.gov/DPH_ARDI/default/default.aspx
+  note: Model-based estimates of deaths attributable to excessive alcohol use (about 58 conditions, incl. fully and partially alcohol-attributable). Published as multi-year annual averages, not single years.
+
+cdc_alcohol_facts:
+  name: Facts About U.S. Deaths from Excessive Alcohol Use
+  publisher: CDC
+  url: https://www.cdc.gov/alcohol/facts-stats/index.html
+  note: Headline page for the ARDI estimates ("more than 178,000 deaths per year, 2020-2021").
+
+samhsa_dawn:
+  name: Drug Abuse Warning Network (DAWN)
+  publisher: SAMHSA
+  url: https://www.samhsa.gov/data/data-we-collect/dawn-drug-abuse-warning-network
+  note: Nationally representative surveillance of drug-related emergency department visits. Annual national estimates per substance.
+
+dea_facts_marijuana:
+  name: Drug Fact Sheet - Marijuana/Cannabis
+  publisher: DEA
+  url: https://www.dea.gov/factsheets/marijuana-cannabis
+  note: States that no deaths from marijuana overdose have been reported.
+
+whitney_tx_hemp_2025:
+  name: Texas Hemp-Derived Cannabinoid Market Analysis (2025)
+  publisher: Whitney Economics
+  url: https://whitneyeconomics.com/
+  year: 2025
+  note: Industry economic analysis of the Texas consumable-hemp market; source of the $5.5B annual retail sales, $10.3B economic impact, and 53,300 jobs figures used by the campaign. Industry-commissioned - treat as modelled, not agency-reported.

@@ -16,7 +16,7 @@ Questions to answer:
     - Hopsitalization rates, federal/state/city
     - Mental health patients that list marijuana use
     - Citeable Studies
-    - 
+- How many users have tried a substance once in America? How many daily users? How many monthly users? On average how much does each of them spend every year/month/day on it? 
 
 - Noteable events in legislation, a timeline of THC Texas history
 - Federal, and state laws regarding drug testing and hireability

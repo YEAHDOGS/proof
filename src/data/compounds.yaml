@@ -1,0 +1,131 @@
+# Compound reference sheets — descriptive reference data, not time series.
+# Lives at the data/ root (like sources.yaml) so the metric-file glob
+# (./data/*/*.yaml) does not pick it up.
+#
+# Every entry's `sources` anchors must resolve in sources.yaml.
+# Legal-status prose is a snapshot; the meta.note records how current it is.
+
+meta:
+  verification: seeded
+  note: >-
+    Legal statuses written August 2026 and seeded from the campaign timeline
+    (Texas consumable-hemp shelf pull July 31 2026; federal 0.4 mg total-THC
+    per-container cap effective November 12 2026). Re-verify each status
+    against the cited statutes before flipping to cross-checked.
+    The `banned` flags mean "banned from consumable retail in that
+    jurisdiction as of this snapshot" — they power the derived
+    Substances.Marijuana('banned') selector; the prose statuses carry the
+    nuance the booleans cannot.
+
+substances:
+  marijuana:
+    thc:
+      name: Tetrahydrocannabinol (THC)
+      aka: [delta-9 THC when unqualified, total THC in testing contexts]
+      kind: phytocannabinoid
+      psychoactive: true
+      federal_status: >-
+        Marijuana (cannabis above 0.3 percent delta-9 THC by dry weight) is
+        Schedule I under the Controlled Substances Act. Hemp-derived THC at or
+        below that threshold was removed from the CSA by the 2018 Farm Bill;
+        a federal appropriations rider enacted November 2025 caps consumable
+        hemp at 0.4 mg total THC per container effective November 12, 2026.
+      texas_status: >-
+        Permitted in consumable hemp under HB 1325 (2019) until DSHS removed
+        consumable hemp with detectable THC from retail sale July 31, 2026.
+        Non-hemp marijuana remains controlled under Tex. HSC ch. 481.
+      note: Seeded; statuses reflect August 2026 and must be re-verified against the cited statutes.
+      banned: { federal: false, texas: true }
+      sources: [dea_scheduling, usc_farm_bill_2018, tx_hb_1325_2019, tx_hsc_481]
+
+    cbd:
+      name: Cannabidiol (CBD)
+      kind: phytocannabinoid
+      psychoactive: false
+      federal_status: >-
+        Hemp-derived CBD is not a controlled substance post-2018 Farm Bill;
+        FDA regulates marketing claims and has approved one CBD drug
+        (Epidiolex).
+      texas_status: >-
+        Legal in consumable hemp under HB 1325 (2019); unaffected by the
+        THC-focused 2026 restrictions except where products also contain THC.
+      banned: { federal: false, texas: false }
+      sources: [usc_farm_bill_2018, tx_hb_1325_2019, nida_cannabis]
+
+    delta-8:
+      name: Delta-8 Tetrahydrocannabinol
+      aka: [D8, delta-8 THC]
+      kind: semi-synthetic cannabinoid (typically converted from hemp CBD)
+      psychoactive: true
+      federal_status: >-
+        Sold in the 2018 Farm Bill's hemp gap (not delta-9, so not counted
+        against the 0.3 percent threshold); the November 2026 federal cap
+        counts TOTAL THC, closing the gap.
+      texas_status: >-
+        Retail mainstay after 2019; DSHS attempted a Schedule I listing in
+        October 2021, litigated from the November 2021 Travis County
+        injunction through the Texas Supreme Court in May 2026, and removed
+        from retail with the July 31, 2026 shelf pull.
+      note: Seeded; the litigation outcome and current retail status must be re-verified before publish.
+      banned: { federal: false, texas: true }
+      sources: [usc_farm_bill_2018, tx_hsc_481, tx_hb_1325_2019]
+
+    delta-9:
+      name: Delta-9 Tetrahydrocannabinol
+      aka: [D9]
+      kind: phytocannabinoid
+      psychoactive: true
+      federal_status: >-
+        The scheduled isomer: above 0.3 percent by dry weight the product is
+        federally Schedule I marijuana; at or below, it was Farm Bill hemp
+        until the November 12, 2026 per-container total-THC cap.
+      texas_status: >-
+        Same threshold logic under HB 1325 until the July 31, 2026 shelf
+        pull; above-threshold delta-9 remains Penalty Group 2 territory
+        under Tex. HSC ch. 481.
+      banned: { federal: false, texas: true }
+      sources: [dea_scheduling, usc_farm_bill_2018, tx_hsc_481]
+
+    delta-10:
+      name: Delta-10 Tetrahydrocannabinol
+      aka: [D10]
+      kind: semi-synthetic cannabinoid (typically converted from hemp CBD)
+      psychoactive: true
+      federal_status: >-
+        Same Farm Bill gap as delta-8 (milder psychoactivity, same legal
+        posture); captured by the November 2026 total-THC cap.
+      texas_status: >-
+        Same trajectory as delta-8 — legal-gray retail product until the
+        July 31, 2026 shelf pull.
+      banned: { federal: false, texas: true }
+      sources: [usc_farm_bill_2018, tx_hb_1325_2019]
+
+    thcp:
+      name: Tetrahydrocannabiphorol (THCP)
+      kind: trace phytocannabinoid, sold as a high-potency analog
+      psychoactive: true
+      federal_status: >-
+        Marketed through the same hemp-derived gap as delta-8; reported
+        CB1 binding far stronger than delta-9. Captured by the November
+        2026 total-THC cap.
+      texas_status: >-
+        Sold in the consumable-hemp market until the July 31, 2026 shelf
+        pull.
+      note: Seeded; potency claims trace to a 2019 Scientific Reports study — add a citeable study anchor before cross-checking.
+      banned: { federal: false, texas: true }
+      sources: [usc_farm_bill_2018, nida_cannabis]
+
+    thca:
+      name: Tetrahydrocannabinolic acid (THCA)
+      kind: phytocannabinoid (acid precursor)
+      psychoactive: false
+      federal_status: >-
+        Non-psychoactive until heated (decarboxylation converts it to
+        delta-9 THC) — the loophole behind "THCA flower". Post-harvest
+        total-THC testing counts it, which is how the November 2026 cap
+        and most state crackdowns close the loophole.
+      texas_status: >-
+        Sold as smokable "THCA flower" until the July 31, 2026 shelf pull;
+        Texas total-THC enforcement treats it as THC.
+      banned: { federal: false, texas: true }
+      sources: [usc_farm_bill_2018, tx_hsc_481, dea_scheduling]

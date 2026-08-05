@@ -1,0 +1,208 @@
+import { describe, it, expect } from 'vitest'
+import { Substances } from './index.js'
+
+describe('Substances fluent tree', () => {
+  it('reads a US observation by year, number or string', () => {
+    const byNumber = Substances.Marijuana.Usage.Year(2023)
+    const byString = Substances.Marijuana.Usage.Year('2023')
+    expect(byNumber.val).toBe(21.8)
+    expect(byString.val).toBe(21.8)
+    expect(byNumber.metricId).toBe('usage.cannabis.us.past_year')
+    expect(byNumber.geo).toBe('US')
+  })
+
+  it('reads Texas via the geo option, carrying the true period', () => {
+    const tx = Substances.Marijuana.Usage.Year(2023, { geo: 'TX' })
+    expect(tx.val).toBe(16.41)
+    expect(tx.period).toBe('2022-2023 annual average')
+  })
+
+  it('is case-insensitive at every level', () => {
+    expect(Substances.marijuana.usage.year(2023).val).toBe(21.8)
+    expect(Substances.MARIJUANA.Usage.Year(2023).val).toBe(21.8)
+    expect(Substances.alcohol.Usage.Year(2024).val).toBe(46.6)
+  })
+
+  it('resolves aliases: Cannabis, Weed, Psychadelics', () => {
+    expect(Substances.Cannabis).toBe(Substances.Marijuana)
+    expect(Substances.Weed).toBe(Substances.Marijuana)
+    expect(Substances.Psychadelics).toBe(Substances.Psychedelics)
+  })
+
+  it('never returns a number without its citations', () => {
+    const obs = Substances.Alcohol.Usage.Year(2021)
+    expect(obs.citations.length).toBeGreaterThanOrEqual(2)
+    for (const c of obs.citations) {
+      expect(c.source.url).toMatch(/^https:\/\//)
+    }
+  })
+
+  it('preserves contested values instead of averaging', () => {
+    const obs = Substances.Marijuana.Usage.Year(2021)
+    expect(obs.basis).toBe('contested')
+    const claimed = obs.citations.map((c) => c.val).filter((v) => typeof v === 'number')
+    expect(claimed).toContain(18.7)
+    expect(claimed).toContain(19.0)
+  })
+
+  it('returns a sorted, resolved series', () => {
+    const series = Substances.Marijuana.Usage.Series({ order: 'desc' })
+    expect(series[0].year).toBe(2024)
+    expect(series.at(-1).year).toBe(2021)
+    expect(series.every((p) => p.citations.length >= 1)).toBe(true)
+  })
+
+  it('refuses to divide a prevalence percentage into months', () => {
+    expect(() => Substances.Marijuana.Usage.Month(2023, 6)).toThrow(/percent/)
+    expect(() => Substances.Alcohol.Usage.Day(2023, 6, 15)).toThrow(/percent/)
+  })
+
+  it('throws an actionable error when a family has no data yet', () => {
+    expect(() => Substances.Psychedelics.Sales.Year(2026)).toThrow(/No PSYCHEDELICS Sales in US dataset/)
+    expect(() => Substances.Psychedelics.Sales.Year(2026)).toThrow(/Available PSYCHEDELICS datasets/)
+    expect(() => Substances.Cocaine.Crack.Deaths.Year(2023)).toThrow(/No COCAINE \(crack\) Deaths in US dataset/)
+  })
+
+  it('throws with available years when the year is missing', () => {
+    expect(() => Substances.Marijuana.Usage.Year(1999)).toThrow(/Years available: 2021, 2022, 2023, 2024/)
+  })
+
+  it('validates year, month, and day inputs', () => {
+    expect(() => Substances.Marijuana.Usage.Year('soon')).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Month(2023, 13)).toThrow(/Invalid month/)
+    expect(() => Substances.Marijuana.Usage.Day(2023, 2, 30)).toThrow(/Invalid day/)
+  })
+
+  it('serves the M2 death series with citations attached', () => {
+    expect(Substances.Fentanyl.Deaths.Year(2023).val).toBe(72776)
+    expect(Substances.Opioids.Deaths.Year(2022).val).toBe(81806)
+    expect(Substances.Heroin.Deaths.Year(2023).val).toBe(4364)
+    expect(Substances.Cocaine.Deaths.Year(2023).val).toBe(29918)
+    expect(Substances.Amphetamines.Deaths.Year(2023).val).toBe(36251)
+    const fent = Substances.Fentanyl.Deaths.Year(2023)
+    expect(fent.citations.length).toBeGreaterThanOrEqual(2)
+    expect(fent.unit).toBe('deaths')
+  })
+
+  it('reports cannabis overdose deaths as a real, cited zero', () => {
+    const obs = Substances.Marijuana.Deaths.Year(2023)
+    expect(obs.val).toBe(0)
+    expect(obs.basis).toBe('reported')
+    expect(obs.citations.length).toBeGreaterThanOrEqual(2)
+  })
+
+  it('carries the modelled basis and true period on ARDI alcohol deaths', () => {
+    const us = Substances.Alcohol.Deaths.Year(2021)
+    expect(us.val).toBe(178307)
+    expect(us.basis).toBe('modelled')
+    expect(us.period).toBe('2020-2021 annual average')
+    expect(Substances.Alcohol.Deaths.Year(2021, { geo: 'TX' }).val).toBe(13701)
+  })
+
+  it('serves ER visits and Texas sales', () => {
+    expect(Substances.Marijuana.ERVisits.Year(2023).val).toBe(896418)
+    expect(Substances.Alcohol.ERVisits.Year(2023).val).toBe(5370000)
+    const sales = Substances.Marijuana.Sales.Year(2025, { geo: 'TX' })
+    expect(sales.val).toBe(5500000000)
+    expect(sales.basis).toBe('modelled')
+  })
+
+  it('derives month and day values from count units, formula disclosed', () => {
+    const month = Substances.Opioids.Deaths.Month(2023, 6)
+    expect(month.val).toBeCloseTo(79358 / 12)
+    expect(month.basis).toBe('derived')
+    expect(month.note).toMatch(/79358 deaths in 2023 \/ 12 months/)
+    expect(month.from.year).toBe(2023)
+    const day = Substances.Fentanyl.Deaths.Day(2023, 3, 14)
+    expect(day.val).toBeCloseTo(72776 / 365)
+    expect(day.note).toMatch(/365 days/)
+  })
+
+  it('exposes variant sub-nodes with the same family API', () => {
+    expect(Substances.Cocaine.Crack.Usage.Files()).toEqual([])
+    expect(Substances.Cocaine.Powder.Deaths.Files()).toEqual([])
+    expect(Substances.Psychedelics.Mushrooms.Usage.Files()).toEqual([])
+    expect(Substances.Psychedelics.LSD).toBe(Substances.Psychedelics.Acid)
+    expect(Substances.Psychedelics.Shrooms).toBe(Substances.Psychedelics.Mushrooms)
+  })
+})
+
+describe('standard selector (every substance node is callable)', () => {
+  it('() resolves the default sub-form, or the node itself when there is none', () => {
+    expect(Substances.Cocaine()).toBe(Substances.Cocaine.Powder)
+    expect(Substances.Marijuana()).toBe(Substances.Marijuana)
+    expect(Substances.Heroin()).toBe(Substances.Heroin)
+    expect(Substances.Psychedelics()).toBe(Substances.Psychedelics)
+  })
+
+  it('resolves variant names and shorthands, case-insensitively', () => {
+    expect(Substances.Cocaine('powder')).toBe(Substances.Cocaine.Powder)
+    expect(Substances.Cocaine('p')).toBe(Substances.Cocaine.Powder)
+    expect(Substances.Cocaine('CRACK')).toBe(Substances.Cocaine.Crack)
+    expect(Substances.Cocaine(' c ')).toBe(Substances.Cocaine.Crack)
+    expect(Substances.Psychedelics('lsd')).toBe(Substances.Psychedelics.Acid)
+    expect(Substances.Psychedelics('shrooms')).toBe(Substances.Psychedelics.Mushrooms)
+  })
+
+  it('resolves compounds and delta spellings on Marijuana', () => {
+    expect(Substances.Marijuana('thc').key).toBe('thc')
+    expect(Substances.Marijuana('CBD').key).toBe('cbd')
+    expect(Substances.Marijuana('delta-8').key).toBe('delta-8')
+    expect(Substances.Marijuana('8').key).toBe('delta-8')
+    expect(Substances.Marijuana(9).key).toBe('delta-9')
+    expect(Substances.Marijuana('d10').key).toBe('delta-10')
+    expect(Substances.Marijuana('Δ9').key).toBe('delta-9')
+  })
+
+  it("derives 'all' and 'banned' lists", () => {
+    const all = Substances.Marijuana('all')
+    expect(all.map((c) => c.key)).toEqual(['thc', 'cbd', 'delta-8', 'delta-9', 'delta-10', 'thcp', 'thca'])
+    const banned = Substances.Marijuana('banned')
+    expect(banned.map((c) => c.key)).toContain('thc')
+    expect(banned.map((c) => c.key)).toContain('thca')
+    expect(banned.map((c) => c.key)).not.toContain('cbd')
+    expect(Substances.Cocaine('all')).toHaveLength(2)
+    expect(Substances.Cocaine('banned')).toEqual([])
+    expect(Substances.Heroin('all')).toEqual([])
+    expect(Substances.Heroin('banned')).toEqual([])
+  })
+
+  it('throws a listing of valid selectors on unknown input', () => {
+    expect(() => Substances.Cocaine('speedball')).toThrow(/Unknown Cocaine selector 'speedball'/)
+    expect(() => Substances.Cocaine('speedball')).toThrow(/'powder', 'p', 'crack', 'c'/)
+    expect(() => Substances.Marijuana('gummy')).toThrow(/Unknown Marijuana selector/)
+    expect(() => Substances.Heroin('tar')).toThrow(/Unknown Heroin selector/)
+    expect(() => Substances.Heroin(8)).toThrow(/Unknown Heroin selector/)
+    expect(() => Substances.Marijuana.delta(11)).toThrow(/Known: 8, 9, 10/)
+  })
+})
+
+describe('Marijuana compounds', () => {
+  it('exposes thc, cbd, thca, thcp with resolved citations', () => {
+    for (const key of ['thc', 'cbd', 'thca', 'thcp']) {
+      const compound = Substances.Marijuana[key]
+      expect(compound.key).toBe(key)
+      expect(compound.name).toBeTruthy()
+      expect(compound.federal_status).toBeTruthy()
+      expect(compound.texas_status).toBeTruthy()
+      expect(compound.citations.length).toBeGreaterThanOrEqual(2)
+      for (const source of compound.citations) {
+        expect(source.url).toMatch(/^https:\/\//)
+      }
+    }
+    expect(Substances.Marijuana.thc.name).toMatch(/Tetrahydrocannabinol/)
+    expect(Substances.Marijuana.cbd.psychoactive).toBe(false)
+  })
+
+  it('resolves delta isomers by number or string, and by bracket key', () => {
+    expect(Substances.Marijuana.delta(9).key).toBe('delta-9')
+    expect(Substances.Marijuana.delta('8').key).toBe('delta-8')
+    expect(Substances.Marijuana['delta-10'].key).toBe('delta-10')
+    expect(() => Substances.Marijuana.delta(11)).toThrow(/Known: 8, 9, 10/)
+  })
+
+  it('is case-insensitive for compounds too', () => {
+    expect(Substances.Marijuana.THC.key).toBe('thc')
+    expect(Substances.marijuana.ThCa.key).toBe('thca')
+  })
+})

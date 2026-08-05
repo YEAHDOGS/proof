@@ -1,5 +1,5 @@
 /**
- * @file Core type definitions for the thc-stats library.
+ * @file Core type definitions for the PROOF (@dogs/proof) library.
  *
  * The schema is SDMX-inspired: datasets are "metric files" keyed by
  * (substance, geo, metric, unit), holding a time series of observations.
@@ -13,8 +13,16 @@
  */
 
 /**
- * Substance tracked by a dataset.
- * @typedef {'CANNABIS' | 'ALCOHOL'} Substance
+ * Substance tracked by a dataset (canonical uppercase codes).
+ * The fluent `Substances` tree maps friendly names onto these
+ * (Marijuana -> CANNABIS, Acid -> PSYCHEDELICS + variant 'lsd', ...).
+ * @typedef {'CANNABIS' | 'ALCOHOL' | 'COCAINE' | 'HEROIN' | 'FENTANYL' | 'OPIOIDS' | 'AMPHETAMINES' | 'PSYCHEDELICS'} Substance
+ */
+
+/**
+ * Sub-form of a substance, when a dataset covers one form specifically
+ * rather than the whole class (crack vs powder cocaine, mushrooms vs LSD).
+ * @typedef {'crack' | 'powder' | 'mushrooms' | 'lsd' | 'dmt' | 'salvia'} Variant
  */
 
 /**
@@ -51,7 +59,8 @@
  *   - 'derived'   arithmetic on reported figures; inputs must be cited.
  *   - 'modelled'  an estimate with no per-item source.
  *   - 'contested' sources materially disagree; see citations for the spread.
- * @typedef {'reported' | 'derived' | 'modelled' | 'contested'} Basis
+ *   - 'none'      no reliable public figure exists; said honestly instead of guessed.
+ * @typedef {'reported' | 'derived' | 'modelled' | 'contested' | 'none'} Basis
  */
 
 /**
@@ -85,7 +94,10 @@
  * A whole YAML dataset file under src/data/.
  * @typedef {Object} MetricFile
  * @property {string} id                        Stable dotted identifier, e.g. 'usage.cannabis.us.past_year'.
+ *                                              The first dotted segment is the metric family
+ *                                              ('usage', 'deaths', 'sales', 'er_visits', 'health').
  * @property {Substance} substance
+ * @property {Variant} [variant]                Set when the dataset covers one sub-form only.
  * @property {Geo} geo
  * @property {string} metric                    Machine-readable measure name, e.g. 'past_year_use'.
  * @property {string} unit                      Unit of `val`, e.g. 'percent_population_12_plus'.
@@ -93,6 +105,70 @@
  * @property {string} [description]             Methodology notes and caveats.
  * @property {VerificationStatus} verification  Citation-audit status of the whole file.
  * @property {DataPoint[]} observations         The time series.
+ */
+
+/**
+ * A citation with its anchor resolved against the source catalog.
+ * @typedef {Citation & { source: SourceCitation }} ResolvedCitation
+ */
+
+/**
+ * A single observation as returned by the fluent `Substances` tree:
+ * the data point, its dataset context, and every citation resolved —
+ * the number never travels without its receipts.
+ * @typedef {Object} ResolvedObservation
+ * @property {number} year
+ * @property {number} val
+ * @property {number} [pct]
+ * @property {Basis} basis
+ * @property {string} [period]
+ * @property {string} metricId          Owning dataset id.
+ * @property {string} title             Owning dataset title.
+ * @property {string} unit              Unit of `val`.
+ * @property {Substance} substance
+ * @property {Geo} geo
+ * @property {ResolvedCitation[]} citations
+ */
+
+/**
+ * A value arithmetically derived from a reported observation
+ * (e.g. an annual count spread across months or days). Always
+ * `basis: 'derived'`, always carries the formula in `note` and the
+ * source observation in `from`.
+ * @typedef {Object} DerivedPoint
+ * @property {number} year
+ * @property {number} [month]           1-12, present for Month/Day derivations.
+ * @property {number} [day]             1-31, present for Day derivations.
+ * @property {number} val
+ * @property {string} unit
+ * @property {'derived'} basis
+ * @property {string} note              The derivation formula, spelled out.
+ * @property {ResolvedObservation} from The reported observation this came from.
+ */
+
+/**
+ * One entry in a compound reference sheet (src/data/compounds.yaml) —
+ * e.g. THC, CBD, Delta-8. Descriptive reference data, not a time series.
+ * @typedef {Object} CompoundInfo
+ * @property {string} name              Full chemical/common name.
+ * @property {string[]} [aka]           Other names in common use.
+ * @property {string} kind              e.g. 'phytocannabinoid', 'semi-synthetic cannabinoid'.
+ * @property {boolean} psychoactive
+ * @property {string} federal_status    Federal legal status, plain English.
+ * @property {string} texas_status      Texas legal status, plain English.
+ * @property {{ federal: boolean, texas: boolean }} banned
+ *                                      Machine-readable "banned from consumable
+ *                                      retail as of the sheet's snapshot" flags —
+ *                                      powers the derived 'banned' selector. The
+ *                                      prose statuses carry the nuance.
+ * @property {string} [note]            Caveats, incl. verification state.
+ * @property {string[]} sources         Anchor keys into sources.yaml.
+ */
+
+/**
+ * A CompoundInfo as returned by the Substances tree: key attached and
+ * source anchors resolved.
+ * @typedef {CompoundInfo & { key: string, citations: SourceCitation[] }} ResolvedCompound
  */
 
 /**

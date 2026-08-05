@@ -1,5 +1,5 @@
 /**
- * @file thc-stats — public API.
+ * @file PROOF (@dogs/proof) — public API.
  *
  * Loads every YAML dataset under src/data/ at build time (via
  * @modyfi/vite-plugin-yaml + import.meta.glob) and exposes typed query,
@@ -14,20 +14,9 @@
 /** @typedef {import('./types.js').Geo} Geo */
 /** @typedef {import('./types.js').ClaimComparison} ClaimComparison */
 
-import sourcesYaml from './data/sources.yaml'
+import { METRICS, SOURCES } from './registry.js'
 
-/** @type {Record<string, SourceCitation>} */
-const SOURCES = /** @type {Record<string, SourceCitation>} */ (sourcesYaml)
-
-// Metric files live one directory below data/ (usage/, safety/, ...);
-// sources.yaml sits at the data/ root and is intentionally not matched here.
-const metricModules = import.meta.glob('./data/*/*.yaml', {
-  eager: true,
-  import: 'default'
-})
-
-/** @type {MetricFile[]} */
-const METRICS = /** @type {MetricFile[]} */ (Object.values(metricModules))
+export { Substances } from './substances.js'
 
 /**
  * Every dataset in the library, unfiltered.

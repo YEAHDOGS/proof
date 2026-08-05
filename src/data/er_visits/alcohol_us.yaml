@@ -1,0 +1,27 @@
+# Alcohol-involved emergency department visits, United States (SAMHSA DAWN).
+# SEEDED from the wearedogs hempHealth migration inventory (which cites DAWN);
+# the 5.37M figure is the rounded headline estimate - replace with the exact
+# published count during the cross-check pass.
+
+id: er_visits.alcohol.us.ed_visits
+substance: ALCOHOL
+geo: US
+metric: ed_visits
+unit: ed_visits
+title: Alcohol-involved emergency department visits, United States
+verification: seeded
+description: >-
+  Estimated annual U.S. emergency department visits involving alcohol, from
+  SAMHSA's Drug Abuse Warning Network national estimates. Alcohol is the
+  single most common substance in DAWN ED visits - roughly six times the
+  cannabis figure for the same year.
+
+observations:
+  - year: 2023
+    val: 5370000
+    src: samhsa_dawn
+    basis: reported
+    citations:
+      - src: samhsa_dawn
+        val: 5370000
+        note: DAWN national estimate of alcohol-involved ED visits, 2023 (rounded headline value, 5.37 million). Replace with the exact table count when cross-checking.

@@ -1,0 +1,32 @@
+# Past-year hallucinogen use, United States, ages 12+ (SAMHSA NSDUH).
+# NSDUH's "hallucinogens" bundle covers LSD, psilocybin, MDMA/ecstasy, DMT,
+# ketamine, and more - it is the class measure for the PSYCHEDELICS family;
+# per-variant splits (mushrooms vs LSD) come from detailed tables later.
+# SEEDED from the 2023 NSDUH annual report headline; verify during cross-check.
+
+id: usage.psychedelics.us.past_year
+substance: PSYCHEDELICS
+geo: US
+metric: past_year_use
+unit: percent_population_12_plus
+title: Past-year hallucinogen use, United States, ages 12 or older
+verification: seeded
+description: >-
+  Share of the U.S. civilian, noninstitutionalized population aged 12 or
+  older reporting hallucinogen use in the past year, from the NSDUH annual
+  national reports. The NSDUH hallucinogen category spans LSD, psilocybin,
+  MDMA, DMT, and others; substance-specific splits exist only in the
+  detailed tables and will land on the variant nodes (Mushrooms, Acid)
+  during the cross-check pass.
+
+observations:
+  - year: 2023
+    val: 2.9
+    src: nsduh_2023_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        val: 2.9
+        note: Roughly 2.9 percent (about 8 million people) aged 12 or older used hallucinogens in the past year, 2023. Low-confidence seed - verify the exact percentage against the report before any use.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

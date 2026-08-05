@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => ({
     tailwindcss(),
     svelte()
   ],
+  // Vitest would otherwise resolve svelte's SSR entry; component tests need
+  // the client (browser) build to mount into JSDOM.
+  resolve: process.env.VITEST ? { conditions: ['browser'] } : undefined,
   // The SPA's public/ assets (favicon etc.) have no business inside the npm package.
   publicDir: mode === 'lib' ? false : 'public',
   build: mode === 'lib'

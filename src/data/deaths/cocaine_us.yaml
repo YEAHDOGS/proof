@@ -1,0 +1,50 @@
+# Cocaine-involved overdose deaths, United States (ICD-10 T40.5).
+# SEEDED from the NIDA overdose-rates rollup of NCHS final data; re-verify
+# against CDC WONDER before flipping to cross-checked.
+
+id: deaths.cocaine.us.overdose
+substance: COCAINE
+geo: US
+metric: overdose_deaths
+unit: deaths
+title: Cocaine-involved overdose deaths, United States
+verification: seeded
+description: >-
+  Annual count of U.S. drug-overdose deaths involving cocaine (crack and
+  powder are not separated in mortality coding), from NCHS final mortality
+  data as republished by NIDA. A large majority of recent cocaine deaths also
+  involve synthetic opioids, so this overlaps the fentanyl series.
+
+observations:
+  - year: 2021
+    val: 24486
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 24486
+        note: Overdose deaths involving cocaine, 2021 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T40.5 query.
+
+  - year: 2022
+    val: 27569
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 27569
+        note: Overdose deaths involving cocaine, 2022 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T40.5 query.
+
+  - year: 2023
+    val: 29918
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 29918
+        note: Overdose deaths involving cocaine, 2023 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T40.5 query.
