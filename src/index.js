@@ -17,6 +17,7 @@
 import { METRICS, SOURCES } from './registry.js'
 
 export { Substances } from './substances.js'
+export { World } from './world.js'
 
 /**
  * Every dataset in the library, unfiltered.
@@ -138,10 +139,11 @@ export function compareClaims(metricId, year) {
 /**
  * Audit one dataset against the citation policy. Returns a list of problems;
  * an empty array means the dataset is sound. Checked rules:
- *  - every observation has at least one citation,
- *  - every anchor (primary and per-citation) resolves in sources.yaml,
- *  - the primary `src` also appears among the citations,
- *  - a 'cross-checked' dataset never contains an uncited observation.
+ *  - every observation has at least one citation (the array is the single
+ *    record of sourcing; its first entry is the primary source),
+ *  - every citation anchor resolves in sources.yaml,
+ *  - every citation carries a direct https URL to its evidence,
+ *  - at least one citation restates the observation's value.
  * @param {MetricFile} metric
  * @returns {string[]}
  */
@@ -154,16 +156,16 @@ export function validateDataset(metric) {
       problems.push(`${where}: no citations`)
       continue
     }
-    if (!SOURCES[point.src]) {
-      problems.push(`${where}: primary src '${point.src}' not in sources.yaml`)
-    }
-    if (!point.citations.some((c) => c.src === point.src)) {
-      problems.push(`${where}: primary src '${point.src}' missing from citations`)
-    }
     for (const c of point.citations) {
       if (!SOURCES[c.src]) {
         problems.push(`${where}: citation anchor '${c.src}' not in sources.yaml`)
       }
+      if (!c.url || !/^https:\/\//.test(c.url)) {
+        problems.push(`${where}: citation '${c.src}' has no direct https url`)
+      }
+    }
+    if (!point.citations.some((c) => typeof c.val === 'number')) {
+      problems.push(`${where}: no citation restates the value`)
     }
   }
   return problems

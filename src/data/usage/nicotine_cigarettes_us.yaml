@@ -1,0 +1,30 @@
+# Adult cigarette smokers, United States (CDC).
+# Variant dataset: cigarettes specifically. NOTE the population basis is
+# adults 18+ (CDC NHIS), not the NSDUH 12+ basis - the unit says so.
+# SEEDED Aug 2026; pin to the exact NHIS release during cross-check.
+
+id: usage.nicotine.cigarette.us.current_smokers
+substance: NICOTINE
+variant: cigarette
+geo: US
+metric: current_smokers
+unit: persons_18_plus
+title: Adults who currently smoke cigarettes, United States
+verification: seeded
+description: >-
+  Estimated number of U.S. adults (18 or older) who currently smoke
+  cigarettes, from CDC's National Health Interview Survey headline figures.
+  Adult basis - not directly comparable with the 12-plus NSDUH class
+  measure. Cigarette smoking is at a record low share of adults even as
+  total nicotine use holds up through vapes and pouches.
+
+observations:
+  - year: 2022
+    val: 28_800_000
+    basis: reported
+    period: NHIS 2022 estimate (11.5 percent of adults)
+    citations:
+      - src: cdc_tobacco_facts
+        url: https://www.cdc.gov/tobacco/data_statistics/fact_sheets/fast_facts/index.htm
+        val: 28_800_000
+        note: CDC fast facts - 28.8 million U.S. adults (11.5 percent) currently smoked cigarettes, 2022. Verify figure and year against the current page during cross-check.

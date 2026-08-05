@@ -1,0 +1,35 @@
+# Texas population (U.S. Census Bureau).
+# Baseline dataset - no substance. SEEDED Aug 2026; vintages revise prior
+# years, so cross-check must pin values to their vintage.
+
+id: population.tx
+geo: TX
+metric: population
+unit: persons
+title: Texas population
+verification: seeded
+description: >-
+  Texas resident population from the Census Bureau Vintage 2024 state
+  estimates - the year Texas crossed 31 million, with the largest numeric
+  gain of any state.
+
+observations:
+  - year: 2023
+    val: 30_727_890
+    basis: reported
+    period: July 1, 2023 (Vintage 2024 estimate)
+    citations:
+      - src: census_popest
+        url: https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html
+        val: 30_727_890
+        note: Vintage 2024 restated July 1, 2023 Texas estimate. Verify against the vintage table during cross-check.
+
+  - year: 2024
+    val: 31_290_831
+    basis: reported
+    period: July 1, 2024 (Vintage 2024 estimate)
+    citations:
+      - src: census_popest
+        url: https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html
+        val: 31_290_831
+        note: Vintage 2024 Texas estimate for July 1, 2024 - largest numeric state gain of the year.

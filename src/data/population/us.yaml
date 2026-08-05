@@ -1,0 +1,36 @@
+# United States population (U.S. Census Bureau).
+# Baseline dataset - no substance. SEEDED Aug 2026; each vintage revises
+# prior years, so cross-check must pin values to their vintage.
+
+id: population.us
+geo: US
+metric: population
+unit: persons
+title: United States population
+verification: seeded
+description: >-
+  U.S. resident population from the Census Bureau. The 2024 value is the
+  Vintage 2024 July 1 estimate; the 2025 value is the Bureau's January 1
+  headline projection from the population clock - different bases, so the
+  period field carries the distinction.
+
+observations:
+  - year: 2024
+    val: 340_110_988
+    basis: reported
+    period: July 1, 2024 (Vintage 2024 estimate)
+    citations:
+      - src: census_popest
+        url: https://www.census.gov/data/tables/time-series/demo/popest/2020s-national-total.html
+        val: 340_110_988
+        note: Vintage 2024 national estimate for July 1, 2024.
+
+  - year: 2025
+    val: 341_145_670
+    basis: modelled
+    period: January 1, 2025 projection
+    citations:
+      - src: census_popclock
+        url: https://www.census.gov/popclock/
+        val: 341_145_670
+        note: Census Bureau New Year's Day projection for Jan 1, 2025. Replace with the Vintage 2025 July 1 estimate when it publishes.

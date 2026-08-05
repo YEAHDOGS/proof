@@ -29,6 +29,7 @@ describe('queryMetrics', () => {
     for (const substance of [
       'CANNABIS',
       'ALCOHOL',
+      'NICOTINE',
       'COCAINE',
       'HEROIN',
       'FENTANYL',
@@ -78,7 +79,7 @@ describe('queryMetrics', () => {
     for (const point of metric.observations) {
       expect(typeof point.year).toBe('number')
       expect(typeof point.val).toBe('number')
-      expect(typeof point.src).toBe('string')
+      expect(point.citations.length).toBeGreaterThanOrEqual(1)
     }
   })
 })
@@ -152,6 +153,16 @@ describe('citation policy integrity', () => {
       for (const point of metric.observations) {
         const withValues = point.citations.filter((c) => typeof c.val === 'number')
         expect(withValues.length, `${metric.id} @ ${point.year}`).toBeGreaterThanOrEqual(1)
+      }
+    }
+  })
+
+  it('every citation carries a direct https url', () => {
+    for (const metric of getAllMetrics()) {
+      for (const point of metric.observations) {
+        for (const c of point.citations) {
+          expect(c.url, `${metric.id} @ ${point.year} (${c.src})`).toMatch(/^https:\/\//)
+        }
       }
     }
   })

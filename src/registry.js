@@ -11,6 +11,7 @@
 
 import sourcesYaml from './data/sources.yaml'
 import compoundsYaml from './data/compounds.yaml'
+import representativesYaml from './data/representatives.yaml'
 
 /** @type {Record<string, SourceCitation>} */
 export const SOURCES = /** @type {Record<string, SourceCitation>} */ (sourcesYaml)
@@ -34,4 +35,15 @@ export const METRICS = /** @type {MetricFile[]} */ (Object.values(metricModules)
 export const COMPOUNDS =
   /** @type {{ meta: { verification: string, note?: string }, substances: Record<string, Record<string, CompoundInfo>> }} */ (
     compoundsYaml
+  )
+
+/**
+ * Representative/legislature baseline, keyed by place path ('us',
+ * 'us.texas'). Structural seats data now; full lawmaker records migrate
+ * from wearedogs in M3.
+ * @type {{ meta: { verification: string, note?: string }, places: Record<string, import('./world.js').RepPlace> }}
+ */
+export const REPS =
+  /** @type {{ meta: { verification: string, note?: string }, places: Record<string, import('./world.js').RepPlace> }} */ (
+    representativesYaml
   )

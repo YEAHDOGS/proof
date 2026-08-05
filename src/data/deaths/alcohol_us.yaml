@@ -21,13 +21,14 @@ description: >-
 
 observations:
   - year: 2021
-    val: 178307
-    src: cdc_ardi
+    val: 178_307
     basis: modelled
     period: 2020-2021 annual average
     citations:
       - src: cdc_ardi
-        val: 178307
+        url: https://nccd.cdc.gov/DPH_ARDI/default/default.aspx
+        val: 178_307
         note: Average annual deaths from excessive alcohol use, 2020-2021, ARDI application.
       - src: cdc_alcohol_facts
+        url: https://www.cdc.gov/alcohol/facts-stats/index.html
         note: Headline page states more than 178,000 people die from excessive alcohol use in the U.S. each year (2020-2021 average).

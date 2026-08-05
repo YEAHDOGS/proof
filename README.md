@@ -23,6 +23,7 @@ in at build time.
 
 - **Scope & goals:** [GOALS.md](GOALS.md)
 - **`Substances` API and selector grammar:** [docs/substances.md](docs/substances.md)
+- **`World` baselines and representatives:** [docs/world.md](docs/world.md)
 
 ## Data coverage (M2 seed)
 
@@ -43,6 +44,10 @@ Substances.Fentanyl.Deaths.Year(2023)     // 72,776 — with citations
 Substances.Marijuana.Deaths.Year(2023)    // 0 — a real, cited zero
 Substances.Alcohol.Deaths.Year(2021)      // 178,307/yr, modelled, period disclosed
 Substances.Marijuana.Sales.Year(2025, { geo: 'TX' })  // $5.5B retail estimate
+Substances.Alcohol.Usage('world')         // 2_300_000_000 — latest year, usable as the number
+Substances.Alcohol.Usage('world').Cite    // …and its receipts
+World.Population('us', 'texas')           // 31_290_831 — baselines, same contract
+World.Representatives('us', 'texas').Senators  // structural now; full USReps lands in M3
 ```
 
 ## Charts

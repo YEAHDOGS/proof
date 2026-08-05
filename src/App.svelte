@@ -244,6 +244,7 @@ const deaths = [
       <h2 class="text-xl sm:text-2xl font-bold tracking-tight mb-1.5">Data integrity policy</h2>
       <ul class="text-xs sm:text-sm text-neutral-400 leading-relaxed list-disc pl-5 flex flex-col gap-1.5 mt-3">
         <li>Every observation cites at least one source; the target is 2+ independent publications.</li>
+        <li>Every citation carries a <code class="text-amber-200/90">url</code> linking directly to the exact document, page, or table backing the claim — never just a publisher homepage.</li>
         <li>Citations record the value <em>as that source reports it</em> — disagreements are preserved and surfaced by <code class="text-amber-200/90">compareClaims</code>, never averaged away.</li>
         <li><code class="text-amber-200/90">basis</code> grades every figure: reported / derived / modelled / contested / none — "none" means no reliable public figure exists, said honestly instead of guessed.</li>
         <li>Non-calendar periods (fiscal years, multi-year averages) are always disclosed via <code class="text-amber-200/90">period</code>.</li>

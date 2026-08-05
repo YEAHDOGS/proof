@@ -1,0 +1,32 @@
+# Past-month nicotine product use (any form), United States, ages 12+ (NSDUH).
+# The class-level Usage measure for the NICOTINE family: tobacco products or
+# nicotine vaping, past month, absolute persons. SEEDED Aug 2026; verify the
+# exact count and wording against the 2023 NSDUH annual report tables.
+
+id: usage.nicotine.us.past_month_users
+substance: NICOTINE
+geo: US
+metric: past_month_users
+unit: persons_12_plus
+title: Past-month tobacco or nicotine-vaping users, United States, ages 12 or older
+verification: seeded
+default: true
+description: >-
+  Estimated number of people aged 12 or older who used a tobacco product or
+  vaped nicotine in the past month, from the NSDUH annual national reports.
+  NSDUH headlines nicotine as past-MONTH use, so the class measure follows
+  the published measure (unlike the past-year standard elsewhere) - the
+  description of each variant dataset states its own measure and population.
+
+observations:
+  - year: 2023
+    val: 58_100_000
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
+        val: 58_100_000
+        note: Roughly 20.5 percent (about 58.1 million people) aged 12 or older used a tobacco product or vaped nicotine in the past month, 2023. Verify exact wording and count against the report.
+      - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

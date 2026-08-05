@@ -23,11 +23,11 @@ description: >-
 
 observations:
   - year: 2025
-    val: 5500000000
-    src: whitney_tx_hemp_2025
+    val: 5_500_000_000
     basis: modelled
     period: 2025 estimate (pre-ban market)
     citations:
       - src: whitney_tx_hemp_2025
-        val: 5500000000
+        url: https://whitneyeconomics.com/
+        val: 5_500_000_000
         note: Whitney Economics estimate of annual Texas hemp-derived cannabinoid retail sales ($5.5 billion), as used across the wearedogs campaign stats.

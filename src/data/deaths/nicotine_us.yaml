@@ -1,0 +1,34 @@
+# Smoking-attributable deaths, United States (Surgeon General / CDC).
+# The standing federal estimate: more than 480,000 deaths per year,
+# including about 41,000 from secondhand smoke - modelled attribution, not a
+# death-certificate count, dwarfing every other substance in this library.
+# SEEDED Aug 2026; year anchors to the 2014 Surgeon General report that
+# produced the estimate CDC still cites as current.
+
+id: deaths.nicotine.us.attributable
+substance: NICOTINE
+geo: US
+metric: attributable_deaths
+unit: deaths_per_year
+title: Smoking-attributable deaths, United States (annual average)
+verification: seeded
+description: >-
+  Estimated annual U.S. deaths attributable to cigarette smoking (including
+  secondhand-smoke exposure), from the 2014 Surgeon General's report - the
+  estimate CDC continues to cite as current. A modelled attribution across
+  smoking-related diseases, comparable in kind to the ARDI alcohol figure,
+  not to the overdose death-certificate counts.
+
+observations:
+  - year: 2014
+    val: 480_000
+    basis: modelled
+    period: annual average; 2014 Surgeon General estimate, still cited as current by CDC
+    citations:
+      - src: sg_tobacco_2014
+        url: https://www.ncbi.nlm.nih.gov/books/NBK179276/
+        val: 480_000
+        note: More than 480,000 deaths annually, including approximately 41,000 from secondhand-smoke exposure.
+      - src: cdc_tobacco_facts
+        url: https://www.cdc.gov/tobacco/data_statistics/fact_sheets/fast_facts/index.htm
+        note: CDC fast facts repeats the more-than-480,000-per-year figure as the current estimate.

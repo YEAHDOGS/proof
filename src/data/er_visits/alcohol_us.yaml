@@ -18,10 +18,10 @@ description: >-
 
 observations:
   - year: 2023
-    val: 5370000
-    src: samhsa_dawn
+    val: 5_370_000
     basis: reported
     citations:
       - src: samhsa_dawn
-        val: 5370000
+        url: https://www.samhsa.gov/data/data-we-collect/dawn-drug-abuse-warning-network
+        val: 5_370_000
         note: DAWN national estimate of alcohol-involved ED visits, 2023 (rounded headline value, 5.37 million). Replace with the exact table count when cross-checking.

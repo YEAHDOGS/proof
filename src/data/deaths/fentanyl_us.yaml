@@ -17,34 +17,37 @@ description: >-
 
 observations:
   - year: 2021
-    val: 70601
-    src: nida_overdose_rates
+    val: 70_601
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 70601
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 70_601
         note: Overdose deaths involving synthetic opioids other than methadone, 2021 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.4 query.
 
   - year: 2022
-    val: 73838
-    src: nida_overdose_rates
+    val: 73_838
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 73838
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 73_838
         note: Overdose deaths involving synthetic opioids other than methadone, 2022 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.4 query.
 
   - year: 2023
-    val: 72776
-    src: nida_overdose_rates
+    val: 72_776
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 72776
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 72_776
         note: Overdose deaths involving synthetic opioids other than methadone, 2023 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.4 query.

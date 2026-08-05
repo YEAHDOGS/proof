@@ -20,44 +20,48 @@ description: >-
 observations:
   - year: 2021
     val: 47.5
-    src: nsduh_2021_annual_report
     basis: reported
     citations:
       - src: nsduh_2021_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt39443/2021NSDUHNNR122322/2021NSDUHNNR122322.htm
         val: 47.5
         quote: Among people aged 12 or older in 2021, 47.5 percent (or 133.1 million people) drank alcohol in the past month.
       - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
         note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2021).
 
   - year: 2022
     val: 48.7
-    src: nsduh_2022_annual_report
     basis: reported
     citations:
       - src: nsduh_2022_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt42731/2022-nsduh-annual-national-web-110923/2022-nsduh-nnr.htm
         val: 48.7
         quote: Among people aged 12 or older in 2022, 48.7 percent (or 137.4 million people) drank alcohol in the past month.
       - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
         note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2022).
 
   - year: 2023
     val: 47.5
-    src: nsduh_2023_annual_report
     basis: reported
     citations:
       - src: nsduh_2023_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
         val: 47.5
         quote: Among people aged 12 or older in 2023, 47.5 percent (or 134.7 million people) drank alcohol in the past month.
       - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
         note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).
 
   - year: 2024
     val: 46.6
-    src: nsduh_2024_annual_report
     basis: reported
     citations:
       - src: nsduh_2024_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt56287/2024-nsduh-annual-national/2024-nsduh-annual-national-html-071425-edited/2024-nsduh-annual-national.htm
         val: 46.6
         quote: Among people aged 12 or older in 2024, 46.6 percent (or 134.3 million people) used alcohol in the past month.
       - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
         note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2024).

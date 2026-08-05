@@ -5,6 +5,7 @@ import { Substances } from '@dogs/proof'
 
 Substances.Marijuana.Usage.Year(2023)          // → 21.8% of Americans 12+, with citations
 Substances.Marijuana.Usage.Year(2023, { geo: 'TX' })
+Substances.Alcohol.Usage('world')              // → 2_300_000_000 (latest year), .Cite attached
 Substances.Marijuana('delta-8')                // → the Delta-8 compound sheet
 Substances.Cocaine('p').Deaths.Year(2024)      // → powder-cocaine deaths (when seeded)
 ```
@@ -42,6 +43,10 @@ every substance:
   `'all'` / `'banned'`. Also `Substances.Marijuana.delta(9)` and direct keys
   like `Substances.Marijuana['delta-8']` or `.thc`.
 - **Cocaine** — `'powder'` / `'p'`, `'crack'` / `'c'`. Default: powder.
+- **Nicotine** (alias: `Tobacco`) — `'cigarette(s)'` / `'cig(s)'` (default),
+  `'vape(s)'` / `'vaping'` / `'e-cig(s)'` / `'e-cigarette(s)'`,
+  `'pouch(es)'` / `'zyn'`, `'gum'` / `'nicorette(s)'`, `'patch(es)'`,
+  `'cigar(s)'`, `'rolling tobacco'` / `'roll-your-own'` / `'ryo'`.
 - **Psychedelics** — `'mushrooms'` / `'shrooms'` / `'psilocybin'`,
   `'acid'` / `'lsd'`, `'dmt'`, `'salvia'`.
 - **Heroin, Alcohol, Fentanyl, Opioids, Amphetamines** — no sub-forms yet:
@@ -60,14 +65,49 @@ matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
 
 | Method | Returns |
 | --- | --- |
-| `.Year(year, opts?)` | The observation for that year (`year` may be a number or string), **with every citation resolved** — a number never travels without its receipts. |
+| `.Year(year, opts?)` | The observation for that year (`year` may be a number or string), as a **Stat** — the number itself, with every citation resolved. |
 | `.Month(year, month, opts?)` | *Derived:* annual ÷ 12, `basis: 'derived'`, formula in `note`, source observation in `from`. |
 | `.Day(year, month, day, opts?)` | *Derived:* annual ÷ 365/366. Same honesty contract. |
-| `.Series(opts?)` | All observations, sorted (`order: 'asc' | 'desc'`), each resolved. |
+| `.Series(opts?)` | All observations, sorted (`order: 'asc' | 'desc'`), each a Stat. |
 | `.Files(opts?)` | The raw `MetricFile` datasets behind the family. |
 
 `opts.geo` defaults to `'US'`; pass `'TX'` for Texas. `opts.metric`
 disambiguates when a family carries several measures for one geography.
+
+### The geo selector — families are callable
+
+Calling a family with a geography resolves its default dataset for that geo
+down to the **most recent observation**, with the family accessors
+re-attached and the geo pinned:
+
+```js
+Substances.Alcohol.Usage('world')             // latest world observation (a Stat)
+Substances.Alcohol.Usage('world').Cite        // its resolved citations
+Substances.Alcohol.Usage('world').Year(2026)  // a specific year, same geo
+Substances.Alcohol.Usage('us').Series()       // the whole series, geo pinned
+```
+
+Accepted spellings (any case): `'us'`, `'usa'`, `'america'` → US; `'tx'`,
+`'texas'` → TX; `'world'`, `'global'`, `'earth'` → WORLD. Anything else
+throws the list. `Usage()` with no argument scopes to the US default.
+
+### Stats: the number IS the object
+
+Everything `.Year()`, `.Series()`, and the geo selector return is a **Stat** —
+a `Number` subclass. Used as a value it is the value
+(`Usage('world') / 1e9` → `2.3`; comparisons work); as an object it carries
+`year`, `val`, `basis`, `period`, `unit`, `metricId`, `geo`, `citations`,
+and **`.Cite`** — the resolved citation list. (Strict `===` against a bare
+literal fails, as with any object; use `.val` or `+stat` when you need the
+primitive.)
+
+### Default datasets
+
+When several datasets share one (substance, family, geo), the YAML file
+marked `default: true` answers unqualified queries; the others stay
+reachable via `opts.metric`. Alcohol usage resolves to the standardized
+past-year **persons count**; the past-month prevalence remains at
+`{ metric: 'past_month_use' }`.
 
 ### Honest derivation, or a loud refusal
 

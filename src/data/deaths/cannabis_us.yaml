@@ -22,11 +22,12 @@ description: >-
 observations:
   - year: 2023
     val: 0
-    src: dea_facts_marijuana
     basis: reported
     citations:
       - src: dea_facts_marijuana
+        url: https://www.dea.gov/factsheets/marijuana-cannabis
         val: 0
         note: DEA drug fact sheet states that no deaths from marijuana overdose have been reported.
       - src: nida_cannabis
+        url: https://nida.nih.gov/research-topics/cannabis-marijuana
         note: NIDA notes a fatal cannabis overdose is not documented; harms are non-lethal (impairment, dependence, acute anxiety/psychosis episodes).

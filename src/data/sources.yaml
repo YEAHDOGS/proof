@@ -1,5 +1,5 @@
-# Central source catalog. Every observation's `src` and citation anchors
-# resolve against the keys in this file. Add a source here first, then cite it.
+# Central source catalog. Every citation anchor in every dataset resolves
+# against the keys in this file. Add a source here first, then cite it.
 #
 # Catalog entries are typed as SourceCitation (src/types.js).
 
@@ -129,6 +129,55 @@ dea_facts_marijuana:
   publisher: DEA
   url: https://www.dea.gov/factsheets/marijuana-cannabis
   note: States that no deaths from marijuana overdose have been reported.
+
+un_wpp:
+  name: World Population Prospects
+  publisher: United Nations
+  url: https://population.un.org/wpp/
+  note: UN's official global population estimates and projections, revised roughly every two years. Mid-year estimates.
+
+census_popest:
+  name: Population Estimates Program (Vintage estimates)
+  publisher: U.S. Census Bureau
+  url: https://www.census.gov/programs-surveys/popest.html
+  note: Annual July 1 estimates for the nation, states, and localities. Each vintage revises prior years - cite the vintage.
+
+census_popclock:
+  name: U.S. and World Population Clock
+  publisher: U.S. Census Bureau
+  url: https://www.census.gov/popclock/
+  note: Running projection; the Bureau publishes headline Jan 1 projections from it each New Year.
+
+congress_gov:
+  name: Congress.gov member directory
+  publisher: Library of Congress
+  url: https://www.congress.gov/members
+  note: Official roster of current U.S. senators and representatives.
+
+tx_legislature_online:
+  name: Texas Legislature Online
+  publisher: Texas Legislature
+  url: https://capitol.texas.gov/
+  note: Official roster and structure of the Texas Senate (31) and House (150).
+
+cdc_tobacco_facts:
+  name: Smoking & Tobacco Use - Fast Facts
+  publisher: CDC
+  url: https://www.cdc.gov/tobacco/data_statistics/fact_sheets/fast_facts/index.htm
+  note: Headline adult smoking/vaping prevalence and smoking-attributable mortality figures. CDC reorganized its tobacco pages in 2024 - re-pin the exact URL during cross-check.
+
+sg_tobacco_2014:
+  name: The Health Consequences of Smoking - 50 Years of Progress (Surgeon General's report)
+  publisher: HHS
+  url: https://www.ncbi.nlm.nih.gov/books/NBK179276/
+  year: 2014
+  note: Source of the 480,000-plus annual smoking-attributable deaths estimate (including secondhand smoke) that CDC still cites as current.
+
+who_alcohol:
+  name: Global status report on alcohol and health
+  publisher: WHO
+  url: https://www.who.int/publications/i/item/9789240096745
+  note: WHO's global estimates of current drinkers, per-capita consumption, and alcohol-attributable harm. Global drinker counts are modelled estimates, not survey counts.
 
 whitney_tx_hemp_2025:
   name: Texas Hemp-Derived Cannabinoid Market Analysis (2025)

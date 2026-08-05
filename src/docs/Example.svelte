@@ -16,7 +16,11 @@
     }
   })()
 
-  const pretty = result.ok ? JSON.stringify(result.value, null, 2) : ''
+  // Stats are Number subclasses; spread them so the JSON panel shows their
+  // fields instead of collapsing to the bare number.
+  const plain =
+    result.ok && result.value instanceof Number ? { ...result.value } : result.value
+  const pretty = result.ok ? JSON.stringify(plain, null, 2) : ''
   const isLong = pretty.length > 320
   const rawHeadline =
     result.ok && result.value !== null && typeof result.value === 'object' && 'val' in result.value
