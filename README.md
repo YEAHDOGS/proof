@@ -2,7 +2,7 @@
 
 Cited substance statistics from DOGS. Every number chiseled in stone: multi-source
 citations for cannabis, alcohol, and more, across the US and Texas — plus laws,
-representatives, and map components. The library behind **proof.wearedogs.net**.
+representatives, and map components. The library behind the DOGS campaign site.
 
 ```bash
 npm i @dogs/proof

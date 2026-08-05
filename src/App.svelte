@@ -97,7 +97,7 @@ const deaths = [
 
   <!-- HERO -->
   <header class="relative w-full mx-auto {APP_MAX_WIDTH} px-4 sm:px-6 lg:px-10 pt-10 sm:pt-14 lg:pt-20 pb-6">
-    <p class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-amber-400/80 mb-3">DOGS · proof.wearedogs.net</p>
+    <p class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-amber-400/80 mb-3">DOGS</p>
     <h1 class="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold tracking-tight">PROOF</h1>
     <p class="mt-3 max-w-2xl text-sm sm:text-base text-neutral-400 leading-relaxed">
       Cited substance statistics — every number chiseled in stone. Multi-source citations for
@@ -254,8 +254,6 @@ const deaths = [
   </main>
 
   <footer class="w-full mx-auto {APP_MAX_WIDTH} px-4 sm:px-6 lg:px-10 pb-8 border-t border-white/5 pt-4">
-    <p class="text-[10px] tracking-wider text-neutral-600">
-      &copy; {new Date().getFullYear()} DOGS · <a href="https://cptnbrando.com" target="_blank" rel="noopener noreferrer" class="hover:text-white underline transition-colors">wearedogs</a>
-    </p>
+    <p class="text-[10px] tracking-wider text-neutral-600">&copy; {new Date().getFullYear()} DOGS</p>
   </footer>
 </div>

@@ -47,5 +47,5 @@ place: `.Senators`, `.House`, and for states `.StateSenate` / `.StateHouse`
 (each `{ seats, members?, note? }`), plus `.Cite`. Today this is structural —
 chamber sizes and the Texas federal senators. The full lawmaker dataset (184
 records with districts, THC stances, and 1,326 citations, migrating from
-wearedogs) lands here in **M3** and will fill the `members` arrays without
+the campaign app) lands here in **M3** and will fill the `members` arrays without
 changing the API shape.

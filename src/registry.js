@@ -40,7 +40,7 @@ export const COMPOUNDS =
 /**
  * Representative/legislature baseline, keyed by place path ('us',
  * 'us.texas'). Structural seats data now; full lawmaker records migrate
- * from wearedogs in M3.
+ * from the campaign app in M3.
  * @type {{ meta: { verification: string, note?: string }, places: Record<string, import('./world.js').RepPlace> }}
  */
 export const REPS =

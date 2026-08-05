@@ -23,6 +23,7 @@ describe('World.Population', () => {
 
   it('returns Stats: numbers with receipts', () => {
     expect(+World.Population()).toBe(8_230_000_000)
+    expect(World.Population().metric).toBe('population')
     expect(World.Population('us', 'texas') / World.Population('us')).toBeCloseTo(0.0917, 3)
     expect(World.Population().Cite.length).toBeGreaterThanOrEqual(1)
     expect(World.Population('us').Year(2024).Cite[0].source.publisher).toBe('U.S. Census Bureau')

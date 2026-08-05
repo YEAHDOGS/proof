@@ -5,7 +5,7 @@
 #
 # Structural seats today plus the Texas federal senators; the full lawmaker
 # dataset (184 records with districts, stances, and 1,326 citations)
-# migrates here from wearedogs in M3. Every `sources` anchor resolves in
+# migrates here from the campaign app in M3. Every `sources` anchor resolves in
 # sources.yaml.
 
 meta:

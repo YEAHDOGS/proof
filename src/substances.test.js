@@ -74,6 +74,15 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Marijuana.Usage.Day(2023, 2, 30)).toThrow(/Invalid day/)
   })
 
+  it('carries the metric name on every resolved and derived value', () => {
+    expect(Substances.Fentanyl.Deaths.Year(2023).metric).toBe('overdose_deaths')
+    expect(Substances.Marijuana.Usage.Year(2023).metric).toBe('past_year_use')
+    expect(Substances.Alcohol.Usage('world').metric).toBe('past_year_users')
+    expect(Substances.Opioids.Deaths.Month(2023, 6).metric).toBe('overdose_deaths')
+    expect(Substances.Fentanyl.Deaths.Day(2023, 3, 14).metric).toBe('overdose_deaths')
+    expect(Substances.Marijuana.Usage.Series().every((p) => p.metric === 'past_year_use')).toBe(true)
+  })
+
   it('serves the M2 death series with citations attached', () => {
     expect(Substances.Fentanyl.Deaths.Year(2023).val).toBe(72776)
     expect(Substances.Opioids.Deaths.Year(2022).val).toBe(81806)

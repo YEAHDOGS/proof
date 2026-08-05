@@ -157,6 +157,13 @@ describe('citation policy integrity', () => {
     }
   })
 
+  it('every dataset declares its metric, so no val is ever ambiguous', () => {
+    for (const metric of getAllMetrics()) {
+      expect(typeof metric.metric, metric.id).toBe('string')
+      expect(metric.metric.length, metric.id).toBeGreaterThan(0)
+    }
+  })
+
   it('every citation carries a direct https url', () => {
     for (const metric of getAllMetrics()) {
       for (const point of metric.observations) {

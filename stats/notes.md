@@ -32,3 +32,8 @@ Questions to answer:
     - Biographies
     - Timelines and histories of legislation events
 
+Quick questions with quick answers thanks to this dataset
+- How many people bought thc products in texas in 2024?
+- How many people went to the ER in 2025 due to alcohol related issues?
+- How many Texas Senators support thc?
+- How many people have overdosed from fentanyl since 2007?

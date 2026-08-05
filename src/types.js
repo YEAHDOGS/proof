@@ -62,7 +62,7 @@
  */
 
 /**
- * How much weight a figure holds (adopted from the wearedogs stats convention):
+ * How much weight a figure holds (adopted from the campaign app's stats convention):
  *   - 'reported'  published as-is by an agency or named study.
  *   - 'derived'   arithmetic on reported figures; inputs must be cited.
  *   - 'modelled'  an estimate with no per-item source.
@@ -137,9 +137,12 @@
  * @property {Basis} basis
  * @property {string} [period]
  * @property {string} metricId          Owning dataset id.
+ * @property {string} metric            The measure `val` expresses, e.g.
+ *                                      'past_year_use', 'overdose_deaths' —
+ *                                      so a value is never ambiguous on its own.
  * @property {string} title             Owning dataset title.
  * @property {string} unit              Unit of `val`.
- * @property {Substance} substance
+ * @property {Substance} [substance]    Absent on baseline datasets.
  * @property {Geo} geo
  * @property {ResolvedCitation[]} citations
  */
@@ -176,6 +179,8 @@
  * @property {number} [month]           1-12, present for Month/Day derivations.
  * @property {number} [day]             1-31, present for Day derivations.
  * @property {number} val
+ * @property {string} metric            The measure `val` expresses, inherited
+ *                                      from the source observation.
  * @property {string} unit
  * @property {'derived'} basis
  * @property {string} note              The derivation formula, spelled out.
