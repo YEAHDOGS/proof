@@ -22,15 +22,16 @@ description: >-
 observations:
   - year: 2023
     val: 16.41
-    src: nsduh_2023_sae_texas
     basis: reported
     period: 2022-2023 annual average
     citations:
       - src: nsduh_2023_sae_texas
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt56188/2023-nsduh-sae-state-tables_0/2023-nsduh-sae-state-tabs-texas.pdf
         val: 16.41
         locator: Texas state table, Marijuana Use in the Past Year, 12 or Older column
         note: Companion count table gives 4,094 thousand people. Age splits are 9.40 percent (12-17), 28.69 percent (18-25), 15.24 percent (26 or older).
       - src: nsduh_2023_sae_percent_tables
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt56185/2023-nsduh-sae-tables-percents/2023-nsduh-sae-tables-percent.pdf
         val: 16.41
         locator: Table 2 - Marijuana Use in the Past Year among People Aged 12 or Older, by State
         note: Same small-area estimation program as the state table, published in the national compilation.

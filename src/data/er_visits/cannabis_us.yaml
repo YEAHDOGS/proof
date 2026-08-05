@@ -20,10 +20,10 @@ description: >-
 
 observations:
   - year: 2023
-    val: 896418
-    src: samhsa_dawn
+    val: 896_418
     basis: reported
     citations:
       - src: samhsa_dawn
-        val: 896418
+        url: https://www.samhsa.gov/data/data-we-collect/dawn-drug-abuse-warning-network
+        val: 896_418
         note: DAWN national estimate of cannabis-involved ED visits, 2023. Verify against the published 2023 DAWN annual report tables.

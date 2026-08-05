@@ -60,12 +60,30 @@ Every leaf value returns the observation **with its citations attached** — the
 never separated from its receipts. Derived values are flagged `basis: 'derived'` with the
 derivation formula in `note`.
 
+**Standardization decisions (Aug 2026):**
+
+- **Geo selector**: metric families are callable — `Usage('world' | 'us' | 'texas')`
+  resolves the default dataset for that geo to its **most recent observation**, with
+  `.Year/.Series/...` re-attached and the geo pinned.
+- **Stats are Numbers**: every resolved observation is a `Number` subclass — usable
+  directly as its value — carrying its fields plus **`.Cite`** (resolved citations).
+- **Standard Usage measure is a persons count** (`past_year_users`), so substances and
+  geographies compare directly; prevalence percentages stay as secondary metrics.
+- **`default: true`** on a YAML file marks which dataset answers unqualified queries
+  when several share a (substance, family, geo); the rest stay reachable via `metric`.
+- **Observations carry no `src` field** — the citations array is the single record of
+  sourcing (first entry = primary by convention).
+- **YAML numbers ≥ 1,000 use `_` separators** (`2_300_000_000`), parsed natively by
+  js-yaml.
+
 **Substance catalog** (each with variants):
 
 - **Marijuana** — THC, CBD, Delta-8, Delta-9, Delta-10, THCP, THCA
 - **Cocaine** — crack, powder
 - **Heroin**
 - **Alcohol**
+- **Nicotine** (added Aug 2026; alias Tobacco) — cigarettes, vapes/e-cigs,
+  pouches, gum (Nicorette), patches, cigars, rolling tobacco
 - **Fentanyl**
 - **Opioids** (class-level; fentanyl also rolls up here)
 - **Amphetamines**
@@ -86,7 +104,15 @@ derivation formula in `note`.
 `TX-HOUSTON`, `TX-DALLAS`, `TX-SANANTONIO`, `TX-ELPASO`, `TX-CORPUS`, `TX-GALVESTON`,
 `TX-WACO`) reserved in the schema and filled as sources allow.
 
-### 2.2 `USReps`
+### 2.2 `USReps` → `World.Representatives` (direction change Aug 2026)
+
+Representative data lives under the global `World` namespace —
+`World.Representatives('us', 'texas').Senators` — alongside baseline stats:
+`World.Population()` / `('us')` / `('us', 'texas')`, most recent year by
+default, `.Year(y)` selectable, Stat + `.Cite` contract identical to
+Substances. Baseline population datasets (world/US/TX, Census + UN WPP) and
+the structural representatives file shipped Aug 2026; the record shape below
+is the M3 target that fills `members`.
 
 ```js
 USReps('Vikki Goodwin')        // callable shorthand
@@ -274,6 +300,10 @@ so.
 
 - Every observation cites ≥1 source; target ≥2 independent publications
   ("chisel it in stone").
+- **Every citation carries a direct `url`** to the exact document, page, or table
+  backing the claim (Aug 2026) — never just a publisher homepage. The sources.yaml
+  catalog keeps the program-level context; the citation links straight to the
+  evidence. `validateDataset` enforces it.
 - Citations record the value **as that source reports it** — disagreements preserved,
   surfaced by `compareClaims`.
 - `basis` grading: `reported` / `derived` / `modelled` / `contested` / `none`

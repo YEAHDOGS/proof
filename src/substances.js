@@ -13,6 +13,13 @@
  *   Substances.Marijuana('banned')          -> banned compounds (derived, Texas flags)
  *   Substances.Heroin()                     -> itself (no sub-forms)
  *
+ * Metric families are callable too — the geo selector:
+ *
+ *   Substances.Alcohol.Usage('world')             -> latest observation, as a Stat
+ *   Substances.Alcohol.Usage('world').Cite        -> its resolved citations
+ *   Substances.Alcohol.Usage('world').Year(2026)  -> a specific year, same geo
+ *   Substances.Alcohol.Usage('us') / 1e6          -> Stats behave as numbers
+ *
  * Property access stays available and case-insensitive at every level
  * (Substances.marijuana.usage.year(2023) works), and every leaf returns the
  * value WITH its citations resolved — numbers never travel without their
@@ -29,8 +36,11 @@
 /** @typedef {import('./types.js').ResolvedCitation} ResolvedCitation */
 /** @typedef {import('./types.js').DerivedPoint} DerivedPoint */
 /** @typedef {import('./types.js').ResolvedCompound} ResolvedCompound */
+/** @typedef {import('./types.js').Stat} Stat */
+/** @typedef {import('./types.js').ScopedStat} ScopedStat */
 
-import { METRICS, SOURCES, COMPOUNDS } from './registry.js'
+import { METRICS, COMPOUNDS } from './registry.js'
+import { caseless, normalizeGeo, resolvePoint, resolveSource } from './core.js'
 
 /**
  * Options accepted by every family accessor.
@@ -42,12 +52,17 @@ import { METRICS, SOURCES, COMPOUNDS } from './registry.js'
 
 /**
  * A metric family under a substance (Deaths, Usage, Sales, ERVisits, Health).
- * @typedef {Object} MetricFamilyNode
- * @property {(year: number|string, opts?: QueryOpts) => ResolvedObservation} Year
+ * Also CALLABLE with a geography — `Usage('world')` — which resolves to the
+ * most recent observation for that geo (a Stat: usable as the number itself,
+ * `.Cite` for sources) with the family accessors re-attached, geo pinned.
+ * @typedef {Object} MetricFamilyMethods
+ * @property {(year: number|string, opts?: QueryOpts) => Stat} Year
  * @property {(year: number|string, month: number, opts?: QueryOpts) => DerivedPoint} Month
  * @property {(year: number|string, month: number, day: number, opts?: QueryOpts) => DerivedPoint} Day
- * @property {(opts?: QueryOpts & { order?: 'asc'|'desc' }) => ResolvedObservation[]} Series
+ * @property {(opts?: QueryOpts & { order?: 'asc'|'desc' }) => Stat[]} Series
  * @property {(opts?: QueryOpts) => MetricFile[]} Files
+ *
+ * @typedef {MetricFamilyMethods & ((geo?: Geo | string) => ScopedStat)} MetricFamilyNode
  */
 
 /**
@@ -87,6 +102,18 @@ import { METRICS, SOURCES, COMPOUNDS } from './registry.js'
 
 /**
  * @typedef {CallableSubstanceNode & {
+ *   Cigarettes: SubstanceNode,
+ *   Vapes: SubstanceNode,
+ *   Pouches: SubstanceNode,
+ *   Gum: SubstanceNode,
+ *   Patches: SubstanceNode,
+ *   Cigars: SubstanceNode,
+ *   RollingTobacco: SubstanceNode
+ * }} NicotineNode
+ */
+
+/**
+ * @typedef {CallableSubstanceNode & {
  *   Mushrooms: SubstanceNode,
  *   Acid: SubstanceNode,
  *   DMT: SubstanceNode,
@@ -101,6 +128,8 @@ import { METRICS, SOURCES, COMPOUNDS } from './registry.js'
  * @property {CocaineNode} Cocaine
  * @property {CallableSubstanceNode} Heroin
  * @property {CallableSubstanceNode} Alcohol
+ * @property {NicotineNode} Nicotine
+ * @property {NicotineNode} Tobacco      Alias of Nicotine.
  * @property {CallableSubstanceNode} Fentanyl
  * @property {CallableSubstanceNode} Opioids
  * @property {CallableSubstanceNode} Amphetamines
@@ -143,6 +172,49 @@ const SUBSTANCE_DEFS = [
   },
   { name: 'Heroin', canon: 'HEROIN' },
   { name: 'Alcohol', canon: 'ALCOHOL' },
+  {
+    name: 'Nicotine',
+    canon: 'NICOTINE',
+    variants: {
+      Cigarettes: 'cigarette',
+      Vapes: 'vape',
+      Pouches: 'pouch',
+      Gum: 'gum',
+      Patches: 'patch',
+      Cigars: 'cigar',
+      RollingTobacco: 'rolling_tobacco'
+    },
+    selectors: {
+      cigarette: 'Cigarettes',
+      cigarettes: 'Cigarettes',
+      cig: 'Cigarettes',
+      cigs: 'Cigarettes',
+      vape: 'Vapes',
+      vapes: 'Vapes',
+      vaping: 'Vapes',
+      'e-cig': 'Vapes',
+      'e-cigs': 'Vapes',
+      ecig: 'Vapes',
+      'e-cigarette': 'Vapes',
+      'e-cigarettes': 'Vapes',
+      pouch: 'Pouches',
+      pouches: 'Pouches',
+      zyn: 'Pouches',
+      gum: 'Gum',
+      nicorette: 'Gum',
+      nicorettes: 'Gum',
+      patch: 'Patches',
+      patches: 'Patches',
+      cigar: 'Cigars',
+      cigars: 'Cigars',
+      'rolling tobacco': 'RollingTobacco',
+      'rolling-tobacco': 'RollingTobacco',
+      rolling_tobacco: 'RollingTobacco',
+      'roll-your-own': 'RollingTobacco',
+      ryo: 'RollingTobacco'
+    },
+    defaultVariant: 'Cigarettes'
+  },
   { name: 'Fentanyl', canon: 'FENTANYL' },
   { name: 'Opioids', canon: 'OPIOIDS' },
   { name: 'Amphetamines', canon: 'AMPHETAMINES' },
@@ -163,31 +235,17 @@ const SUBSTANCE_DEFS = [
 ]
 
 // Extra names resolving to the same nodes.
-const ROOT_ALIASES = { Cannabis: 'Marijuana', Weed: 'Marijuana', Psychadelics: 'Psychedelics' }
+const ROOT_ALIASES = {
+  Cannabis: 'Marijuana',
+  Weed: 'Marijuana',
+  Psychadelics: 'Psychedelics',
+  Tobacco: 'Nicotine'
+}
 const VARIANT_ALIASES = { LSD: 'Acid', Shrooms: 'Mushrooms', Psilocybin: 'Mushrooms' }
 
 const VALID_DELTAS = [8, 9, 10]
 // Matches '8', 'd8', 'delta-8', 'delta 8', 'δ9' (lowercased 'Δ9') and friends.
 const DELTA_RE = /^(?:d|delta[-\s]?|δ)?(8|9|10)$/
-
-/**
- * Wrap an object (or function) so property access is case-insensitive
- * (node.Usage === node.usage === node.USAGE). Calling a wrapped function
- * still works — only `get` is trapped.
- * @template {object} T
- * @param {T} obj
- * @returns {T}
- */
-function caseless(obj) {
-  const lowered = new Map(Object.keys(obj).map((k) => [k.toLowerCase(), k]))
-  return new Proxy(obj, {
-    get(target, prop, receiver) {
-      if (typeof prop !== 'string' || prop in target) return Reflect.get(target, prop, receiver)
-      const canonical = lowered.get(prop.toLowerCase())
-      return canonical ? Reflect.get(target, canonical, receiver) : undefined
-    }
-  })
-}
 
 /**
  * @param {number|string} year
@@ -218,7 +276,8 @@ function daysInMonth(year, month) {
 function coverageSummary(canon) {
   const files = METRICS.filter((m) => m.substance === canon)
   if (files.length === 0) {
-    const covered = [...new Set(METRICS.map((m) => m.substance))].sort().join(', ')
+    // filter(Boolean): baseline datasets (population) carry no substance.
+    const covered = [...new Set(METRICS.map((m) => m.substance).filter(Boolean))].sort().join(', ')
     return `No datasets for ${canon} yet. Substances with data: ${covered}.`
   }
   const lines = files.map((m) => {
@@ -247,6 +306,12 @@ function pickFile(canon, familyName, variant, { geo = DEFAULT_GEO, metric } = {}
       (variant ? m.variant === variant : !m.variant)
   )
   if (metric) candidates = candidates.filter((m) => m.metric === metric)
+  if (candidates.length > 1) {
+    // The standardized dataset answers unqualified queries; the rest stay
+    // reachable via { metric }.
+    const preferred = candidates.filter((m) => m.default === true)
+    if (preferred.length === 1) candidates = preferred
+  }
   if (candidates.length === 1) return candidates[0]
   const scope = `${canon}${variant ? ` (${variant})` : ''} ${familyName} in ${geo}`
   if (candidates.length === 0) {
@@ -254,32 +319,6 @@ function pickFile(canon, familyName, variant, { geo = DEFAULT_GEO, metric } = {}
   }
   const ids = candidates.map((m) => `'${m.metric}' (${m.id})`).join(', ')
   throw new Error(`Multiple ${scope} datasets - pass { metric } to choose one of: ${ids}`)
-}
-
-/**
- * @param {MetricFile} file
- * @param {import('./types.js').DataPoint} point
- * @returns {ResolvedObservation}
- */
-function resolvePoint(file, point) {
-  const citations = point.citations.map((c) => {
-    const source = SOURCES[c.src]
-    if (!source) throw new Error(`Citation anchor '${c.src}' missing from sources.yaml`)
-    return { ...c, source }
-  })
-  return {
-    year: point.year,
-    val: point.val,
-    ...(point.pct !== undefined && { pct: point.pct }),
-    basis: point.basis ?? 'reported',
-    ...(point.period !== undefined && { period: point.period }),
-    metricId: file.id,
-    title: file.title,
-    unit: file.unit,
-    substance: file.substance,
-    geo: file.geo,
-    citations
-  }
 }
 
 /**
@@ -371,7 +410,7 @@ function makeFamily(canon, familyName, variant) {
     return points.map((p) => resolvePoint(file, p))
   }
 
-  /** @type {MetricFamilyNode['Files']} */
+  /** @type {MetricFamilyMethods['Files']} */
   const Files = ({ geo, metric } = {}) => {
     const prefix = FAMILY_PREFIXES[/** @type {keyof typeof FAMILY_PREFIXES} */ (familyName)]
     return METRICS.filter(
@@ -384,7 +423,44 @@ function makeFamily(canon, familyName, variant) {
     )
   }
 
-  return caseless({ Year, Month, Day, Series, Files })
+  /**
+   * The geo selector: `Usage('world')` resolves the default dataset for that
+   * geography down to its MOST RECENT observation — returned as a Stat (the
+   * number itself, `.Cite` attached) with the family accessors re-attached
+   * and pinned to the geo, so `.Year(2026)` and `.Series()` chain from it.
+   * @param {Geo | string} [geoSelector]
+   * @returns {ScopedStat}
+   */
+  const scope = (geoSelector) => {
+    const geo = geoSelector === undefined ? DEFAULT_GEO : normalizeGeo(geoSelector)
+    const file = pickFile(canon, familyName, variant, { geo })
+    const latest = file.observations.reduce((a, b) => (b.year > a.year ? b : a))
+    const stat = resolvePoint(file, latest)
+    return /** @type {ScopedStat} */ (
+      Object.assign(/** @type {object} */ (stat), {
+        Year: (/** @type {number|string} */ y, /** @type {QueryOpts} */ opts = {}) =>
+          Year(y, { ...opts, geo }),
+        Month: (
+          /** @type {number|string} */ y,
+          /** @type {number} */ m,
+          /** @type {QueryOpts} */ opts = {}
+        ) => Month(y, m, { ...opts, geo }),
+        Day: (
+          /** @type {number|string} */ y,
+          /** @type {number} */ m,
+          /** @type {number} */ d,
+          /** @type {QueryOpts} */ opts = {}
+        ) => Day(y, m, d, { ...opts, geo }),
+        Series: (/** @type {QueryOpts & { order?: 'asc'|'desc' }} */ opts = {}) =>
+          Series({ ...opts, geo }),
+        Files: (/** @type {QueryOpts} */ opts = {}) => Files({ ...opts, geo })
+      })
+    )
+  }
+
+  return /** @type {MetricFamilyNode} */ (
+    caseless(Object.assign(scope, { Year, Month, Day, Series, Files }))
+  )
 }
 
 /**
@@ -413,11 +489,7 @@ function resolveCompound(substanceKey, compoundKey) {
     const known = sheet ? Object.keys(sheet).join(', ') : '(none)'
     throw new Error(`Unknown ${substanceKey} compound '${compoundKey}'. Known: ${known}`)
   }
-  const citations = info.sources.map((anchor) => {
-    const source = SOURCES[anchor]
-    if (!source) throw new Error(`Compound source anchor '${anchor}' missing from sources.yaml`)
-    return source
-  })
+  const citations = info.sources.map(resolveSource)
   return { key: compoundKey, ...info, citations }
 }
 

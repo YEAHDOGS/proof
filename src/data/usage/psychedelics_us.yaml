@@ -22,11 +22,12 @@ description: >-
 observations:
   - year: 2023
     val: 2.9
-    src: nsduh_2023_annual_report
     basis: reported
     citations:
       - src: nsduh_2023_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
         val: 2.9
         note: Roughly 2.9 percent (about 8 million people) aged 12 or older used hallucinogens in the past year, 2023. Low-confidence seed - verify the exact percentage against the report before any use.
       - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
         note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

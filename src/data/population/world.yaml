@@ -1,0 +1,38 @@
+# World population (United Nations World Population Prospects).
+# Baseline dataset - no substance; everything else is measured against these.
+# SEEDED Aug 2026; pin each value to the exact WPP revision during cross-check.
+
+id: population.world
+geo: WORLD
+metric: population
+unit: persons
+title: World population
+verification: seeded
+description: >-
+  Mid-year world population from the UN World Population Prospects. Rounded
+  headline estimates - the UN revises the series with each WPP edition, so
+  the cross-check pass should pin every value to one named revision.
+
+observations:
+  - year: 2024
+    val: 8_160_000_000
+    basis: modelled
+    period: mid-2024 estimate
+    citations:
+      - src: un_wpp
+        url: https://population.un.org/wpp/
+        val: 8_160_000_000
+        note: WPP 2024 revision mid-2024 estimate (press materials round to 8.2 billion).
+      - src: census_popclock
+        url: https://www.census.gov/popclock/
+        note: Census Bureau world clock tracks the same order of magnitude; use as the cross-check.
+
+  - year: 2025
+    val: 8_230_000_000
+    basis: modelled
+    period: mid-2025 projection
+    citations:
+      - src: un_wpp
+        url: https://population.un.org/wpp/
+        val: 8_230_000_000
+        note: WPP projection for mid-2025. Verify against the current revision during cross-check.

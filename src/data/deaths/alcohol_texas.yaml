@@ -17,13 +17,14 @@ description: >-
 
 observations:
   - year: 2021
-    val: 13701
-    src: cdc_ardi
+    val: 13_701
     basis: modelled
     period: 2020-2021 annual average
     citations:
       - src: cdc_ardi
-        val: 13701
+        url: https://nccd.cdc.gov/DPH_ARDI/default/default.aspx
+        val: 13_701
         note: Average annual deaths from excessive alcohol use in Texas, 2020-2021, ARDI application state view.
       - src: cdc_alcohol_facts
+        url: https://www.cdc.gov/alcohol/facts-stats/index.html
         note: State figures accompany the national ARDI headline estimates.

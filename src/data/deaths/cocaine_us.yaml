@@ -17,34 +17,37 @@ description: >-
 
 observations:
   - year: 2021
-    val: 24486
-    src: nida_overdose_rates
+    val: 24_486
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 24486
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 24_486
         note: Overdose deaths involving cocaine, 2021 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.5 query.
 
   - year: 2022
-    val: 27569
-    src: nida_overdose_rates
+    val: 27_569
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 27569
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 27_569
         note: Overdose deaths involving cocaine, 2022 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.5 query.
 
   - year: 2023
-    val: 29918
-    src: nida_overdose_rates
+    val: 29_918
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 29918
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 29_918
         note: Overdose deaths involving cocaine, 2023 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.5 query.

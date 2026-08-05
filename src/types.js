@@ -16,19 +16,23 @@
  * Substance tracked by a dataset (canonical uppercase codes).
  * The fluent `Substances` tree maps friendly names onto these
  * (Marijuana -> CANNABIS, Acid -> PSYCHEDELICS + variant 'lsd', ...).
- * @typedef {'CANNABIS' | 'ALCOHOL' | 'COCAINE' | 'HEROIN' | 'FENTANYL' | 'OPIOIDS' | 'AMPHETAMINES' | 'PSYCHEDELICS'} Substance
+ * @typedef {'CANNABIS' | 'ALCOHOL' | 'NICOTINE' | 'COCAINE' | 'HEROIN' | 'FENTANYL' | 'OPIOIDS' | 'AMPHETAMINES' | 'PSYCHEDELICS'} Substance
  */
 
 /**
  * Sub-form of a substance, when a dataset covers one form specifically
- * rather than the whole class (crack vs powder cocaine, mushrooms vs LSD).
- * @typedef {'crack' | 'powder' | 'mushrooms' | 'lsd' | 'dmt' | 'salvia'} Variant
+ * rather than the whole class (crack vs powder cocaine, mushrooms vs LSD,
+ * cigarettes vs vapes).
+ * @typedef {'crack' | 'powder' | 'mushrooms' | 'lsd' | 'dmt' | 'salvia'
+ *   | 'cigarette' | 'vape' | 'pouch' | 'gum' | 'patch' | 'cigar' | 'rolling_tobacco'} Variant
  */
 
 /**
  * Geographic scope of a dataset. Two-letter USPS code for states,
- * 'US' for national, city slugs (e.g. 'TX-AUSTIN') reserved for later.
- * @typedef {'US' | 'TX'} Geo
+ * 'US' for national, 'WORLD' for global estimates, city slugs
+ * (e.g. 'TX-AUSTIN') reserved for later. The fluent tree also accepts
+ * friendly spellings ('world', 'texas', 'usa') via its geo selector.
+ * @typedef {'US' | 'TX' | 'WORLD'} Geo
  */
 
 /**
@@ -44,6 +48,10 @@
  * publications report for the same (metric, year).
  * @typedef {Object} Citation
  * @property {string} src        Anchor key into the sources catalog (sources.yaml).
+ * @property {string} url        Direct URL to the exact document, page, or table
+ *                               backing this claim — every citation links straight
+ *                               to its evidence, never just a publisher homepage.
+ *                               (The catalog entry's url is the program page.)
  * @property {number} [val]      The value as reported by this source, in the
  *                               dataset's `unit`. Omit when the source confirms
  *                               the observation without restating the number.
@@ -64,13 +72,13 @@
  */
 
 /**
- * One time-series observation.
+ * One time-series observation. The citations array is the single record of
+ * sourcing — its first entry is the primary source by convention.
  * @typedef {Object} DataPoint
  * @property {number} year            Calendar/survey year of the observation.
  * @property {number} val             Primary value, expressed in the dataset's `unit`.
  * @property {number} [pct]           Optional percentage companion when `val`
  *                                    is an absolute count (e.g. millions of people).
- * @property {string} src             Primary source anchor (must also appear in `citations`).
  * @property {Citation[]} citations   All source claims for this observation.
  * @property {Basis} [basis]          Weight of the figure; defaults to 'reported'.
  * @property {string} [period]        Exact period covered when it is not a plain
@@ -95,8 +103,10 @@
  * @typedef {Object} MetricFile
  * @property {string} id                        Stable dotted identifier, e.g. 'usage.cannabis.us.past_year'.
  *                                              The first dotted segment is the metric family
- *                                              ('usage', 'deaths', 'sales', 'er_visits', 'health').
- * @property {Substance} substance
+ *                                              ('usage', 'deaths', 'sales', 'er_visits', 'health') or a
+ *                                              baseline family ('population').
+ * @property {Substance} [substance]            Absent on baseline (non-substance) datasets
+ *                                              such as population.
  * @property {Variant} [variant]                Set when the dataset covers one sub-form only.
  * @property {Geo} geo
  * @property {string} metric                    Machine-readable measure name, e.g. 'past_year_use'.
@@ -104,6 +114,10 @@
  * @property {string} title                     Human-readable title.
  * @property {string} [description]             Methodology notes and caveats.
  * @property {VerificationStatus} verification  Citation-audit status of the whole file.
+ * @property {boolean} [default]                When several datasets share one
+ *                                              (substance, family, geo), the one marked
+ *                                              default answers unqualified queries; the
+ *                                              rest stay reachable via { metric }.
  * @property {DataPoint[]} observations         The time series.
  */
 
@@ -128,6 +142,28 @@
  * @property {Substance} substance
  * @property {Geo} geo
  * @property {ResolvedCitation[]} citations
+ */
+
+/**
+ * A ResolvedObservation that IS its own numeric value: a Number subclass, so
+ * it compares, divides, and formats like the number it wraps (via valueOf),
+ * while carrying every observation field plus `.Cite` — the resolved
+ * citations. This is what the fluent tree's `.Year()` and `.Series()` return.
+ * @typedef {ResolvedObservation & Number & { Cite: ResolvedCitation[] }} Stat
+ */
+
+/**
+ * A geo-scoped family node: the most recent year's Stat, with the family
+ * accessors re-attached and pinned to that geography — so
+ * `Substances.Alcohol.Usage('world')` is simultaneously the latest value,
+ * its citations (`.Cite`), and the entry point for `.Year(2026)` etc.
+ * @typedef {Stat & {
+ *   Year: (year: number|string, opts?: object) => Stat,
+ *   Month: (year: number|string, month: number, opts?: object) => DerivedPoint,
+ *   Day: (year: number|string, month: number, day: number, opts?: object) => DerivedPoint,
+ *   Series: (opts?: object) => Stat[],
+ *   Files: (opts?: object) => MetricFile[]
+ * }} ScopedStat
  */
 
 /**

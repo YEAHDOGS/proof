@@ -19,11 +19,12 @@ description: >-
 observations:
   - year: 2023
     val: 1.8
-    src: nsduh_2023_annual_report
     basis: reported
     citations:
       - src: nsduh_2023_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
         val: 1.8
         note: About 1.8 percent (roughly 5.0 million people) aged 12 or older used cocaine in the past year, 2023. Verify exact wording against the report.
       - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
         note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

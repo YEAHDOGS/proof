@@ -8,6 +8,7 @@
 
 import {
   Substances,
+  World,
   queryMetrics,
   getMetric,
   getCitations,
@@ -72,6 +73,77 @@ export const SECTIONS = [
     ]
   },
   {
+    id: 'world',
+    heading: 'World — baseline stats',
+    blurb:
+      'The World tree holds the baselines everything else is measured against. Places are hierarchical, narrowing left to right; no argument means the whole world; the most recent year answers by default and any year stays selectable.',
+    examples: [
+      {
+        title: 'World population, most recent year',
+        code: 'World.Population()',
+        run: () => World.Population()
+      },
+      {
+        title: 'Narrow by place path',
+        code: "World.Population('us', 'texas')",
+        run: () => World.Population('us', 'texas')
+      },
+      {
+        title: 'Any year stays selectable',
+        code: "World.Population('us', 'texas').Year(2023)",
+        run: () => World.Population('us', 'texas').Year(2023)
+      },
+      {
+        title: 'Baselines make shares honest',
+        note: 'Cross-namespace arithmetic: past-year drinkers over US population.',
+        code: "((Substances.Alcohol.Usage('us') / World.Population('us')) * 100).toFixed(1) + '%'",
+        run: () => ((Substances.Alcohol.Usage('us') / World.Population('us')) * 100).toFixed(1) + '%'
+      },
+      {
+        title: 'Representatives (structural baseline; full records land in M3)',
+        code: "World.Representatives('us', 'texas').Senators",
+        run: () => World.Representatives('us', 'texas').Senators
+      }
+    ]
+  },
+  {
+    id: 'geo',
+    heading: 'Geography & the latest year',
+    blurb:
+      "Metric families are callable with a geography — 'world', 'us', 'texas', any case. The call resolves the default dataset for that geo down to its most recent observation, returned as a Stat: an object that IS its numeric value, still carrying its receipts.",
+    examples: [
+      {
+        title: 'Resolve a geography, get the latest',
+        note: 'No year given — the most recent observation answers.',
+        code: "Substances.Alcohol.Usage('world')",
+        run: () => Substances.Alcohol.Usage('world')
+      },
+      {
+        title: 'A specific year, geo pinned',
+        code: "Substances.Alcohol.Usage('us').Year(2026)",
+        run: () => Substances.Alcohol.Usage('us').Year(2026)
+      },
+      {
+        title: 'Stats behave as numbers',
+        note: 'valueOf() yields the value, so arithmetic and comparisons just work.',
+        code: "(Substances.Alcohol.Usage('world') / Substances.Alcohol.Usage('us')).toFixed(1)",
+        run: () => (Substances.Alcohol.Usage('world') / Substances.Alcohol.Usage('us')).toFixed(1)
+      },
+      {
+        title: '.Cite — the receipts',
+        note: 'On the scoped node or on any Year() result.',
+        code: "Substances.Alcohol.Usage('world').Cite",
+        run: () => Substances.Alcohol.Usage('world').Cite
+      },
+      {
+        title: 'Unknown geographies teach the grammar',
+        code: "Substances.Alcohol.Usage('mars')",
+        run: () => Substances.Alcohol.Usage('mars'),
+        throws: true
+      }
+    ]
+  },
+  {
     id: 'selectors',
     heading: 'The standard selector',
     blurb:
@@ -100,6 +172,12 @@ export const SECTIONS = [
         run: () => Substances.Marijuana.delta(9).name
       },
       {
+        title: 'Every nicotine product, one grammar',
+        note: 'Cigarettes (default), vapes/e-cigs, pouches, gum, patches, cigars, rolling tobacco.',
+        code: "Substances.Nicotine('e-cig').Usage.Year(2023)",
+        run: () => Substances.Nicotine('e-cig').Usage.Year(2023)
+      },
+      {
         title: 'Unknown selectors teach the grammar',
         code: "Substances.Cocaine('speedball')",
         run: () => Substances.Cocaine('speedball'),
@@ -126,8 +204,8 @@ export const SECTIONS = [
       {
         title: 'Percentages refuse to divide',
         note: '"21.8% used this year" does not mean "1.8% used in March".',
-        code: 'Substances.Alcohol.Usage.Month(2023, 6)',
-        run: () => Substances.Alcohol.Usage.Month(2023, 6),
+        code: 'Substances.Marijuana.Usage.Month(2023, 6)',
+        run: () => Substances.Marijuana.Usage.Month(2023, 6),
         throws: true
       },
       {

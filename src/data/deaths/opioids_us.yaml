@@ -18,34 +18,37 @@ description: >-
 
 observations:
   - year: 2021
-    val: 80411
-    src: nida_overdose_rates
+    val: 80_411
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 80411
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 80_411
         note: National overdose deaths involving any opioid, 2021 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.
 
   - year: 2022
-    val: 81806
-    src: nida_overdose_rates
+    val: 81_806
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 81806
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 81_806
         note: National overdose deaths involving any opioid, 2022 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.
 
   - year: 2023
-    val: 79358
-    src: nida_overdose_rates
+    val: 79_358
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 79358
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 79_358
         note: National overdose deaths involving any opioid, 2023 (NCHS final data); first annual decline since 2018.
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.

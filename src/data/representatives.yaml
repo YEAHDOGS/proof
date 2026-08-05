@@ -1,0 +1,49 @@
+# Representative/legislature baseline, keyed by place path.
+# Lives at the data/ root (like sources.yaml and compounds.yaml) so the
+# metric-file glob does not pick it up - this is structural reference data,
+# not a time series.
+#
+# Structural seats today plus the Texas federal senators; the full lawmaker
+# dataset (184 records with districts, stances, and 1,326 citations)
+# migrates here from wearedogs in M3. Every `sources` anchor resolves in
+# sources.yaml.
+
+meta:
+  verification: seeded
+  note: >-
+    Membership snapshot August 2026. Seat counts are structural constants;
+    member entries must be re-verified against the cited rosters before
+    flipping to cross-checked.
+
+places:
+  us:
+    name: United States Congress
+    senate:
+      seats: 100
+      note: Two senators per state. Full member roster lands with the M3 USReps migration.
+    house:
+      seats: 435
+      note: Voting members; apportioned by decennial census.
+    sources: [congress_gov]
+
+  us.texas:
+    name: Texas
+    senate:
+      seats: 2
+      members:
+        - name: John Cornyn
+          party: R
+          chamber: US Senate
+          since: 2002
+        - name: Ted Cruz
+          party: R
+          chamber: US Senate
+          since: 2013
+    house:
+      seats: 38
+      note: Texas U.S. House delegation. District-level roster lands with M3.
+    state_senate:
+      seats: 31
+    state_house:
+      seats: 150
+    sources: [congress_gov, tx_legislature_online]

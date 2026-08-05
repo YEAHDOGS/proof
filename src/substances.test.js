@@ -20,17 +20,18 @@ describe('Substances fluent tree', () => {
   it('is case-insensitive at every level', () => {
     expect(Substances.marijuana.usage.year(2023).val).toBe(21.8)
     expect(Substances.MARIJUANA.Usage.Year(2023).val).toBe(21.8)
-    expect(Substances.alcohol.Usage.Year(2024).val).toBe(46.6)
+    expect(Substances.alcohol.Usage.Year(2026).val).toBe(178_700_000)
   })
 
-  it('resolves aliases: Cannabis, Weed, Psychadelics', () => {
+  it('resolves aliases: Cannabis, Weed, Psychadelics, Tobacco', () => {
     expect(Substances.Cannabis).toBe(Substances.Marijuana)
     expect(Substances.Weed).toBe(Substances.Marijuana)
     expect(Substances.Psychadelics).toBe(Substances.Psychedelics)
+    expect(Substances.Tobacco).toBe(Substances.Nicotine)
   })
 
   it('never returns a number without its citations', () => {
-    const obs = Substances.Alcohol.Usage.Year(2021)
+    const obs = Substances.Alcohol.Usage.Year(2026)
     expect(obs.citations.length).toBeGreaterThanOrEqual(2)
     for (const c of obs.citations) {
       expect(c.source.url).toMatch(/^https:\/\//)
@@ -54,7 +55,7 @@ describe('Substances fluent tree', () => {
 
   it('refuses to divide a prevalence percentage into months', () => {
     expect(() => Substances.Marijuana.Usage.Month(2023, 6)).toThrow(/percent/)
-    expect(() => Substances.Alcohol.Usage.Day(2023, 6, 15)).toThrow(/percent/)
+    expect(() => Substances.Marijuana.Usage.Day(2023, 6, 15)).toThrow(/percent/)
   })
 
   it('throws an actionable error when a family has no data yet', () => {
@@ -124,6 +125,87 @@ describe('Substances fluent tree', () => {
     expect(Substances.Psychedelics.Mushrooms.Usage.Files()).toEqual([])
     expect(Substances.Psychedelics.LSD).toBe(Substances.Psychedelics.Acid)
     expect(Substances.Psychedelics.Shrooms).toBe(Substances.Psychedelics.Mushrooms)
+  })
+})
+
+describe('geo selector, Stat values, and Cite', () => {
+  it('resolves a geography down to the most recent observation', () => {
+    const world = Substances.Alcohol.Usage('world')
+    expect(world.year).toBe(2026)
+    expect(world.val).toBe(2_300_000_000)
+    expect(world.geo).toBe('WORLD')
+  })
+
+  it('Stats behave as their numeric value', () => {
+    expect(+Substances.Alcohol.Usage('world')).toBe(2_300_000_000)
+    expect(Substances.Alcohol.Usage('us') == 178_700_000).toBe(true)
+    expect(Substances.Alcohol.Usage('world') / Substances.Alcohol.Usage('us')).toBeCloseTo(12.87, 2)
+    expect(Substances.Alcohol.Usage('world') > Substances.Alcohol.Usage('us')).toBe(true)
+  })
+
+  it('chains Year and Series from the scoped node, geo pinned', () => {
+    expect(Substances.Alcohol.Usage('world').Year(2026).val).toBe(2_300_000_000)
+    expect(Substances.Alcohol.Usage('us').Year(2026).val).toBe(178_700_000)
+    const series = Substances.Alcohol.Usage('world').Series()
+    expect(series.map((p) => p.year)).toEqual([2026])
+  })
+
+  it('serves Cite on scoped nodes and on Year results', () => {
+    const cite = Substances.Alcohol.Usage('world').Cite
+    expect(cite.length).toBeGreaterThanOrEqual(1)
+    expect(cite[0].source.publisher).toBe('WHO')
+    const yearCite = Substances.Alcohol.Usage('us').Year(2026).Cite
+    expect(yearCite.length).toBeGreaterThanOrEqual(2)
+    for (const c of yearCite) expect(c.source.url).toMatch(/^https:\/\//)
+  })
+
+  it('accepts friendly spellings, any case', () => {
+    expect(Substances.Alcohol.Usage('WORLD').val).toBe(2_300_000_000)
+    expect(Substances.Alcohol.Usage('global').val).toBe(2_300_000_000)
+    expect(Substances.Alcohol.Deaths('texas').val).toBe(13_701)
+    expect(Substances.Alcohol.Deaths('usa').val).toBe(178_307)
+  })
+
+  it('throws a listing on unknown geographies', () => {
+    expect(() => Substances.Alcohol.Usage('mars')).toThrow(/Unknown geography 'mars'/)
+    expect(() => Substances.Alcohol.Usage('mars')).toThrow(/'world'/)
+  })
+
+  it('prefers the default dataset but keeps the rest reachable via metric', () => {
+    expect(Substances.Alcohol.Usage.Year(2026).metricId).toBe('usage.alcohol.us.past_year_users')
+    const pastMonth = Substances.Alcohol.Usage.Year(2024, { metric: 'past_month_use' })
+    expect(pastMonth.val).toBe(46.6)
+    expect(pastMonth.metricId).toBe('usage.alcohol.us.past_month')
+  })
+})
+
+describe('Nicotine family', () => {
+  it('serves the class measure and the seeded variants', () => {
+    expect(Substances.Nicotine.Usage.Year(2023).val).toBe(58_100_000)
+    expect(Substances.Nicotine.Cigarettes.Usage.Year(2022).val).toBe(28_800_000)
+    expect(Substances.Nicotine.Vapes.Usage.Year(2023).val).toBe(23_500_000)
+  })
+
+  it('reports the smoking-attributable death estimate as modelled', () => {
+    const deaths = Substances.Nicotine.Deaths('us')
+    expect(deaths.val).toBe(480_000)
+    expect(deaths.basis).toBe('modelled')
+    expect(deaths.period).toMatch(/Surgeon General/)
+  })
+
+  it('resolves every product selector and shorthand', () => {
+    expect(Substances.Nicotine()).toBe(Substances.Nicotine.Cigarettes)
+    expect(Substances.Nicotine('cigs')).toBe(Substances.Nicotine.Cigarettes)
+    expect(Substances.Nicotine('e-cig')).toBe(Substances.Nicotine.Vapes)
+    expect(Substances.Nicotine('vaping')).toBe(Substances.Nicotine.Vapes)
+    expect(Substances.Nicotine('zyn')).toBe(Substances.Nicotine.Pouches)
+    expect(Substances.Nicotine('nicorettes')).toBe(Substances.Nicotine.Gum)
+    expect(Substances.Nicotine('patches')).toBe(Substances.Nicotine.Patches)
+    expect(Substances.Nicotine('cigars')).toBe(Substances.Nicotine.Cigars)
+    expect(Substances.Nicotine('rolling tobacco')).toBe(Substances.Nicotine.RollingTobacco)
+    expect(Substances.Tobacco('ryo')).toBe(Substances.Nicotine.RollingTobacco)
+    expect(Substances.Nicotine('all')).toHaveLength(7)
+    expect(() => Substances.Nicotine('hookah')).toThrow(/Unknown Nicotine selector/)
   })
 })
 

@@ -1,0 +1,31 @@
+# Past-month nicotine vaping, United States, ages 12+ (NSDUH).
+# Variant dataset: vapes/e-cigarettes. SEEDED Aug 2026 - low-confidence
+# seed; verify the exact count against the 2023 NSDUH annual report before
+# any use.
+
+id: usage.nicotine.vape.us.past_month_users
+substance: NICOTINE
+variant: vape
+geo: US
+metric: past_month_users
+unit: persons_12_plus
+title: Past-month nicotine vaping, United States, ages 12 or older
+verification: seeded
+description: >-
+  Estimated number of people aged 12 or older who vaped nicotine in the past
+  month, from the NSDUH annual national reports. Vaping is the dominant
+  nicotine form among people under 25 - the age split matters and lands with
+  the cross-check pass.
+
+observations:
+  - year: 2023
+    val: 23_500_000
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
+        val: 23_500_000
+        note: Roughly 8.3 percent (about 23.5 million people) aged 12 or older vaped nicotine in the past month, 2023. Low-confidence seed - verify the exact figure against the report before any use.
+      - src: samhsa_nsduh
+        url: https://datatools.samhsa.gov/das
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

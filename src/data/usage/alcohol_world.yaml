@@ -1,0 +1,30 @@
+# People who drink alcohol, worldwide (WHO).
+# The standardized Usage measure: an absolute count of people, so substances
+# and geographies compare directly. SEEDED per project spec Aug 2026 - verify
+# the exact figure and reference year against the latest WHO Global status
+# report during the cross-check pass.
+
+id: usage.alcohol.world.past_year_users
+substance: ALCOHOL
+geo: WORLD
+metric: past_year_users
+unit: persons
+title: People who drink alcohol, worldwide
+verification: seeded
+description: >-
+  Estimated number of current drinkers worldwide, from WHO's Global status
+  report on alcohol and health. A modelled global estimate (WHO aggregates
+  national surveys and consumption data), not a direct survey count - and the
+  age basis differs from NSDUH's 12-plus, so compare with the US series
+  directionally, not decimal-for-decimal.
+
+observations:
+  - year: 2026
+    val: 2_300_000_000
+    basis: modelled
+    period: most recent WHO estimate as of 2026
+    citations:
+      - src: who_alcohol
+        url: https://www.who.int/publications/i/item/9789240096745
+        val: 2_300_000_000
+        note: WHO estimates roughly 2.3 billion current drinkers worldwide. Pin to the exact report edition, figure, and reference year during cross-check.

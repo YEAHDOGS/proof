@@ -17,34 +17,37 @@ description: >-
 
 observations:
   - year: 2021
-    val: 9173
-    src: nida_overdose_rates
+    val: 9_173
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 9173
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 9_173
         note: Overdose deaths involving heroin, 2021 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.1 query.
 
   - year: 2022
-    val: 5871
-    src: nida_overdose_rates
+    val: 5_871
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 5871
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 5_871
         note: Overdose deaths involving heroin, 2022 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.1 query.
 
   - year: 2023
-    val: 4364
-    src: nida_overdose_rates
+    val: 4_364
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 4364
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 4_364
         note: Overdose deaths involving heroin, 2023 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.1 query.

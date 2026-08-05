@@ -19,34 +19,37 @@ description: >-
 
 observations:
   - year: 2021
-    val: 32537
-    src: nida_overdose_rates
+    val: 32_537
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 32537
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 32_537
         note: Overdose deaths involving psychostimulants with abuse potential, 2021 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T43.6 query.
 
   - year: 2022
-    val: 34022
-    src: nida_overdose_rates
+    val: 34_022
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 34022
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 34_022
         note: Overdose deaths involving psychostimulants with abuse potential, 2022 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T43.6 query.
 
   - year: 2023
-    val: 36251
-    src: nida_overdose_rates
+    val: 36_251
     basis: reported
     citations:
       - src: nida_overdose_rates
-        val: 36251
+        url: https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates
+        val: 36_251
         note: Overdose deaths involving psychostimulants with abuse potential, 2023 (NCHS final data).
       - src: cdc_wonder
+        url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T43.6 query.
