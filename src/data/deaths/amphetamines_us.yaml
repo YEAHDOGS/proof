@@ -1,0 +1,52 @@
+# Psychostimulant-involved overdose deaths, United States (ICD-10 T43.6).
+# The mortality category is "psychostimulants with abuse potential" - in
+# practice dominated by methamphetamine. SEEDED from the NIDA rollup of NCHS
+# final data; re-verify against CDC WONDER before flipping to cross-checked.
+
+id: deaths.amphetamines.us.overdose
+substance: AMPHETAMINES
+geo: US
+metric: overdose_deaths
+unit: deaths
+title: Psychostimulant (methamphetamine) overdose deaths, United States
+verification: seeded
+description: >-
+  Annual count of U.S. drug-overdose deaths involving psychostimulants with
+  abuse potential (primarily methamphetamine; also amphetamine and MDMA),
+  from NCHS final mortality data as republished by NIDA. Most recent
+  psychostimulant deaths co-involve opioids, so this overlaps the fentanyl
+  series.
+
+observations:
+  - year: 2021
+    val: 32537
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 32537
+        note: Overdose deaths involving psychostimulants with abuse potential, 2021 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T43.6 query.
+
+  - year: 2022
+    val: 34022
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 34022
+        note: Overdose deaths involving psychostimulants with abuse potential, 2022 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T43.6 query.
+
+  - year: 2023
+    val: 36251
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 36251
+        note: Overdose deaths involving psychostimulants with abuse potential, 2023 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T43.6 query.

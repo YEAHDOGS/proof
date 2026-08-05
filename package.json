@@ -1,21 +1,35 @@
 {
-  "name": "thc-stats",
-  "description": "SDMX-inspired statistical datasets and query helpers for THC/cannabis and alcohol data (US and Texas), with cited sources.",
+  "name": "@dogs/proof",
+  "description": "PROOF — cited substance statistics (THC/cannabis, alcohol, and more; US and Texas): SDMX-inspired datasets with multi-source citations, query helpers, and map components. proof.wearedogs.net",
   "private": false,
   "version": "0.1.0",
   "type": "module",
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src/svelte"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "svelte": "./src/svelte/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./svelte": {
+      "svelte": "./src/svelte/index.js",
+      "default": "./src/svelte/index.js"
+    }
+  },
+  "peerDependencies": {
+    "svelte": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "svelte": {
+      "optional": true
     }
   },
   "keywords": [
@@ -51,9 +65,5 @@
     "typescript": "^5.9.3",
     "vite": "^8.1.1",
     "vitest": "^4.1.10"
-  },
-  "dependencies": {
-    "@lucide/svelte": "^1.0.1",
-    "svelte-i18n": "^4.0.1"
   }
 }

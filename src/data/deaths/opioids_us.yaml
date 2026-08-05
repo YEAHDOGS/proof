@@ -1,0 +1,51 @@
+# Opioid-involved overdose deaths, United States (any opioid, ICD-10 T40.0-T40.4, T40.6).
+# SEEDED from the NIDA overdose-rates rollup of NCHS final data; every value
+# must be re-verified against CDC WONDER before this flips to cross-checked.
+
+id: deaths.opioids.us.overdose
+substance: OPIOIDS
+geo: US
+metric: overdose_deaths
+unit: deaths
+title: Opioid-involved overdose deaths, United States
+verification: seeded
+description: >-
+  Annual count of U.S. drug-overdose deaths involving any opioid (prescription
+  opioids, heroin, and synthetic opioids such as fentanyl), from NCHS final
+  mortality data as republished by NIDA. Categories overlap - a death involving
+  both fentanyl and cocaine appears in both series - so families must not be
+  summed across substances.
+
+observations:
+  - year: 2021
+    val: 80411
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 80411
+        note: National overdose deaths involving any opioid, 2021 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.
+
+  - year: 2022
+    val: 81806
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 81806
+        note: National overdose deaths involving any opioid, 2022 (NCHS final data).
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.
+
+  - year: 2023
+    val: 79358
+    src: nida_overdose_rates
+    basis: reported
+    citations:
+      - src: nida_overdose_rates
+        val: 79358
+        note: National overdose deaths involving any opioid, 2023 (NCHS final data); first annual decline since 2018.
+      - src: cdc_wonder
+        note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.

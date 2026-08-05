@@ -1,0 +1,30 @@
+# Past-year methamphetamine use, United States, ages 12+ (SAMHSA NSDUH).
+# NSDUH publishes methamphetamine as its own headline measure; prescription
+# stimulant MISUSE is a separate measure and will be a separate metric.
+# SEEDED from the 2023 NSDUH annual report headline; verify during cross-check.
+
+id: usage.amphetamines.us.past_year_meth
+substance: AMPHETAMINES
+geo: US
+metric: past_year_meth_use
+unit: percent_population_12_plus
+title: Past-year methamphetamine use, United States, ages 12 or older
+verification: seeded
+description: >-
+  Share of the U.S. civilian, noninstitutionalized population aged 12 or
+  older reporting methamphetamine use in the past year, from the NSDUH annual
+  national reports. Covers methamphetamine specifically - the AMPHETAMINES
+  death series (psychostimulants, T43.6) is broader, and prescription
+  stimulant misuse is a separate NSDUH measure.
+
+observations:
+  - year: 2023
+    val: 0.9
+    src: nsduh_2023_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        val: 0.9
+        note: About 0.9 percent (roughly 2.6 million people) aged 12 or older used methamphetamine in the past year, 2023. Verify exact wording against the report.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

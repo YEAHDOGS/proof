@@ -1,0 +1,29 @@
+# Past-year heroin use, United States, ages 12+ (SAMHSA NSDUH).
+# SEEDED from the 2023 NSDUH annual report headline; verify the exact figure
+# and add the 2024 observation during the cross-check pass.
+
+id: usage.heroin.us.past_year
+substance: HEROIN
+geo: US
+metric: past_year_use
+unit: percent_population_12_plus
+title: Past-year heroin use, United States, ages 12 or older
+verification: seeded
+description: >-
+  Share of the U.S. civilian, noninstitutionalized population aged 12 or
+  older reporting heroin use in the past year, from the NSDUH annual national
+  reports. Heroin prevalence is small and NSDUH likely undercounts it
+  (household survey; excludes unhoused and incarcerated populations) - read
+  alongside the much larger heroin/fentanyl death series.
+
+observations:
+  - year: 2023
+    val: 0.2
+    src: nsduh_2023_annual_report
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        val: 0.2
+        note: About 0.2 percent (roughly 0.6 million people) aged 12 or older used heroin in the past year, 2023. Verify exact wording against the report.
+      - src: samhsa_nsduh
+        note: Underlying microdata reproducible in the SAMHSA data tool (NSDUH 2023).

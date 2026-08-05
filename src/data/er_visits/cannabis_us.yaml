@@ -1,0 +1,29 @@
+# Cannabis-involved emergency department visits, United States (SAMHSA DAWN).
+# SEEDED from the wearedogs hempHealth migration inventory (which cites DAWN);
+# re-verify against the DAWN annual national estimates before flipping to
+# cross-checked.
+
+id: er_visits.cannabis.us.ed_visits
+substance: CANNABIS
+geo: US
+metric: ed_visits
+unit: ed_visits
+title: Cannabis-involved emergency department visits, United States
+verification: seeded
+description: >-
+  Estimated annual U.S. emergency department visits involving cannabis, from
+  SAMHSA's Drug Abuse Warning Network national estimates. "Involving" means
+  cannabis was recorded among the substances for the visit, not that it was
+  the sole or primary cause - DAWN visits routinely involve multiple
+  substances. This is the honest counterweight to the zero-overdose-deaths
+  figure: cannabis harms show up in ERs, not morgues.
+
+observations:
+  - year: 2023
+    val: 896418
+    src: samhsa_dawn
+    basis: reported
+    citations:
+      - src: samhsa_dawn
+        val: 896418
+        note: DAWN national estimate of cannabis-involved ED visits, 2023. Verify against the published 2023 DAWN annual report tables.

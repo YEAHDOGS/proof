@@ -14,27 +14,57 @@ import {
 describe('queryMetrics', () => {
   it('loads every YAML dataset under src/data/', () => {
     const all = getAllMetrics()
-    expect(all.length).toBeGreaterThanOrEqual(3)
+    expect(all.length).toBeGreaterThanOrEqual(15)
     const ids = all.map((m) => m.id)
     expect(ids).toContain('usage.cannabis.us.past_year')
     expect(ids).toContain('usage.alcohol.us.past_month')
     expect(ids).toContain('usage.cannabis.tx.past_year')
+    expect(ids).toContain('deaths.opioids.us.overdose')
+    expect(ids).toContain('er_visits.cannabis.us.ed_visits')
+    expect(ids).toContain('sales.cannabis.tx.retail')
+  })
+
+  it('covers every substance family with at least one dataset (M2)', () => {
+    const covered = new Set(getAllMetrics().map((m) => m.substance))
+    for (const substance of [
+      'CANNABIS',
+      'ALCOHOL',
+      'COCAINE',
+      'HEROIN',
+      'FENTANYL',
+      'OPIOIDS',
+      'AMPHETAMINES',
+      'PSYCHEDELICS'
+    ]) {
+      expect(covered, `${substance} has no datasets`).toContain(substance)
+    }
   })
 
   it('filters by substance', () => {
     const cannabis = queryMetrics({ substance: 'CANNABIS' })
-    expect(cannabis.length).toBe(2)
+    expect(cannabis.length).toBeGreaterThanOrEqual(5)
     expect(cannabis.every((m) => m.substance === 'CANNABIS')).toBe(true)
+    const families = new Set(cannabis.map((m) => m.id.split('.')[0]))
+    expect(families).toContain('usage')
+    expect(families).toContain('deaths')
+    expect(families).toContain('er_visits')
+    expect(families).toContain('sales')
   })
 
   it('filters by substance and geo together', () => {
     const txCannabis = queryMetrics({ substance: 'CANNABIS', geo: 'TX' })
-    expect(txCannabis.map((m) => m.id)).toEqual(['usage.cannabis.tx.past_year'])
+    expect(txCannabis.every((m) => m.substance === 'CANNABIS' && m.geo === 'TX')).toBe(true)
+    const ids = txCannabis.map((m) => m.id)
+    expect(ids).toContain('usage.cannabis.tx.past_year')
+    expect(ids).toContain('sales.cannabis.tx.retail')
   })
 
   it('matches free-text search against title and description', () => {
     const hits = queryMetrics({ search: 'texas' })
-    expect(hits.map((m) => m.id)).toEqual(['usage.cannabis.tx.past_year'])
+    const ids = hits.map((m) => m.id)
+    expect(ids).toContain('usage.cannabis.tx.past_year')
+    expect(ids).toContain('deaths.alcohol.tx.excess')
+    expect(hits.every((m) => `${m.id} ${m.title} ${m.metric} ${m.description ?? ''}`.toLowerCase().includes('texas'))).toBe(true)
   })
 
   it('returns fully-shaped MetricFile objects from YAML', () => {

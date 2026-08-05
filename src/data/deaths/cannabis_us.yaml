@@ -1,0 +1,32 @@
+# Cannabis overdose deaths, United States: a real, cited zero.
+# The campaign convention (adopted from wearedogs): 0 is a genuine value,
+# distinct from "no data". DEA's own fact sheet states no marijuana overdose
+# deaths have been reported; NCHS mortality coding has no cannabis-only
+# overdose category because such deaths are not observed.
+
+id: deaths.cannabis.us.overdose
+substance: CANNABIS
+geo: US
+metric: overdose_deaths
+unit: deaths
+title: Cannabis overdose deaths, United States
+verification: seeded
+description: >-
+  Deaths from cannabis overdose alone (toxicity-caused fatal overdose, the
+  measure the other substances report). Zero is the reported figure - the DEA
+  fact sheet states no deaths from marijuana overdose have been reported.
+  This does not claim cannabis is risk-free: ER visits, cannabis-involved
+  traffic deaths, and hyperemesis are tracked separately under Health and
+  ERVisits, where the numbers are not zero.
+
+observations:
+  - year: 2023
+    val: 0
+    src: dea_facts_marijuana
+    basis: reported
+    citations:
+      - src: dea_facts_marijuana
+        val: 0
+        note: DEA drug fact sheet states that no deaths from marijuana overdose have been reported.
+      - src: nida_cannabis
+        note: NIDA notes a fatal cannabis overdose is not documented; harms are non-lethal (impairment, dependence, acute anxiety/psychosis episodes).

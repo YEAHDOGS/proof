@@ -1,0 +1,33 @@
+# Deaths from excessive alcohol use, United States (CDC ARDI).
+# ARDI publishes multi-year annual averages from a model over ~58
+# alcohol-attributable conditions - the `period` field carries the true
+# window and basis is 'modelled' per the integrity policy.
+# SEEDED from the wearedogs hempHealth migration inventory; re-verify against
+# the ARDI application before flipping to cross-checked.
+
+id: deaths.alcohol.us.excess
+substance: ALCOHOL
+geo: US
+metric: excess_deaths
+unit: deaths_per_year
+title: Deaths from excessive alcohol use, United States (annual average)
+verification: seeded
+description: >-
+  Estimated average annual deaths attributable to excessive alcohol use, from
+  CDC's Alcohol-Related Disease Impact application. This is a model over
+  fully and partially alcohol-attributable conditions (liver disease, alcohol
+  poisoning, crashes, cancers, and more), not a death-certificate count - a
+  much broader and larger figure than NCHS "alcohol-induced deaths".
+
+observations:
+  - year: 2021
+    val: 178307
+    src: cdc_ardi
+    basis: modelled
+    period: 2020-2021 annual average
+    citations:
+      - src: cdc_ardi
+        val: 178307
+        note: Average annual deaths from excessive alcohol use, 2020-2021, ARDI application.
+      - src: cdc_alcohol_facts
+        note: Headline page states more than 178,000 people die from excessive alcohol use in the U.S. each year (2020-2021 average).

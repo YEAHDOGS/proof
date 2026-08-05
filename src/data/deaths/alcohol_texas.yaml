@@ -1,0 +1,29 @@
+# Deaths from excessive alcohol use, Texas (CDC ARDI state view).
+# Same model and period caveats as the US file. SEEDED from the wearedogs
+# hempHealth migration inventory; re-verify against ARDI before flipping to
+# cross-checked.
+
+id: deaths.alcohol.tx.excess
+substance: ALCOHOL
+geo: TX
+metric: excess_deaths
+unit: deaths_per_year
+title: Deaths from excessive alcohol use, Texas (annual average)
+verification: seeded
+description: >-
+  Estimated average annual Texas deaths attributable to excessive alcohol
+  use, from CDC's Alcohol-Related Disease Impact application state estimates.
+  Modelled multi-year average, not a death-certificate count.
+
+observations:
+  - year: 2021
+    val: 13701
+    src: cdc_ardi
+    basis: modelled
+    period: 2020-2021 annual average
+    citations:
+      - src: cdc_ardi
+        val: 13701
+        note: Average annual deaths from excessive alcohol use in Texas, 2020-2021, ARDI application state view.
+      - src: cdc_alcohol_facts
+        note: State figures accompany the national ARDI headline estimates.
