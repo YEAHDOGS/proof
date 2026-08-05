@@ -2,7 +2,7 @@
 # ARDI publishes multi-year annual averages from a model over ~58
 # alcohol-attributable conditions - the `period` field carries the true
 # window and basis is 'modelled' per the integrity policy.
-# SEEDED from the wearedogs hempHealth migration inventory; re-verify against
+# SEEDED from the campaign app's hempHealth migration inventory; re-verify against
 # the ARDI application before flipping to cross-checked.
 
 id: deaths.alcohol.us.excess

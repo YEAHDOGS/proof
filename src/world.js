@@ -1,7 +1,7 @@
 /**
  * @file The `World` accessor tree — baseline statistics that everything else
  * is measured against, plus the representatives namespace (the future home
- * of the full USReps dataset, migrating from wearedogs in M3).
+ * of the full USReps dataset, migrating from the campaign app in M3).
  *
  * Places are hierarchical, narrowing left to right, friendly-spelled,
  * case-insensitive; no argument means the whole world:

@@ -1,6 +1,6 @@
 {
   "name": "@dogs/proof",
-  "description": "PROOF — cited substance statistics (THC/cannabis, alcohol, and more; US and Texas): SDMX-inspired datasets with multi-source citations, query helpers, and map components. proof.wearedogs.net",
+  "description": "PROOF — cited substance statistics (THC/cannabis, alcohol, and more; US and Texas): SDMX-inspired datasets with multi-source citations, query helpers, and map components.",
   "private": false,
   "version": "0.1.0",
   "type": "module",

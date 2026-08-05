@@ -3,7 +3,7 @@
 The one-line pitch: **install one tiny package, get every chiseled-in-stone stat, law,
 representative, and map the DOGS THC campaign runs on.**
 
-Site: **proof.wearedogs.net** · Package: **`@dogs/proof`**
+Package: **`@dogs/proof`**
 
 ```bash
 npm i @dogs/proof
@@ -14,7 +14,7 @@ import { Substances, USReps, VisualMap } from '@dogs/proof'
 ```
 
 This document is the scope contract. Everything in [stats/notes.md](stats/notes.md) is
-represented here, plus the full data surface of the wearedogs campaign app (which will
+represented here, plus the full data surface of the DOGS campaign app (which will
 eventually delete its local data and import this library instead).
 
 ---
@@ -23,7 +23,7 @@ eventually delete its local data and import this library instead).
 
 | Goal | Decision |
 | --- | --- |
-| Install name | **`@dogs/proof`** (decided Aug 2026; bare `proof` on npm is taken (an old assertion library), the scope sidesteps it — register the `dogs` npm org before first publish). Site: proof.wearedogs.net. |
+| Install name | **`@dogs/proof`** (decided Aug 2026; bare `proof` on npm is taken (an old assertion library), the scope sidesteps it — register the `dogs` npm org before first publish). |
 | Runtime dependencies | **Zero.** All data is compiled into the bundle at build time (YAML → JS via vite plugin). No fetch, no fs, no runtime YAML parser. |
 | Peer dependencies | `svelte >= 5` (optional; needed for any `./svelte` component). `maplibre-gl` + `svelte-maplibre-gl` (optional; needed only for the GL renderer — the classic SVG renderer runs on `svelte` alone). Data-only consumers install nothing extra. |
 | JS + TS support | Source stays JSDoc-typed ES modules; `tsc --emitDeclarationOnly` ships `.d.ts` next to every export. TS users get full types and autocomplete; JS users get the same via editor JSDoc inference. |
@@ -139,7 +139,7 @@ Record shape per representative (federal + Texas state, House and Senate):
 - Drug-testing & hireability law, federal and Texas
 - Oversight/health/safety regulations (federal / state / city)
 - **Timeline** of Texas THC legislative history — notable events, bill lifecycles
-  (absorbs wearedogs `hempTimeline`)
+  (absorbs the campaign app `hempTimeline`)
 
 ### 2.4 `VisualMap` (Svelte 5, `@dogs/proof/svelte`)
 
@@ -149,7 +149,7 @@ Record shape per representative (federal + Texas state, House and Senate):
 <VisualMap.World />
 ```
 
-**Direction change (Aug 2026): real cartography, not hand-rolled SVG.** The wearedogs
+**Direction change (Aug 2026): real cartography, not hand-rolled SVG.** The campaign app's
 SVG maps have no roads, no buildings, no street-level detail. VisualMap is instead
 built on a proper WebGL map engine:
 
@@ -164,7 +164,7 @@ built on a proper WebGL map engine:
   tiles — no registration, no API keys, no limits). Alternative for full control:
   [Protomaps](https://protomaps.com/about) PMTiles single-file extract (a Texas
   extract) hosted on Cloudflare R2, matching the existing DOGS
-  `data.wearedogs.net` R2 pattern with free egress. Consumers can pass their own
+  R2 data-bucket pattern with free egress. Consumers can pass their own
   `style`/`tiles` prop to override either.
 - **Wrapper: [svelte-maplibre-gl](https://github.com/MIERUNE/svelte-maplibre-gl)**
   (decided Aug 2026). Declarative Svelte 5 components over MapLibre GL JS; its
@@ -173,9 +173,9 @@ built on a proper WebGL map engine:
   much as possible — camera, layers, popups, controls — rather than reinventing.
 - **Dual renderer — the zero-dep classic maps stay.** Every VisualMap component
   offers both engines:
-  - `renderer="classic"` — the wearedogs hand-rolled SVG maps ported verbatim
+  - `renderer="classic"` — the campaign app's hand-rolled SVG maps ported verbatim
     (Texas outline, Voronoi cells, spring zoom, pins, the whole current look).
-    Zero dependencies beyond `svelte`. **Drop-in parity contract: wearedogs must
+    Zero dependencies beyond `svelte`. **Drop-in parity contract: the campaign app must
     be able to replace its `TexasLawmakerMap` / `WorldMap` with these and get the
     exact same experience.**
   - `renderer="gl"` — the MapLibre engine: real streets, 3D buildings, tilt,
@@ -188,7 +188,7 @@ built on a proper WebGL map engine:
   bound to any library dataset. "See people" = population/usage density via
   MapLibre's native heatmap/circle layers (no deck.gl unless a layer genuinely
   exceeds what MapLibre can do).
-- **Feature parity contract with wearedogs stays**: props equivalent to today's
+- **Feature parity contract with the campaign app stays**: props equivalent to today's
   `TexasLawmakerMap` (lawmakers, selectedEmails, focusRequest, saleMode, copMode,
   initialStatsTab, fullscreen), layer toggles, zoom-to-lawmaker, the 4-tab stats
   sheet data hooks. `World` keeps country-level choropleth ability; `USA` gets
@@ -197,7 +197,7 @@ built on a proper WebGL map engine:
 - **Browser targets**: all modern phones (mobile-first), tablets, and desktops —
   responsive design throughout. The Potato Target does not apply to the GL
   renderer; the classic SVG renderer remains the lightweight path.
-- **Design base: the current wearedogs `/stats/representation` styling**
+- **Design base: the campaign app's current `/stats/representation` styling**
   (the Texas map stats sheet). Tokens extracted from the live app to carry over,
   including into a custom dark MapLibre basemap style:
   - near-black app background `#050508` (stone darks `#0c0a09`/`#1c1917` for
@@ -258,12 +258,12 @@ Every line item from the notes, mapped to where it lands:
 - [ ] **Representation stats** → `USReps`: federal + state + city/district, senators
       and house, party, THC viewpoint, influence, biographies, legislation histories
 
-## 4. wearedogs parity (migration contract)
+## 4. Campaign-app parity (migration contract)
 
-The library must cover **all data currently present in the wearedogs app**, so wearedogs
+The library must cover **all data currently present in the campaign app**, so it
 can delete its local copies and `npm i @dogs/proof`. Inventory:
 
-### 4.1 Data modules to absorb (all in wearedogs `src/lib/` unless noted)
+### 4.1 Data modules to absorb (all in the campaign app's `src/lib/` unless noted)
 
 | Source | Contents | Lands in |
 | --- | --- | --- |
@@ -273,11 +273,11 @@ can delete its local copies and `npm i @dogs/proof`. Inventory:
 | `hempStores.js` | `STORE_TOTAL` (7,500), city-weighted counts, seeded-PRNG dot scatter (explicitly illustrative) | `Substances.Marijuana.Sales.Stores` (counts real, dots stay presentation-layer) |
 | `texasGeo.js` | Texas outline, Rio Grande, 5 neighbor polygons, 13 highways, 6 rivers, 217 cities (tiered), 16 landmarks, water labels, Voronoi city cells, equirectangular projection helpers | `VisualMap.Texas` geometry data |
 | `public/data/campaigns.json` → `save-texas-hemp.lawmakers` | **184 lawmaker records** (149 House, 31 Senate, 3 federal, 1 exec; 110R/74D) with `banLikelihood` 1–5 stance scale, lat/lng, district, prose voting `record`, **1,326 citation entries**. Vikki Goodwin is present (HD-47, D, Austin, banLikelihood 1). | `USReps` |
-| `public/fundraiser/*.md` (4 THC bios) + `contactReps` letter bodies + `public/correspondence/` (Cornyn exchange) | Dense inline stats: NHTSA impaired-driving deaths (12,429 US / 1,699 TX, 2023), NSDUH 61.6M past-year users, CUD 20.6M vs AUD 27.9M, illicit-vape contamination study, penalty schedule, polling | Each factual claim becomes a cited observation; prose stays in wearedogs but reads numbers from the library |
+| `public/fundraiser/*.md` (4 THC bios) + `contactReps` letter bodies + `public/correspondence/` (Cornyn exchange) | Dense inline stats: NHTSA impaired-driving deaths (12,429 US / 1,699 TX, 2023), NSDUH 61.6M past-year users, CUD 20.6M vs AUD 27.9M, illicit-vape contamination study, penalty schedule, polling | Each factual claim becomes a cited observation; prose stays in the campaign app but reads numbers from the library |
 
 ### 4.2 Conventions to preserve (they're load-bearing in the app)
 
-- `basis` vocabulary — wearedogs uses **five** grades: `reported / derived / modelled / contested` plus **`none`** ("no reliable public figure exists; say so instead of guessing" — Louisiana). Adopt `none` into our `Basis` type.
+- `basis` vocabulary — the campaign app uses **five** grades: `reported / derived / modelled / contested` plus **`none`** ("no reliable public figure exists; say so instead of guessing" — Louisiana). Adopt `none` into our `Basis` type.
 - **Paired display + numeric values** (`"$590M"` + `590_000_000`); `null` = don't chart, `0` = a real zero (cannabis overdose deaths).
 - Mandatory `period` disclosure (calendar vs fiscal year traps: OK is FY, AR is CY; NM's "$1B" headline is cumulative-since-2022, not annual).
 - `tone` semantic channels (`bad/warn/good`, `ban/legal/court/money/now`, `for/against/both`).
@@ -286,14 +286,14 @@ can delete its local copies and `npm i @dogs/proof`. Inventory:
 
 ### 4.3 Findings that change the scope
 
-- **There is no USA state map in wearedogs.** `WorldMap.svelte` is a country-level SVG choropleth (~180 ISO-2 paths); `MapPanel.svelte` is the same world SVG with city pins. So `VisualMap.USA` is net-new — moot now that all three maps are rebuilt on MapLibre (§2.4) rather than ported as SVG; the SVG components' *feature set* (choropleth, pins, zoom-to) is the parity bar, not their implementation.
+- **There is no USA state map in the campaign app.** `WorldMap.svelte` is a country-level SVG choropleth (~180 ISO-2 paths); `MapPanel.svelte` is the same world SVG with city pins. So `VisualMap.USA` is net-new — moot now that all three maps are rebuilt on MapLibre (§2.4) rather than ported as SVG; the SVG components' *feature set* (choropleth, pins, zoom-to) is the parity bar, not their implementation.
 - **No county or legislative-district polygons exist.** Districts are a point + prose `counties` string; city "territories" are synthetic Voronoi cells. Real district shapes are a stretch goal, not parity.
 - **No lawmaker photos/bios/committee/structured votes.** The notes.md ambition (bios, pictures, videos, structured legislation history) is *new data collection*, not migration — roll-call tallies currently live as prose inside `record` strings and must be re-entered as structured, cited votes.
-- **The stats have already drifted across wearedogs' four copies** (JS modules vs 4 bios vs 2 letters vs correspondence — e.g. "~5,500 overdose deaths" in one bio vs 4,980 in `hempHealth.js`; NM $1.1B vs $590M in two different files). The library becoming the single source of truth is the core value proposition of this migration.
-- wearedogs also has `countryStats.js` (58 attributes × ~180 countries, incl. per-substance overdose fields) — but it is **synthetic/templated, not sourced**. It does not meet the citation policy; treat as UI-shape precedent only, not data to migrate.
+- **The stats have already drifted across the campaign app's four copies** (JS modules vs 4 bios vs 2 letters vs correspondence — e.g. "~5,500 overdose deaths" in one bio vs 4,980 in `hempHealth.js`; NM $1.1B vs $590M in two different files). The library becoming the single source of truth is the core value proposition of this migration.
+- The campaign app also has `countryStats.js` (58 attributes × ~180 countries, incl. per-substance overdose fields) — but it is **synthetic/templated, not sourced**. It does not meet the citation policy; treat as UI-shape precedent only, not data to migrate.
 
-**Migration rules** (standing): never modify wearedogs, never push anywhere, migration
-happens *into* PROOF only, and wearedogs adopts the library only when the user says
+**Migration rules** (standing): never modify the campaign app, never push anywhere, migration
+happens *into* PROOF only, and it adopts the library only when the user says
 so.
 
 ## 5. Data integrity policy (unchanged, restated)
@@ -307,7 +307,7 @@ so.
 - Citations record the value **as that source reports it** — disagreements preserved,
   surfaced by `compareClaims`.
 - `basis` grading: `reported` / `derived` / `modelled` / `contested` / `none`
-  (the fifth grade adopted from wearedogs: "no reliable public figure exists" —
+  (the fifth grade adopted from the campaign app: "no reliable public figure exists" —
   stated honestly instead of guessed).
 - `verification`: `seeded` → `cross-checked` per file; CI runs `validateDataset` on
   every dataset.
@@ -328,12 +328,12 @@ so.
 3. **M3 — USReps**: Texas legislature + Texas congressional delegation dataset, callable
    API, stance citations.
 4. **M4 — Laws & Timeline**: federal + Texas law data, employment/drug-testing,
-   timeline absorbed from wearedogs.
+   timeline absorbed from the campaign app.
 5. **M5 — VisualMap**: Texas/USA/World components behind `./svelte`, dual renderer —
-   classic SVG ported from wearedogs (exact-experience drop-in) + svelte-maplibre-gl
+   classic SVG ported from the campaign app (exact-experience drop-in) + svelte-maplibre-gl
    engine (streets/3D buildings), shared props and campaign layers, styled to the
    `/stats/representation` design base.
-6. **M6 — wearedogs parity audit**: diff library coverage against the wearedogs
-   inventory (§4); close gaps; wearedogs migration can then be scheduled.
+6. **M6 — campaign-app parity audit**: diff library coverage against the campaign-app
+   inventory (§4); close gaps; campaign-app migration can then be scheduled.
 7. **M7 — Media & Health deep-dives**: media stance tracking, hospitalization/mental
    health series, studies catalog.

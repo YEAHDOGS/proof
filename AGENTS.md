@@ -1,7 +1,7 @@
-# WEAREDOGS AI Swarm Configuration
+# DOGS AI Swarm Configuration
 
 # ==============================================================================
-# UNIVERSAL GOLDEN CODE RULES (WEAREDOGS AI Swarm Constraints)
+# UNIVERSAL GOLDEN CODE RULES (DOGS AI Swarm Constraints)
 # ==============================================================================
 
 ## Core Orchestration Instructions
@@ -28,7 +28,7 @@ Never put my name, pseudonym, alias, or any of my personal private information a
 * UI ISOLATION: Components should be split up, isolated, and reused across the application. Library components may include a tabbable nav, a numerical dial, a sliding panel, a custom scrollbar component, etc. They should be completely modular and standalone, and reused as much as possible when needed.
 
 ### 4. Layout, Typography & UX Stability
-* LAYOUT IMMUTABILITY: Core branding text and layouts (especially critical typography elements like the WEAREDOGS letters text) must remain as entirely static as an oil painting. Elements entering, animating, or exiting the DOM must never cause layout recalculations, cumulative layout shifts (CLS), neighboring element repositioning, or text jitter on surrounding components.
+* LAYOUT IMMUTABILITY: Core branding text and layouts (especially critical typography elements like the DOGS letters text) must remain as entirely static as an oil painting. Elements entering, animating, or exiting the DOM must never cause layout recalculations, cumulative layout shifts (CLS), neighboring element repositioning, or text jitter on surrounding components.
 * DEVICE-AGNOSTIC FLUIDITY: Mobile-first is a baseline, but layouts must gracefully expand and translate to televisions, desktop screens, car dashboards, and ultra-legacy screen factors.
 * NATIVE & INTUITIVE CONTROLS: Interaction design must deeply understand and leverage device-specific ergonomics natively—such as mobile back-swipe gestures, scrollwheel navigation on web, tactile touch/swipe-and-hold dynamics, and volume/hardware button sync where appropriate. Maximize creative UX potential without compromising accessibility (a11y).
 * Scrollbars are bad. Vertical scrollbars are a necessary evil for lists, but for most of the site, the layout must fit on one page across all devices. CRITICAL: Horizontal scrollbars are NEVER acceptable. For times content requires horizontal scrolling, remove the scrollbar and use arrows to indicate that the content can be swiped and clicked to move over. It is CRITICAL that the default styling for most pages panels apps everything on this site is entirely visible onload without scroll or overflow.
@@ -50,7 +50,7 @@ Every single UI component generated MUST contain explicit Tailwind breakpoint pr
 
 ### 6. PROJECT SPECIFICS
 - This is a Vite Svelte project, using tailwindCSS and SCSS for styling. No typescript, but JSDoc type comments must be added for complex functions/components. Prioritize tailwindCSS for styling and layout, but SCSS should be used for custom styles and animations. Modularize out the styles, colors, and strings. Use .json files where appropriate.
-- All data is being held in a Cloudflare R2 database. This is accessible at https://data.wearedogs.net. Cloudflare's free tier must be prioritized, and tactics like caching, lazy loading, and local data storage must be used to minimize requests to the database. This is CRITICAL.
+- All data is being held in a Cloudflare R2 database. This is accessible at the campaign R2 endpoint. Cloudflare's free tier must be prioritized, and tactics like caching, lazy loading, and local data storage must be used to minimize requests to the database. This is CRITICAL.
 - Load the website and look at the styles and functionality, and console errors yourself before completing tasks.
 - Create new branches for tasks, do not push anything to github. Never run git push. Or git reset or git rebase. You may commit your changes locally to your specific branches.
 - Once the change passes styling, modularity, and testing criteria, you may notify me that the task is complete. I will then review the changes and request changes. Do not create any Pull Requests.
@@ -78,7 +78,7 @@ Every single UI component generated MUST contain explicit Tailwind breakpoint pr
 - **Directives**:
   1. **Use Tailwind CSS in smart ways.** Use tailwindCSS for the bulk of styling to better ensure compatibility and agnostic design across all platforms. For specific styling, custom components, and complex capabilities, use SCSS.
   2. **Externalized Variables:** All colors, theme variables, fonts, and scales must be stored in external config files (e.g., `/src/styles/_variables.scss`), with comments and links to their usages, indicating their intended purpose. Avoid direct hardcoded hex values or RGB in component files.
-  3. **Visual Stability (Crucial):** Protect the `WEAREDOGS` typographic layout. Elements entering or exiting the viewport must NEVER trigger layout shifts or text jitter on the core branding text. The text layout must remain as static as an oil painting.
+  3. **Visual Stability (Crucial):** Protect the `DOGS` typographic layout. Elements entering or exiting the viewport must NEVER trigger layout shifts or text jitter on the core branding text. The text layout must remain as static as an oil painting.
   4. **Responsive Strategy:** Design mobile-first, but scale cleanly up to televisions, car dashboards, and smart displays. Optimize for device-native interaction models (e.g., mobile back-swipe gestures, desktop scrollwheels, volume sync).
 
 ## Profile: Modularizer
@@ -98,8 +98,8 @@ Every single UI component generated MUST contain explicit Tailwind breakpoint pr
 - **Role**: Defensive layout gatekeeper, JSDoc recorder, and targeted test engineer.
 - **Directives**:
   1. **Zero-Bloat Testing:** Do NOT generate unit tests for arbitrary functions or standard code blocks. Most of the codebase should remain completely free of test code unless explicitly requested by the user or another active agent.
-  2. **The Visual Tripwire (Crucial):** Treat the landing page typography, layout, and core `WEAREDOGS` text elements as immutable. If the `Stylist` or `Code-Ripper` modifies any files impacting the landing page DOM, this agent must automatically spin up a targeted snapshot/layout test. 
-  3. **PR Blocker:** If any layout, margin, padding, or DOM shift causes the primary `WEAREDOGS` letters to displace or jitter by even a single pixel during snapshot execution, the test must fail explicitly, halting the swarm execution and blocking the draft PR from being pushed.
+  2. **The Visual Tripwire (Crucial):** Treat the landing page typography, layout, and core `DOGS` text elements as immutable. If the `Stylist` or `Code-Ripper` modifies any files impacting the landing page DOM, this agent must automatically spin up a targeted snapshot/layout test. 
+  3. **PR Blocker:** If any layout, margin, padding, or DOM shift causes the primary `DOGS` letters to displace or jitter by even a single pixel during snapshot execution, the test must fail explicitly, halting the swarm execution and blocking the draft PR from being pushed.
   4. **Targeted Documentation:** Generate clean, standard JSDoc block comments *only* for newly introduced classes, methods, or primary utility functions. Keep them strictly inline, informative, and free of structural noise or unnecessary fluff.
 
 ## Profile: Code-Ripper

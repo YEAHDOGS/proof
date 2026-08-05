@@ -104,6 +104,7 @@ export function resolvePoint(file, point) {
     basis: point.basis ?? 'reported',
     ...(point.period !== undefined && { period: point.period }),
     metricId: file.id,
+    metric: file.metric,
     title: file.title,
     unit: file.unit,
     substance: file.substance,
