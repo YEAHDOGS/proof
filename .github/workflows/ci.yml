@@ -2,7 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    # Worker/staging branches push freely — run the full suite there too so
+    # regressions surface before anything nears master.
+    branches: [ master, 'jack/**', 'ai-**' ]
   pull_request:
     branches: [ master ]
 
