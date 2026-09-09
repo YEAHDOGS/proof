@@ -51,7 +51,7 @@ import { caseless, normalizeGeo, resolvePoint, resolveSource } from './core.js'
  */
 
 /**
- * A metric family under a substance (Deaths, Usage, Sales, ERVisits, Health, Testing).
+ * A metric family under a substance (Deaths, Usage, Sales, ERVisits, Health, Testing, Harms).
  * Also CALLABLE with a geography — `Usage('world')` — which resolves to the
  * most recent observation for that geo (a Stat: usable as the number itself,
  * `.Cite` for sources) with the family accessors re-attached, geo pinned.
@@ -146,7 +146,8 @@ const FAMILY_PREFIXES = {
   Sales: 'sales',
   ERVisits: 'er_visits',
   Health: 'health',
-  Testing: 'testing'
+  Testing: 'testing',
+  Harms: 'harms'
 }
 
 /**

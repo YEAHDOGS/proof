@@ -57,11 +57,11 @@ every substance:
 Each substance (and each variant sub-form) exposes six families:
 
 ```
-.Deaths  .Usage  .Sales  .ERVisits  .Health  .Testing
+.Deaths  .Usage  .Sales  .ERVisits  .Health  .Testing  .Harms
 ```
 
 matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
-`health.` `testing.`. Every family has the same five methods:
+`health.` `testing.` `harms.`. Every family has the same five methods:
 
 | Method | Returns |
 | --- | --- |
