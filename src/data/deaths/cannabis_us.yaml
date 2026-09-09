@@ -17,7 +17,10 @@ description: >-
   fact sheet states no deaths from marijuana overdose have been reported.
   This does not claim cannabis is risk-free: ER visits, cannabis-involved
   traffic deaths, and hyperemesis are tracked separately under Health and
-  ERVisits, where the numbers are not zero.
+  ERVisits, where the numbers are not zero. Toxicology caveat (CDC MMWR,
+  Sept 3 2026): cannabis was detected in 21% of US overdose deaths from
+  Jan 2021 through June 2025 - that is detection in frequently-polydrug
+  toxicology, not causation, and does not change the zero-overdose figure.
 
 observations:
   - year: 2023
@@ -25,9 +28,9 @@ observations:
     basis: reported
     citations:
       - src: dea_facts_marijuana
-        url: https://www.dea.gov/factsheets/marijuana-cannabis
+        url: https://www.dea.gov/factsheets/marijuana
         val: 0
-        note: DEA drug fact sheet states that no deaths from marijuana overdose have been reported.
+        note: 'DEA official marijuana fact sheet states "No deaths from overdose of marijuana have been reported" (verified live 2026-09-09).'
       - src: nida_cannabis
         url: https://nida.nih.gov/research-topics/cannabis-marijuana
         note: NIDA notes a fatal cannabis overdose is not documented; harms are non-lethal (impairment, dependence, acute anxiety/psychosis episodes).

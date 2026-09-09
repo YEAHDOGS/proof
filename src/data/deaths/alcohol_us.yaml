@@ -32,3 +32,18 @@ observations:
       - src: cdc_alcohol_facts
         url: https://www.cdc.gov/alcohol/facts-stats/index.html
         note: Headline page states more than 178,000 people die from excessive alcohol use in the U.S. each year (2020-2021 average).
+
+  # A second observation for the same data-window end year: the 2016-2021
+  # annual average reported in MMWR (Feb 2024), alongside the 2020-2021 ARDI
+  # average above. Same `year`, different window and publication - the
+  # `period` field carries the true window. Year-lookups return the first
+  # (the more current 2020-2021 window).
+  - year: 2021
+    val: 178_000
+    basis: modelled
+    period: 2016-2021 annual average
+    citations:
+      - src: cdc_excessive_drinking_facts
+        url: https://www.cdc.gov/drink-less-be-your-best/facts-about-excessive-drinking/index.html
+        val: 178_000
+        note: ~178,000 deaths/year from excessive alcohol use, average annual 2016-2021, reported in MMWR Feb 2024 (rounded headline figure).

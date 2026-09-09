@@ -1,0 +1,27 @@
+# Lancet 2010 overall harm score: metamfetamine (33 of 100).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+# No substance code: the library's Substance enum has no metamfetamine
+# entry, so the drug is carried in the id and title instead.
+
+id: harm_ranking.metamfetamine.world.overall_score
+geo: WORLD
+metric: overall_harm_score
+unit: harm_score_0_100
+title: Lancet 2010 overall harm score - metamfetamine
+verification: seeded
+description: >-
+  Nutt, King & Phillips (The Lancet, 2010): multicriteria decision analysis
+  scoring 20 drugs on 16 harm criteria - harm to the user plus harm to
+  others - by a UK expert panel. Metamfetamine (the paper's spelling) was
+  among the most harmful to the user specifically. This is expert consensus
+  on the UK/European drug landscape, NOT a mortality comparison.
+
+observations:
+  - year: 2010
+    val: 33
+    basis: reported
+    citations:
+      - src: nutt_lancet_2010
+        url: https://www.psychoactif.org/forum/uploads/documents/166/nutt2010.pdf
+        val: 33
+        note: Metamfetamine overall harm score 33 (Nutt, King & Phillips 2010).

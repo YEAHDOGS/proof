@@ -1,0 +1,27 @@
+# Lifetime tobacco dependence among ever-smokers, United States.
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: dependence.nicotine.us.share
+substance: NICOTINE
+geo: US
+metric: dependence_share
+unit: share_of_users
+title: Share of tobacco users who develop dependence, United States
+verification: seeded
+description: >-
+  Lifetime share of ever-smokers who develop tobacco dependence, from the
+  National Comorbidity Survey (Anthony, Warner & Kessler 1994, DSM-III-R
+  criteria, US adults 15-54). Dated, but the standard cross-drug comparison
+  point. Nicotine is consistently among the most dependence-liable
+  substances. Tobacco kills via chronic disease (cancer, heart disease,
+  COPD), not acute overdose.
+
+observations:
+  - year: 1994
+    val: 0.325
+    basis: reported
+    citations:
+      - src: anthony_1994
+        url: https://johnhogan.info/hogan/CHEM_1002/Info/Chapter%2018/OriginalCaptureRatePaper.pdf
+        val: 0.325
+        note: ~32-33% of ever-smokers developed tobacco dependence (about 1 in 3), Anthony et al. 1994.

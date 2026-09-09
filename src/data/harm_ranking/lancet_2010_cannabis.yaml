@@ -1,0 +1,29 @@
+# Lancet 2010 overall harm score: cannabis (20 of 100).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: harm_ranking.cannabis.world.overall_score
+substance: CANNABIS
+geo: WORLD
+metric: overall_harm_score
+unit: harm_score_0_100
+title: Lancet 2010 overall harm score - cannabis
+verification: seeded
+description: >-
+  Nutt, King & Phillips (The Lancet, 2010): multicriteria decision analysis
+  scoring 20 drugs on 16 harm criteria - harm to the user plus harm to
+  others - by a UK expert panel. Cannabis scored 20, well below alcohol
+  (72), heroin (55), crack (54), cocaine (27), and tobacco (26). A 2020
+  German addiction-medicine expert ranking corroborates the ordering:
+  cannabis 16th of 30 substances overall (low harm), nicotine 3rd on
+  physical harm to the user, alcohol 4th overall. Expert consensus, NOT a
+  mortality comparison.
+
+observations:
+  - year: 2010
+    val: 20
+    basis: reported
+    citations:
+      - src: nutt_lancet_2010
+        url: https://www.psychoactif.org/forum/uploads/documents/166/nutt2010.pdf
+        val: 20
+        note: Cannabis overall harm score 20 (Nutt, King & Phillips 2010).

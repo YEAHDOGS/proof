@@ -52,3 +52,28 @@ observations:
       - src: cdc_wonder
         url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.0-T40.4, T40.6 query.
+
+  # A second 2023 observation follows: the CDC NCHS provisional estimate
+  # (83,140), which is a different series from the NCHS final count above
+  # (79,358). Provisional estimates are later revised; both are kept so the
+  # disagreement is visible, not averaged away.
+  - year: 2023
+    val: 83_140
+    basis: reported
+    citations:
+      - src: cdc_nchs_overdose_2024_provisional
+        url: https://www.cdc.gov/nchs/pressroom/releases/20250514.html
+        val: 83_140
+        note: Estimated opioid-involved overdose deaths, 2023 - CDC NCHS provisional estimate (12-month period ending December 2023). Provisional; superseded by the NCHS final count (79,358, previous observation).
+
+  - year: 2024
+    val: 54_743
+    basis: reported
+    citations:
+      - src: cdc_nchs_overdose_2024_provisional
+        url: https://www.cdc.gov/nchs/pressroom/releases/20250514.html
+        val: 54_743
+        note: Estimated opioid-involved overdose deaths, 2024 (provisional) - of which 48,422 involved synthetic opioids, primarily fentanyl. Provisional data are incomplete and subject to change.
+      - src: cdc_nchs_overdose_2024_final
+        url: https://www.cdc.gov/nchs/pressroom/releases/20260129.html
+        note: Final 2024 NCHS release (Jan 2026); consult for the final series superseding these provisional figures.

@@ -1,0 +1,25 @@
+# Alcohol-attributable deaths, world (WHO Global status report on alcohol and health).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: deaths.alcohol.world.alcohol_deaths
+substance: ALCOHOL
+geo: WORLD
+metric: alcohol_deaths
+unit: deaths_per_year
+title: Alcohol-attributable deaths, world
+verification: seeded
+description: >-
+  Annual global deaths attributable to alcohol, from WHO's Global status
+  report on alcohol and health. 2019 data, published June 2024. Alcohol
+  accounts for 4.7% of all deaths worldwide.
+
+observations:
+  - year: 2019
+    val: 2_600_000
+    basis: reported
+    period: 2019 data, published June 2024
+    citations:
+      - src: paho_alcohol_drug_deaths_2024
+        url: https://www.paho.org/en/news/25-6-2024-over-3-million-annual-deaths-due-alcohol-and-drug-use-majority-among-men
+        val: 2_600_000
+        note: 2.6 million alcohol-attributable deaths/year, 4.7% of all deaths (WHO Global status report on alcohol and health; 2019 data, published June 2024).

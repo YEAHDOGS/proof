@@ -1,0 +1,22 @@
+# Medical cannabis legalization status, United States.
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: policy.cannabis.us.medical_legal_states
+substance: CANNABIS
+geo: US
+metric: medical_legal_states
+unit: states
+title: US states with legal medical cannabis
+verification: seeded
+description: >-
+  Count of US states where medical cannabis is legal, per NCSL 2025 data.
+
+observations:
+  - year: 2025
+    val: 40
+    basis: reported
+    citations:
+      - src: usatoday_marijuana_legal_map_2026
+        url: https://www.usatoday.com/story/news/nation/2026/04/16/where-is-marijuana-legal-us-map/89608617007/
+        val: 40
+        note: Medical cannabis legal in 40 states plus the District of Columbia (NCSL 2025 data via USA Today).
