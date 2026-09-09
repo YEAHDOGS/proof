@@ -17,6 +17,19 @@ describe('Substances fluent tree', () => {
     expect(tx.period).toBe('2022-2023 annual average')
   })
 
+  it('accepts friendly geo aliases in every opts.geo path', () => {
+    expect(Substances.Marijuana.Usage.Year(2023, { geo: 'us' }).val).toBe(21.8)
+    expect(Substances.Marijuana.Usage.Year(2023, { geo: 'USA' }).val).toBe(21.8)
+    expect(Substances.Alcohol.Deaths.Year(2021, { geo: 'texas' }).geo).toBe('TX')
+    const series = Substances.Alcohol.Deaths.Series({ geo: 'texas' })
+    expect(series.length).toBeGreaterThan(0)
+    expect(series.every((p) => p.geo === 'TX')).toBe(true)
+    const files = Substances.Marijuana.Usage.Files({ geo: 'us' })
+    expect(files.length).toBeGreaterThan(0)
+    expect(files.every((f) => f.geo === 'US')).toBe(true)
+    expect(Substances.Alcohol.Deaths.Month(2021, 6, { geo: 'tx' }).from.geo).toBe('TX')
+  })
+
   it('is case-insensitive at every level', () => {
     expect(Substances.marijuana.usage.year(2023).val).toBe(21.8)
     expect(Substances.MARIJUANA.Usage.Year(2023).val).toBe(21.8)
