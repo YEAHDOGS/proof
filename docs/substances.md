@@ -54,14 +54,14 @@ every substance:
 
 ## Metric families
 
-Each substance (and each variant sub-form) exposes five families:
+Each substance (and each variant sub-form) exposes six families:
 
 ```
-.Deaths  .Usage  .Sales  .ERVisits  .Health
+.Deaths  .Usage  .Sales  .ERVisits  .Health  .Testing
 ```
 
 matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
-`health.`. Every family has the same five methods:
+`health.` `testing.`. Every family has the same five methods:
 
 | Method | Returns |
 | --- | --- |
@@ -73,6 +73,25 @@ matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
 
 `opts.geo` defaults to `'US'`; pass `'TX'` for Texas. `opts.metric`
 disambiguates when a family carries several measures for one geography.
+
+### Drug-testing matrices (`.Testing` coverage)
+
+Built from the research pass in `docs/oral-fluid-testing.md` — the
+urine→oral-fluid shift Brando asked to quantify. The family carries THC
+detection windows by specimen matrix plus the federal oral-fluid cutoffs:
+
+| Dataset id | Figure | Basis |
+| --- | --- | --- |
+| `testing.cannabis.us.detection_window_oral_fluid` | ~72 h "up to" (chronic; ~24 h occasional) | contested |
+| `testing.cannabis.us.detection_window_urine` | ~1,608 h / 67 days "up to" (chronic, EMIT 20) | contested |
+| `testing.cannabis.us.detection_window_hair` | ~2,160 h / 90 days "up to" | contested |
+| `testing.cannabis.us.oral_fluid_cutoff` | 4 ng/mL screen (OFMG, eff. 2020-01-01; confirm 2 ng/mL in notes) | reported |
+
+Windows are "up to" maxima from review tables, not means — the
+description says so, and the certification-lab count stays an honest
+"unknown" until the primary Federal Register documents are read (see the
+brief). Query like any family:
+`Substances.Marijuana.Testing.Year(2026, { metric: 'detection_window_urine' })`.
 
 ### The geo selector — families are callable
 

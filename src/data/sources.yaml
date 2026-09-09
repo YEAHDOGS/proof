@@ -185,3 +185,41 @@ whitney_tx_hemp_2025:
   url: https://whitneyeconomics.com/
   year: 2025
   note: Industry economic analysis of the Texas consumable-hemp market; source of the $5.5B annual retail sales, $10.3B economic impact, and 53,300 jobs figures used by the campaign. Industry-commissioned - treat as modelled, not agency-reported.
+
+ohs_online_samhsa_ofmg:
+  name: An Overview of SAMHSA's New Oral Fluid Testing Guidelines
+  publisher: OHS Online
+  url: https://ohsonline.com/articles/2020/03/01/an-overview-of-samhsas-new-oral-fluid-testing-guidelines.aspx?admgarea=news&Page=5
+  year: 2020
+  note: Secondary overview of the SAMHSA Mandatory Guidelines for Federal Workplace Drug Testing Programs using Oral Fluid (OFMG), published 2019-10-25, effective 2020-01-01. Source of the THC screen (4 ng/mL) / confirmation (2 ng/mL) cutoffs carried in testing.cannabis.us.oral_fluid_cutoff.
+
+pmc_oral_fluid_review:
+  name: Oral fluid testing - review (PMC3165054)
+  publisher: National Library of Medicine (PMC)
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3165054/
+  note: Peer-reviewed review of oral-fluid drug testing. Table 1 restates the SAMHSA OFMG cannabinoids screen/confirmation cutoffs (4 and 2 µg/L); notes oral-fluid testing "is expanding at a rapid pace in nonregulated workplace testing."
+
+pmc_thc_detection_windows:
+  name: THC detection windows by specimen type (PMC4920965 Table 1)
+  publisher: National Library of Medicine (PMC)
+  url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920965/table/T1/
+  note: Detection-window table for THC by specimen matrix. Source of the "up to" ranges compiled in the testing.cannabis.us.detection_window_* datasets - review-table maxima, not controlled-study means.
+
+pmc_cannabinoid_urine_chronic:
+  name: Cannabinoid urine detection in chronic users (PMC2700061)
+  publisher: National Library of Medicine (PMC)
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2700061/
+  note: Study table reporting cannabinoid metabolites detectable up to 67 days in chronic users at the EMIT 20 ng/mL cutoff. Source of the urine chronic "up to" figure.
+
+tx_dfps_cps_drug_windows:
+  name: Drug Testing Windows (CPS Appendix 1922.1)
+  publisher: Texas Department of Family and Protective Services
+  url: https://dfps.texas.gov/handbooks/CPS/Files/CPS_px_1922_1.asp
+  note: Texas CPS reference table of drug detection windows, including THC oral-fluid detection up to 18-24 hours.
+
+ndasa_marijuana_impairment_testing:
+  name: Marijuana Impairment and Drug Testing
+  publisher: NDASA
+  url: https://ndasa.com/2021/11/09/marijuana-impairment-and-drug-testing/
+  year: 2021
+  note: NDASA explainer; source of oral-fluid detection within ~15 minutes of use and the 3-10 hour marijuana impairment window.

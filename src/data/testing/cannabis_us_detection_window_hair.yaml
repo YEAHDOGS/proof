@@ -1,0 +1,30 @@
+# Maximum published THC detection window in hair ("up to" hours).
+# Included so the three workplace matrices sit side by side: oral fluid
+# measures hours, urine measures days-to-weeks, hair measures months.
+# SEEDED - re-verify against the cited table before flipping to
+# cross-checked.
+
+id: testing.cannabis.us.detection_window_hair
+substance: CANNABIS
+geo: US
+metric: detection_window_hair
+unit: hours_up_to
+title: THC detection window in hair, United States
+verification: seeded
+description: >-
+  Maximum published THC detection window in hair, up to 90 days (2,160
+  hours). The longest workplace window of the three matrices - strictly a
+  history measure, useless as an impairment or recency proxy. Included so
+  a legislator-facing chart can put oral fluid (hours), urine
+  (days-to-weeks), and hair (months) on one timeline.
+
+observations:
+  - year: 2026
+    val: 2160
+    basis: contested
+    period: published ranges compiled 2026-09-09; source tables predate this pass
+    citations:
+      - src: pmc_thc_detection_windows
+        url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920965/table/T1/
+        val: 2160
+        note: "Detection-window table - hair up to ~90 days (2,160 hours). NEEDS-CITATION: re-verify the exact table entry before cross-checked."

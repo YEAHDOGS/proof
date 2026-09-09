@@ -1,0 +1,37 @@
+# SAMHSA oral-fluid (cotton-swab) THC testing cutoffs (ng/mL).
+# The federal numbers that decide whether a worker's swab is "positive":
+# screen at 4 ng/mL, confirmation at 2 ng/mL. Confirmation figure is held
+# in the citation notes (repo convention for paired figures pending
+# re-verification) rather than as a second observation. SEEDED -
+# re-verify against the OFMG text before flipping to cross-checked.
+
+id: testing.cannabis.us.oral_fluid_cutoff
+substance: CANNABIS
+geo: US
+metric: oral_fluid_cutoff
+unit: ng_per_ml
+title: SAMHSA oral-fluid THC screen cutoff, United States
+verification: seeded
+description: >-
+  The SAMHSA Mandatory Guidelines for Federal Workplace Drug Testing
+  Programs using Oral Fluid (OFMG), effective 2020-01-01, set the THC
+  screen cutoff at 4 ng/mL and the confirmation cutoff at 2 ng/mL. These
+  are the federal thresholds that will govern DOT-regulated swab testing
+  once HHS certifies oral-fluid labs - as of mid-2026 that certification
+  had not happened (see docs/oral-fluid-testing.md for the timeline and
+  the honest unknown on the lab count).
+
+observations:
+  - year: 2020
+    val: 4
+    basis: reported
+    period: SAMHSA OFMG, effective 2020-01-01
+    citations:
+      - src: ohs_online_samhsa_ofmg
+        url: https://ohsonline.com/articles/2020/03/01/an-overview-of-samhsas-new-oral-fluid-testing-guidelines.aspx?admgarea=news&Page=5
+        val: 4
+        note: "OHS Online OFMG overview - THC screen 4 ng/mL, confirmation 2 ng/mL. Secondary source: re-verify against the Federal Register OFMG text before cross-checked."
+      - src: pmc_oral_fluid_review
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3165054/
+        val: 4
+        note: Review Table 1 restates the SAMHSA OFMG cannabinoids cutoffs - screen 4, confirmation 2 µg/L (1 µg/L = 1 ng/mL).

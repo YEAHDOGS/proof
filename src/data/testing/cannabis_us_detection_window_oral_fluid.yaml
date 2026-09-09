@@ -1,0 +1,43 @@
+# Maximum published THC detection window in oral fluid ("up to" hours).
+# These are review-table maxima, not means: occasional users clear in
+# well under 24 hours; chronic/heavy users can carry parent THC up to
+# ~72 hours. Oral-fluid labs detect the parent drug (THC itself), unlike
+# urine labs (THCCOOH metabolite) - the scientific reason swabs measure
+# recency and urine measures history. SEEDED - re-verify each figure
+# against the cited tables before flipping to cross-checked.
+
+id: testing.cannabis.us.detection_window_oral_fluid
+substance: CANNABIS
+geo: US
+metric: detection_window_oral_fluid
+unit: hours_up_to
+title: THC detection window in oral fluid, United States
+verification: seeded
+description: >-
+  Maximum published THC detection window in oral fluid (the cotton swab),
+  roughly 72 hours for chronic/heavy users and roughly 24 hours for
+  occasional users. This is the "up to" ceiling from published review
+  tables, not an average. The employment hook Brando flagged: a swab says
+  "used recently" - it detects use within ~15 minutes and spans the 3-10
+  hour impairment window, which is why DOT-regulated and other
+  safety-sensitive employers want it, and why weekend users in those jobs
+  face a stricter gate under swabs than under urine. Contrast
+  testing.cannabis.us.detection_window_urine: urine's metabolite window
+  stretches weeks for the same impairment.
+
+observations:
+  - year: 2026
+    val: 72
+    basis: contested
+    period: published ranges compiled 2026-09-09; source tables predate this pass
+    citations:
+      - src: pmc_thc_detection_windows
+        url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920965/table/T1/
+        val: 72
+        note: "Detection-window table - oral fluid up to ~24 hours (occasional use), up to ~24-72 hours for chronic/heavy use. NEEDS-CITATION: re-verify the exact table entries and whether the chronic range ceiling is 72 before cross-checked."
+      - src: tx_dfps_cps_drug_windows
+        url: https://dfps.texas.gov/handbooks/CPS/Files/CPS_px_1922_1.asp
+        note: Texas CPS detection-window table lists THC oral-fluid detection up to 18-24 hours (occasional-use end of the range; does not cover chronic use).
+      - src: ndasa_marijuana_impairment_testing
+        url: https://ndasa.com/2021/11/09/marijuana-impairment-and-drug-testing/
+        note: NDASA - oral fluid detectable within ~15 minutes of use; covers the 3-10 hour marijuana impairment window.

@@ -117,6 +117,20 @@ describe('Substances fluent tree', () => {
     expect(sales.basis).toBe('modelled')
   })
 
+  it('exposes the Testing family with disambiguated testing datasets', () => {
+    // Several testing datasets share CANNABIS/US - { metric } picks one.
+    const oralFluid = Substances.Marijuana.Testing.Year(2026, { metric: 'detection_window_oral_fluid' })
+    expect(oralFluid.val).toBe(72)
+    expect(oralFluid.basis).toBe('contested')
+    expect(oralFluid.citations.length).toBeGreaterThanOrEqual(2)
+    const urine = Substances.Marijuana.Testing.Year(2026, { metric: 'detection_window_urine' })
+    expect(urine.val).toBe(1608)
+    const cutoff = Substances.Marijuana.Testing.Year(2020, { metric: 'oral_fluid_cutoff' })
+    expect(cutoff.val).toBe(4)
+    expect(cutoff.basis).toBe('reported')
+    expect(() => Substances.Marijuana.Testing.Year(2026)).toThrow(/Multiple.*pass \{ metric \}/)
+  })
+
   it('derives month and day values from count units, formula disclosed', () => {
     const month = Substances.Opioids.Deaths.Month(2023, 6)
     expect(month.val).toBeCloseTo(79358 / 12)
