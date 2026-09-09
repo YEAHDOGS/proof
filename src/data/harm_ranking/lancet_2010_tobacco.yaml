@@ -1,0 +1,27 @@
+# Lancet 2010 overall harm score: tobacco (26 of 100).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: harm_ranking.tobacco.world.overall_score
+substance: NICOTINE
+geo: WORLD
+metric: overall_harm_score
+unit: harm_score_0_100
+title: Lancet 2010 overall harm score - tobacco
+verification: seeded
+description: >-
+  Nutt, King & Phillips (The Lancet, 2010): multicriteria decision analysis
+  scoring 20 drugs on 16 harm criteria - harm to the user plus harm to
+  others - by a UK expert panel. This is expert consensus on the
+  UK/European drug landscape, NOT a mortality comparison; the tobacco score
+  reflects its huge user base and chronic-disease burden rather than acute
+  harm.
+
+observations:
+  - year: 2010
+    val: 26
+    basis: reported
+    citations:
+      - src: nutt_lancet_2010
+        url: https://www.psychoactif.org/forum/uploads/documents/166/nutt2010.pdf
+        val: 26
+        note: Tobacco overall harm score 26 (Nutt, King & Phillips 2010).

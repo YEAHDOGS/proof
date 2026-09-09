@@ -71,6 +71,21 @@ matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
 | `.Series(opts?)` | All observations, sorted (`order: 'asc' | 'desc'`), each a Stat. |
 | `.Files(opts?)` | The raw `MetricFile` datasets behind the family. |
 
+### Additional dataset families (low-level API only)
+
+Beyond the five fluent families, the library ships further dataset families
+reachable through the low-level API (`getMetric`, `queryMetrics`,
+`getAllMetrics`) — not yet wired into the `Substances` tree:
+
+| Prefix | Contents |
+| --- | --- |
+| `dependence.` | Share of users who develop dependence or a use disorder, per substance (`share_of_users`) |
+| `harm_ranking.` | Multicriteria harm scores, e.g. the Lancet 2010 per-drug files |
+| `policy.` | Legalization status counts and reported legalization outcomes |
+
+All of these are `verification: seeded` datasets; query them by id or with
+`queryMetrics({ search })` until fluent accessors land.
+
 `opts.geo` defaults to `'US'`; pass `'TX'` for Texas. `opts.metric`
 disambiguates when a family carries several measures for one geography.
 

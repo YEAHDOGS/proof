@@ -51,3 +51,28 @@ observations:
       - src: cdc_wonder
         url: https://wonder.cdc.gov/mcd.html
         note: Underlying Multiple Cause of Death data; verify via T40.5 query.
+
+  # A second 2023 observation follows: the CDC NCHS provisional estimate
+  # (30,833), a different series from the NCHS final count above (29,918).
+  # Provisional estimates are later revised; both are kept so the
+  # disagreement is visible, not averaged away.
+  - year: 2023
+    val: 30_833
+    basis: reported
+    citations:
+      - src: cdc_nchs_overdose_2024_provisional
+        url: https://www.cdc.gov/nchs/pressroom/releases/20250514.html
+        val: 30_833
+        note: Estimated cocaine-involved overdose deaths, 2023 - CDC NCHS provisional estimate (12-month period ending December 2023). Provisional; superseded by the NCHS final count (29,918, previous observation).
+
+  - year: 2024
+    val: 22_174
+    basis: reported
+    citations:
+      - src: cdc_nchs_overdose_2024_provisional
+        url: https://www.cdc.gov/nchs/pressroom/releases/20250514.html
+        val: 22_174
+        note: Estimated cocaine-involved overdose deaths, 2024 (provisional). "Involving cocaine" - frequently polydrug contexts with fentanyl; CDC cautions that category sums do not equal the total overdose count.
+      - src: cdc_nchs_overdose_2024_final
+        url: https://www.cdc.gov/nchs/pressroom/releases/20260129.html
+        note: Final 2024 NCHS release (Jan 2026); consult for the final series superseding these provisional figures.

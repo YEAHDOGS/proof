@@ -1,0 +1,26 @@
+# Medical evidence grade: cannabis/cannabinoids for epilepsy (2017 assessment).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: health.cannabis.us.evidence_epilepsy
+substance: CANNABIS
+geo: US
+metric: medical_evidence_grade
+unit: evidence_grade_0_to_3
+title: Medical evidence grade - cannabis for epilepsy (2017 assessment)
+verification: seeded
+description: >-
+  Evidence grade per the National Academies of Sciences, Engineering, and
+  Medicine, "The Health Effects of Cannabis and Cannabinoids" (2017,
+  doi:10.17226/24625). Grade scale: 3 = conclusive or substantial
+  evidence, 2 = moderate evidence, 1 = limited evidence, 0 = insufficient
+  evidence. This is the 2017 assessment; the evidence base has moved since.
+
+observations:
+  - year: 2017
+    val: 0
+    basis: reported
+    citations:
+      - src: nasem_cannabis_2017
+        url: https://nap.nationalacademies.org/read/24625/chapter/2
+        val: 0
+        note: Insufficient evidence for epilepsy at the time of the 2017 report; pharmaceutical CBD data emerged later.

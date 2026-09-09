@@ -1,0 +1,49 @@
+# Cannabis dependence liability, United States: classic lifetime figure plus
+# modern cannabis-use-disorder framings.
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: dependence.cannabis.us.share
+substance: CANNABIS
+geo: US
+metric: dependence_share
+unit: share_of_users
+title: Share of cannabis users who develop dependence or use disorder, United States
+verification: seeded
+description: >-
+  Three framings, not a trend. The 1994 observation is the classic lifetime
+  dependence share from the National Comorbidity Survey (Anthony, Warner &
+  Kessler 1994, DSM-III-R, US adults 15-54) - the oft-cited "1 in 11". The
+  2015 and 2025 observations use current clinical cannabis-use-disorder
+  criteria on current/past-year users, a different definition that is not
+  directly comparable across substances or with the 1994 figure. NIDA adds
+  that people who start using before age 18 are 4-7x more likely to develop
+  a use disorder than those who start as adults (a relative-risk multiplier,
+  not a share, so it is documented here rather than as an observation).
+
+observations:
+  - year: 1994
+    val: 0.09
+    basis: reported
+    citations:
+      - src: anthony_1994
+        url: https://johnhogan.info/hogan/CHEM_1002/Info/Chapter%2018/OriginalCaptureRatePaper.pdf
+        val: 0.09
+        note: ~9% of users developed lifetime dependence (the oft-cited "1 in 11"), Anthony et al. 1994.
+
+  - year: 2015
+    val: 0.30
+    basis: reported
+    citations:
+      - src: cdc_cannabis_addiction
+        url: https://www.cdc.gov/marijuana/health-effects/addiction.html
+        val: 0.30
+        note: About 3 in 10 cannabis users meet cannabis use disorder criteria (CDC, citing Hasin et al., JAMA Psychiatry 2015); current clinical framing, not comparable to the 1994 lifetime figure.
+
+  - year: 2025
+    val: 0.31
+    basis: reported
+    citations:
+      - src: samhsa_nsduh
+        url: https://www.samhsa.gov/data/data-we-collect/nsduh-national-survey-drug-use-and-health
+        val: 0.31
+        note: 19.3M Americans with cannabis use disorder, ~31% of past-year users (2025 NSDUH national report; citation points at the NSDUH program page pending the 2025 report URL).

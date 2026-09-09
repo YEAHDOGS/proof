@@ -1,0 +1,25 @@
+# Recreational cannabis legalization status, United States.
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: policy.cannabis.us.recreational_legal_states
+substance: CANNABIS
+geo: US
+metric: recreational_legal_states
+unit: states
+title: US states with legal recreational cannabis
+verification: seeded
+description: >-
+  Count of US states where recreational (adult-use) cannabis is legal, per
+  NCSL 2025 data. National legalization elsewhere: Canada (2018), Uruguay
+  (2013), Germany (2024). Portugal decriminalized all drugs in 2001
+  (decriminalization plus harm reduction, not full legalization).
+
+observations:
+  - year: 2025
+    val: 24
+    basis: reported
+    citations:
+      - src: usatoday_marijuana_legal_map_2026
+        url: https://www.usatoday.com/story/news/nation/2026/04/16/where-is-marijuana-legal-us-map/89608617007/
+        val: 24
+        note: 24 states plus the District of Columbia allow recreational cannabis (NCSL 2025 data via USA Today).

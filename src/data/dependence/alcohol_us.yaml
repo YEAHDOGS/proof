@@ -1,0 +1,27 @@
+# Lifetime alcohol dependence among drinkers, United States.
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: dependence.alcohol.us.share
+substance: ALCOHOL
+geo: US
+metric: dependence_share
+unit: share_of_users
+title: Share of drinkers who develop alcohol dependence, United States
+verification: seeded
+description: >-
+  Lifetime share of drinkers who develop alcohol dependence, from the
+  National Comorbidity Survey (Anthony, Warner & Kessler 1994, DSM-III-R
+  criteria, US adults 15-54). Dated, but the standard cross-drug comparison
+  point. NIAAA/NSDUH separately report alcohol use disorder affecting ~10%
+  of US adults - a different denominator (all adults, not drinkers) and a
+  current-prevalence framing, so it is not placed as an observation here.
+
+observations:
+  - year: 1994
+    val: 0.15
+    basis: reported
+    citations:
+      - src: anthony_1994
+        url: https://johnhogan.info/hogan/CHEM_1002/Info/Chapter%2018/OriginalCaptureRatePaper.pdf
+        val: 0.15
+        note: ~15% of drinkers developed lifetime alcohol dependence (about 1 in 7), Anthony et al. 1994.

@@ -1,0 +1,49 @@
+# Opioid dependence liability, United States: heroin lifetime share, chronic-pain
+# patient OUD rate, and young-adult speed of onset.
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: dependence.opioids.us.share
+substance: OPIOIDS
+geo: US
+metric: dependence_share
+unit: share_of_users
+title: Share of opioid users who develop dependence or use disorder, United States
+verification: seeded
+description: >-
+  Three different populations, three different definitions - read the notes.
+  The 1994 observation is the lifetime heroin-dependence share from the
+  National Comorbidity Survey (Anthony, Warner & Kessler 1994, DSM-III-R,
+  US adults 15-54), the standard cross-drug comparison point. The 2015
+  observation is the share of chronic-pain patients prescribed opioids who
+  develop an opioid use disorder (a patient population, not all users). The
+  2021 observation is young adults developing heroin use disorder within a
+  year of first heroin use (speed of onset in a high-risk subgroup). These
+  are not comparable as a trend.
+
+observations:
+  - year: 1994
+    val: 0.23
+    basis: reported
+    citations:
+      - src: anthony_1994
+        url: https://johnhogan.info/hogan/CHEM_1002/Info/Chapter%2018/OriginalCaptureRatePaper.pdf
+        val: 0.23
+        note: ~23% of heroin users developed lifetime dependence, Anthony et al. 1994 (heroin-specific figure).
+
+  - year: 2015
+    val: 0.10
+    basis: reported
+    citations:
+      - src: webmd_opioid_statistics
+        url: https://www.webmd.com/mental-health/addiction/cm/opioid-use-statistics
+        val: 0.10
+        note: 8-12% of chronic-pain patients prescribed opioids develop an opioid use disorder (21-29% misuse), per the Vowles et al. 2015 systematic review via NIDA; midpoint of the 8-12% range.
+
+  - year: 2021
+    val: 0.30
+    basis: reported
+    citations:
+      - src: nih_younger_age_sud
+        url: https://www.nih.gov/news-events/news-releases/younger-age-first-cannabis-use-or-prescription-drug-misuse-associated-faster-development-substance-use-disorders
+        val: 0.30
+        note: 30% of young adults develop heroin use disorder within a year of first heroin use (JAMA Pediatrics, NIDA 2021).

@@ -185,3 +185,110 @@ whitney_tx_hemp_2025:
   url: https://whitneyeconomics.com/
   year: 2025
   note: Industry economic analysis of the Texas consumable-hemp market; source of the $5.5B annual retail sales, $10.3B economic impact, and 53,300 jobs figures used by the campaign. Industry-commissioned - treat as modelled, not agency-reported.
+
+# --- Vice-mortality comparison research (2026-09-09) ---
+# Sources for the dependence, global deaths, harm-ranking, policy, and
+# cannabis medical-evidence datasets. Values copied verbatim from the
+# research report; see workspace/research_notes/vice-mortality-comparison-stats-20260909-1712/report.md.
+
+anthony_1994:
+  name: Comparative Epidemiology of Dependence on Tobacco, Alcohol, Controlled Substances, and Inhalants - Basic Findings From the National Comorbidity Survey
+  publisher: American Psychological Association (Experimental and Clinical Psychopharmacology)
+  url: https://johnhogan.info/hogan/CHEM_1002/Info/Chapter%2018/OriginalCaptureRatePaper.pdf
+  year: 1994
+  note: Anthony, Warner & Kessler 1994 (NCS). Lifetime dependence figures under DSM-III-R for US adults 15-54. Dated, but remains the standard cross-drug comparison; the https copy of the paper was verified reachable 2026-09-09.
+
+cdc_nchs_overdose_2024_provisional:
+  name: U.S. Overdose Deaths Decrease Almost 27% in 2024
+  publisher: CDC / NCHS
+  url: https://www.cdc.gov/nchs/pressroom/releases/20250514.html
+  year: 2025
+  note: NCHS provisional drug-overdose estimates (12-month periods ending December). Provisional figures are incomplete and subject to change; the 2023 comparison figures here (opioids 83,140) are provisional estimates, distinct from NCHS final counts republished by NIDA.
+
+cdc_nchs_overdose_2024_final:
+  name: U.S. Overdose Deaths 2024 - final NCHS release
+  publisher: CDC / NCHS
+  url: https://www.cdc.gov/nchs/pressroom/releases/20260129.html
+  year: 2026
+  note: Final 2024 NCHS release; consult it for the final series superseding the provisional estimates.
+
+lopez_quintero_2011_via_pmc3855905:
+  name: Rate of Progression from First Use to Dependence on Cocaine or Opioids (Sartor et al., via PMC3855905)
+  publisher: PMC (NIH)
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3855905/
+  year: 2014
+  note: Reports the Lopez-Quintero et al. (2011) finding that 7.1% of cocaine users developed dependence within the first year, vs less than 2% for alcohol, nicotine, or cannabis users.
+
+webmd_opioid_statistics:
+  name: Opioid Use Statistics
+  publisher: WebMD
+  url: https://www.webmd.com/mental-health/addiction/cm/opioid-use-statistics
+  note: Summarizes the Vowles et al. (2015) systematic review (21-29% of chronic-pain patients misuse opioids; 8-12% develop an opioid use disorder) and NIDA figures.
+
+cdc_cannabis_addiction:
+  name: Marijuana Addiction
+  publisher: CDC
+  url: https://www.cdc.gov/marijuana/health-effects/addiction.html
+  note: States about 3 in 10 cannabis users meet cannabis use disorder criteria, citing Hasin et al., JAMA Psychiatry 2015.
+
+nih_younger_age_sud:
+  name: Younger age at first cannabis use or prescription drug misuse associated with faster development of substance use disorders
+  publisher: NIH
+  url: https://www.nih.gov/news-events/news-releases/younger-age-first-cannabis-use-or-prescription-drug-misuse-associated-faster-development-substance-use-disorders
+  year: 2021
+  note: NIDA 2021 news release; covers faster SUD progression, including 30% of young adults developing heroin use disorder within a year of first heroin use (JAMA Pediatrics).
+
+cdc_excessive_drinking_facts:
+  name: Facts About Excessive Drinking
+  publisher: CDC
+  url: https://www.cdc.gov/drink-less-be-your-best/facts-about-excessive-drinking/index.html
+  note: Headline page for excessive-drinking mortality; the ~178,000/year average for 2016-2021 was reported in MMWR, Feb 2024.
+
+who_tobacco_factsheet:
+  name: Tobacco fact sheet
+  publisher: WHO
+  url: https://www.who.int/docs/default-source/campaigns-and-initiatives/world-no-tobacco-day-2020/wntd-tobacco-fact-sheet.pdf
+  year: 2020
+  note: ">8 million deaths/year from tobacco (>7M direct use, ~1.2M secondhand). WHO's headline global figure."
+
+paho_alcohol_drug_deaths_2024:
+  name: Over 3 million annual deaths due to alcohol and drug use, majority among men
+  publisher: PAHO / WHO
+  url: https://www.paho.org/en/news/25-6-2024-over-3-million-annual-deaths-due-alcohol-and-drug-use-majority-among-men
+  year: 2024
+  note: "Reports WHO's Global status report on alcohol and health (2019 data, published June 2024): 2.6M alcohol deaths/year (4.7% of all deaths) and 0.6M deaths/year from all psychoactive drug use combined. WHO publishes no drug-by-drug global breakdown."
+
+nutt_lancet_2010:
+  name: Drug harms in the UK - a multicriteria decision analysis
+  publisher: The Lancet
+  url: https://www.psychoactif.org/forum/uploads/documents/166/nutt2010.pdf
+  year: 2010
+  note: Nutt, King & Phillips 2010. UK-expert consensus scores for 20 drugs across 16 harm criteria (harm to the user plus harm to others). Not a mortality comparison; alcohol/tobacco scores reflect their huge user bases and social harms.
+
+nasem_cannabis_2017:
+  name: The Health Effects of Cannabis and Cannabinoids - The Current State of Evidence and Recommendations for Research
+  publisher: National Academies of Sciences, Engineering, and Medicine
+  url: https://nap.nationalacademies.org/read/24625/chapter/2
+  year: 2017
+  note: "doi:10.17226/24625. Evidence grades per indication: conclusive/substantial, moderate, limited, insufficient."
+
+marinello_powell_2023:
+  name: Legal cannabis markets linked to increased motor vehicle deaths
+  publisher: University of Illinois Chicago
+  url: https://publichealth.uic.edu/news-stories/legal-cannabis-markets-linked-to-increased-motor-vehicle-deaths/
+  year: 2023
+  note: "Summarizes Marinello & Powell 2023 (Social Science & Medicine): recreational cannabis markets in 7 states (death certificates 2009-2019) associated with 11% fewer opioid-overdose deaths on average (range 3-28%), but 16-22% more motor-vehicle crash fatalities in some states; no effect on suicide."
+
+rml_systematic_review_2023:
+  name: Systematic review of recreational marijuana legalization outcomes (32 studies)
+  publisher: PMC (NIH)
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9874703/
+  year: 2023
+  note: Found no effect of recreational legalization on adolescent/young-adult use; possible increases in traffic crashes/fatalities and health-service use; association with decreased opioid prescriptions.
+
+usatoday_marijuana_legal_map_2026:
+  name: Where is marijuana legal? US map
+  publisher: USA Today
+  url: https://www.usatoday.com/story/news/nation/2026/04/16/where-is-marijuana-legal-us-map/89608617007/
+  year: 2026
+  note: "Reports NCSL 2025 data: 24 US states plus DC allow recreational cannabis; medical cannabis legal in 40 states plus DC."

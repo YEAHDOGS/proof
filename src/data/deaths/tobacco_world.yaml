@@ -1,0 +1,26 @@
+# Tobacco-attributable deaths, world (WHO).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: deaths.nicotine.world.tobacco_deaths
+substance: NICOTINE
+geo: WORLD
+metric: tobacco_deaths
+unit: deaths_per_year
+title: Tobacco-attributable deaths, world
+verification: seeded
+description: >-
+  Annual global deaths attributable to tobacco, from the WHO tobacco fact
+  sheet headline figure. Tobacco kills via chronic disease (cancer, heart
+  disease, COPD), not acute poisoning - there is no acute-overdose sense
+  in which tobacco kills. Leading preventable cause of death, disease, and
+  disability worldwide.
+
+observations:
+  - year: 2020
+    val: 8_000_000
+    basis: reported
+    citations:
+      - src: who_tobacco_factsheet
+        url: https://www.who.int/docs/default-source/campaigns-and-initiatives/world-no-tobacco-day-2020/wntd-tobacco-fact-sheet.pdf
+        val: 8_000_000
+        note: ">8 million deaths/year (>7M direct tobacco use, ~1.2M secondhand smoke) - WHO tobacco fact sheet headline figure (2020 fact sheet), still cited as current."

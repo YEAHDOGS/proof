@@ -1,0 +1,30 @@
+# Deaths from all psychoactive drug use combined, world (WHO aggregate).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+# Baseline-style aggregate: no substance, since WHO does not break this
+# figure down by drug.
+
+id: deaths.world.drugs
+geo: WORLD
+metric: all_psychoactive_drug_deaths
+unit: deaths_per_year
+title: Deaths from all psychoactive drug use, world (WHO aggregate)
+verification: seeded
+description: >-
+  Annual global deaths attributed to all psychoactive drug use combined,
+  from WHO's Global status report on alcohol and health (2019 data,
+  published June 2024). Explicit caveat: WHO publishes NO drug-by-drug
+  global breakdown - there is no WHO headline figure for cocaine or for
+  opioids alone, and UNODC's World Drug Report publishes no reliable annual
+  death counts per drug comparable to the US figures. Do not disaggregate
+  this number.
+
+observations:
+  - year: 2019
+    val: 600_000
+    basis: reported
+    period: 2019 data, published June 2024
+    citations:
+      - src: paho_alcohol_drug_deaths_2024
+        url: https://www.paho.org/en/news/25-6-2024-over-3-million-annual-deaths-due-alcohol-and-drug-use-majority-among-men
+        val: 600_000
+        note: 0.6 million deaths/year attributed to all psychoactive drug use combined (WHO); no per-drug global breakdown exists.

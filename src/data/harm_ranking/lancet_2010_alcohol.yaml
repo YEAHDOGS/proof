@@ -1,0 +1,27 @@
+# Lancet 2010 overall harm score: alcohol (72 of 100).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+
+id: harm_ranking.alcohol.world.overall_score
+substance: ALCOHOL
+geo: WORLD
+metric: overall_harm_score
+unit: harm_score_0_100
+title: Lancet 2010 overall harm score - alcohol
+verification: seeded
+description: >-
+  Nutt, King & Phillips (The Lancet, 2010): multicriteria decision analysis
+  scoring 20 drugs on 16 harm criteria - harm to the user plus harm to
+  others - by a UK expert panel. Alcohol ranked the MOST harmful drug
+  overall. This is expert consensus on the UK/European drug landscape, NOT
+  a mortality comparison; the alcohol and tobacco scores reflect their huge
+  user bases and social harms.
+
+observations:
+  - year: 2010
+    val: 72
+    basis: reported
+    citations:
+      - src: nutt_lancet_2010
+        url: https://www.psychoactif.org/forum/uploads/documents/166/nutt2010.pdf
+        val: 72
+        note: Alcohol overall harm score 72 - ranked #1 of 20 drugs (Nutt, King & Phillips 2010).

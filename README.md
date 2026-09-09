@@ -35,7 +35,11 @@ in CI).
 | Family | Datasets | Status |
 | --- | --- | --- |
 | Usage | cannabis US+TX, alcohol US (cross-checked); cocaine, heroin, meth, hallucinogens US | seeded |
-| Deaths | opioids, fentanyl, cocaine, heroin, psychostimulants, cannabis (a cited zero) US; alcohol US+TX (ARDI, modelled) | seeded |
+| Deaths | opioids, fentanyl, cocaine, heroin, psychostimulants, cannabis (a cited zero) US; alcohol US+TX (ARDI, modelled); tobacco, alcohol, all-drugs WORLD (WHO) | seeded |
+| Dependence | tobacco, alcohol, cocaine, opioids, cannabis US (share of users) | seeded |
+| Harm ranking | Lancet 2010 per-drug scores (alcohol, heroin, crack, methamphetamine, cocaine, tobacco, amphetamine, cannabis, benzodiazepines, ecstasy) | seeded |
+| Policy | cannabis legalization status (recreational/medical US states) and reported outcomes | seeded |
+| Health | cannabis medical-evidence grades per indication (National Academies 2017) | seeded |
 | ER visits | cannabis, alcohol US (DAWN 2023) | seeded |
 | Sales | cannabis TX (Whitney Economics 2025, modelled) | seeded |
 
