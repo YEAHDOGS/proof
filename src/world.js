@@ -106,23 +106,30 @@ function makeBaseline(family) {
     const file = pick(geo)
     const latest = file.observations.reduce((a, b) => (b.year > a.year ? b : a))
     const stat = resolvePoint(file, latest)
-    return /** @type {ScopedStat} */ (
-      Object.assign(/** @type {object} */ (stat), {
-        Year: (/** @type {number|string} */ year) => yearPoint(file, year),
-        Month: () => {
-          throw new Error(`${file.id} is an annual baseline; no sub-annual derivation is offered.`)
-        },
-        Day: () => {
-          throw new Error(`${file.id} is an annual baseline; no sub-annual derivation is offered.`)
-        },
-        Series: (/** @type {{ order?: 'asc'|'desc' }} */ { order = 'asc' } = {}) =>
-          file.observations
-            .slice()
-            .sort((a, b) => (order === 'desc' ? b.year - a.year : a.year - b.year))
-            .map((p) => resolvePoint(file, p)),
-        Files: () => [file]
-      })
-    )
+    /**
+     * Family accessors re-attached to the latest Stat, pinned to this
+     * place's dataset. Typed against ScopedStat's accessor members so the
+     * composition below needs no lossy cast (was TS2352).
+     * @type {Pick<ScopedStat, 'Year' | 'Month' | 'Day' | 'Series' | 'Files'>}
+     */
+    const pinned = {
+      Year: (year) => yearPoint(file, year),
+      Month: () => {
+        throw new Error(`${file.id} is an annual baseline; no sub-annual derivation is offered.`)
+      },
+      Day: () => {
+        throw new Error(`${file.id} is an annual baseline; no sub-annual derivation is offered.`)
+      },
+      Series: (opts = {}) => {
+        const { order = 'asc' } = /** @type {{ order?: 'asc' | 'desc' }} */ (opts)
+        return file.observations
+          .slice()
+          .sort((a, b) => (order === 'desc' ? b.year - a.year : a.year - b.year))
+          .map((p) => resolvePoint(file, p))
+      },
+      Files: () => [file]
+    }
+    return /** @type {ScopedStat} */ (Object.assign(stat, pinned))
   }
 }
 
