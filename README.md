@@ -64,6 +64,16 @@ CSS custom properties (`--proof-chart-*`, `--proof-series-1..6`). The default
 series order is CVD-validated on the dark surface. `npm run dev` serves the
 documentation site with live examples of all of it.
 
+The same subpath ships a zero-dependency `WorldMap` choropleth — the shared
+DOGS world geometry shaded by a 7-step log ramp, click/tap to select, hover
+tooltip, legend, theming through `--map-*` custom properties. Pair it with
+`metricToMapCountries(getMetric(id))` to turn any dataset's latest observation
+into map countries (only national geos resolve; `TX`/`WORLD` honestly yield
+no countries). `deathsPerDay()` / `deathsToday()` prorate an annual death
+count across the year and the current local day — every result carries
+`basis: 'estimated'` and says so in its note, because a prorated estimate is
+never a measured count.
+
 ```svelte
 <script>
   import { Substances } from '@dogs/proof'
