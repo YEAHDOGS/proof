@@ -164,6 +164,33 @@ describe('citation policy integrity', () => {
     }
   })
 
+describe('registry integrity', () => {
+  it('has unique dataset ids, no empty series, no duplicate years', () => {
+    const all = getAllMetrics()
+    const ids = all.map((m) => m.id)
+    expect(new Set(ids).size).toBe(ids.length)
+    for (const m of all) {
+      expect(m.observations.length, `${m.id} has no observations`).toBeGreaterThan(0)
+      const years = m.observations.map((p) => p.year)
+      expect(new Set(years).size, `${m.id} repeats a year`).toBe(years.length)
+    }
+  })
+
+  it('marks at most one default dataset per (substance, family, geo, variant)', () => {
+    const key = (m) => `${m.substance}|${m.id.split('.')[0]}|${m.geo}|${m.variant ?? ''}`
+    const groups = new Map()
+    for (const m of getAllMetrics()) {
+      const k = key(m)
+      if (!groups.has(k)) groups.set(k, [])
+      groups.get(k).push(m)
+    }
+    for (const [k, files] of groups) {
+      const defaults = files.filter((m) => m.default === true)
+      expect(defaults.length, `multiple defaults in ${k}`).toBeLessThanOrEqual(1)
+    }
+  })
+})
+
   it('every citation carries a direct https url', () => {
     for (const metric of getAllMetrics()) {
       for (const point of metric.observations) {
