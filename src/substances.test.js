@@ -119,6 +119,28 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Fentanyl.Deaths.Day(2024, 2, 30)).toThrow(/Invalid day/)
   })
 
+  it('rejects absurd years outside the 1-9999 calendar range', () => {
+    // year 0 is not a calendar year, negatives and 5+ digit years are absurd
+    expect(() => Substances.Marijuana.Usage.Year(0)).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Year(-44)).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Year(10000)).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Year(' 100000 ')).toThrow(/Invalid year/)
+    // sanity range applies to all selectors, not just Year
+    expect(() => Substances.Opioids.Deaths.Month(0, 6)).toThrow(/Invalid year/)
+    expect(() => Substances.Fentanyl.Deaths.Day(10000, 3, 14)).toThrow(/Invalid year/)
+    // an in-range year with no data passes validation and reaches the lookup
+    expect(() => Substances.Marijuana.Usage.Year(2100)).toThrow(/No 2100 observation/)
+  })
+
+  it('handles Feb 29 end-to-end under century leap rules', () => {
+    // 2000 is a leap year (divisible by 400): passes day validation,
+    // then reaches the year lookup since the dataset has no 2000 row
+    expect(() => Substances.Fentanyl.Deaths.Day(2000, 2, 29)).toThrow(/No 2000 observation/)
+    // 2100 is NOT a leap year (divisible by 100, not 400): rejected as a day
+    expect(() => Substances.Fentanyl.Deaths.Day(2100, 2, 29)).toThrow(/Invalid day/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2100, 2, 28)).toThrow(/No 2100 observation/)
+  })
+
   it('rejects loose year spellings instead of silently truncating them', () => {
     // parseInt('2023.5') used to return 2023; now it must throw.
     expect(() => Substances.Marijuana.Usage.Year('2023.5')).toThrow(/Invalid year/)
