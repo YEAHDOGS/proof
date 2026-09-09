@@ -10,7 +10,7 @@ npm i @dogs/proof
 ```
 
 ```js
-import { Substances, USReps, VisualMap } from '@dogs/proof'
+import { Substances, World } from '@dogs/proof'
 ```
 
 This document is the scope contract. Everything in [stats/notes.md](stats/notes.md) is

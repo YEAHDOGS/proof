@@ -9,7 +9,7 @@ npm i @dogs/proof
 ```
 
 ```js
-import { Substances, USReps, VisualMap } from '@dogs/proof'
+import { Substances, World } from '@dogs/proof'
 
 Substances.Marijuana.Usage.Year(2023)           // 21.8% of Americans 12+, with citations
 Substances.Marijuana.Usage.Year(2023, { geo: 'TX' })
