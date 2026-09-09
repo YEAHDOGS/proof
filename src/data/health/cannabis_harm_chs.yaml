@@ -1,0 +1,67 @@
+# Cannabis hyperemesis syndrome (CHS) - ED visit trend, United States.
+# Seeded 2026-09-09. A non-fatal harm that is genuinely rising: CHS-proxy
+# emergency department visits per 100,000 ED visits, 2016-2022 (Swartz &
+# Franceschini, JAMA Network Open, Nationwide Emergency Department Sample -
+# ~85% of annual US ED visits, ages 12+). CDC's MMWR now tracks CHS under a
+# new diagnosis code (Jan 2023-May 2026).
+
+id: health.cannabis.us.chs_ed_rate
+substance: CANNABIS
+geo: US
+metric: chs_ed_visits_per_100k_ed_visits
+unit: per_100k_ed_visits
+title: Cannabis hyperemesis syndrome ED visits per 100,000 ED visits, United States
+verification: cross-checked
+description: >-
+  Cannabinoid hyperemesis syndrome - recurrent nausea, vomiting, abdominal
+  pain in chronic heavy users - is showing up in emergency departments more
+  often as high-potency products spread. Swartz & Franceschini (JAMA Network
+  Open), cross-sectional study of the Nationwide Emergency Department Sample
+  (188,610,906 unweighted visits, 806M weighted, 2016-2022): CHS-proxy visits
+  (cannabis-related condition + cyclic vomiting codes) rose from 4.4 per
+  100,000 ED visits in 2016 to 22.3 in 2022, peaking at 33.1 in Q2 2020; ages
+  18-25 were 35.7% of CHS patients. Honest caveats: CHS is identified by
+  billing-code proxy, not clinical diagnosis, so some misclassification is
+  certain - and a STAT debate (Jul 2025) argues ERs may OVER-diagnose CHS in
+  young cannabis users. The Habboushe et al. 2018 figure sometimes quoted
+  (32.9% of 20+day/month smokers in one NYC public-hospital ED meeting CHS
+  criteria, extrapolated to 2.75M Americans) rests on a single-ED convenience
+  sample and should be read as an illustrative upper bound, not a population
+  estimate. CDC MMWR (2026) now tracks CHS under a dedicated diagnosis code.
+
+observations:
+  - year: 2016
+    val: 4.4
+    basis: reported
+    citations:
+      - src: swartz_chs_jama_network_open
+        url: https://www.researchgate.net/publication/363109451_Cannabinoid_Hyperemesis_Syndrome_Lighting_Up_an_Emergency_Department_Near_You
+        val: 4.4
+        note: CHS-proxy ED visits 4.4 per 100,000 visits in 2016 (NEDS, ages 12+).
+      - src: hempgazette_chs_2025
+        url: https://hempgazette.com/news/cannabinoid-hyperemesis-study-hg2611/
+        val: 4.4
+        note: Independent report of the same 2016 baseline figure.
+  - year: 2020
+    val: 33.1
+    basis: reported
+    citations:
+      - src: swartz_chs_jama_network_open
+        url: https://www.researchgate.net/publication/363109451_Cannabinoid_Hyperemesis_Syndrome_Lighting_Up_an_Emergency_Department_Near_You
+        val: 33.1
+        note: Peak 33.1 per 100,000 ED visits in Q2 2020; authors link the spike to pandemic-era stress, isolation, and increased cannabis use.
+      - src: hempgazette_chs_2025
+        url: https://hempgazette.com/news/cannabinoid-hyperemesis-study-hg2611/
+        val: 33.1
+        note: Confirms the Q2-2020 peak and the pandemic-catalysis explanation.
+  - year: 2022
+    val: 22.3
+    basis: reported
+    citations:
+      - src: swartz_chs_jama_network_open
+        url: https://www.researchgate.net/publication/363109451_Cannabinoid_Hyperemesis_Syndrome_Lighting_Up_an_Emergency_Department_Near_You
+        val: 22.3
+        note: 22.3 per 100,000 in 2022 - down from the 2020 peak but plateaued well above pre-pandemic levels; 18-25y RRR 3.59, 26-35y RRR 2.26.
+      - src: cdc_mmwr_chs_2026
+        url: https://cdc.gov/mmwr/volumes/75/wr/mm7530a2.htm
+        note: CDC MMWR tracks CHS under a new diagnosis code, Jan 2023-May 2026 - corroborates that CHS is now a nationally monitored ED phenomenon.

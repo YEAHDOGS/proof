@@ -292,3 +292,110 @@ usatoday_marijuana_legal_map_2026:
   url: https://www.usatoday.com/story/news/nation/2026/04/16/where-is-marijuana-legal-us-map/89608617007/
   year: 2026
   note: "Reports NCSL 2025 data: 24 US states plus DC allow recreational cannabis; medical cannabis legal in 40 states plus DC."
+
+# --- Cannabis non-fatal harms research (2026-09-09, octopus worker) ---
+# Primary studies below are summarized via the cited secondary pages; each
+# entry names the primary paper and its DOI so the chain stays checkable.
+
+healio_diforti_2019:
+  name: Daily, high-potency cannabis use increases psychosis risk
+  publisher: Healio
+  url: https://www.healio.com/news/psychiatry/20190320/daily-highpotency-cannabis-use-increases-psychosis-risk
+  year: 2019
+  note: "Reports Di Forti et al., 'The contribution of cannabis use to variation in the incidence of psychotic disorder across Europe (EU-GEI)', The Lancet Psychiatry 2019;6:427-436, doi:10.1016/S2215-0366(19)30048-3. Multicentre case-control: 901 first-episode psychosis patients, 1,237 controls, 11 sites across Europe and Brazil."
+
+medscape_diforti_2019:
+  name: High Potency Cannabis Tied to 50% of New Psychosis Cases
+  publisher: Medscape
+  url: https://www.medscape.com/viewarticle/910658
+  year: 2019
+  note: "Second independent report of Di Forti et al. 2019 (Lancet Psychiatry, doi:10.1016/S2215-0366(19)30048-3): daily-use aOR 3.2, daily high-potency aOR 4.8, PAF 20.4%/12.2%."
+
+cambridge_bjp_cannabis_psychosis:
+  name: Cannabis and psychosis - what do we know and what should we do?
+  publisher: The British Journal of Psychiatry (Cambridge)
+  url: https://www.cambridge.org/core/journals/the-british-journal-of-psychiatry/article/cannabis-and-psychosis-what-do-we-know-and-what-should-we-do/D09D5E6B7A77D475B3BD63D81462BF7A
+  year: 2018
+  note: "Quotes Marconi, Di Forti, Lewis, Murray & Vassos 2016 (Schizophrenia Bulletin) dose-response: OR 3.90 (95% CI 2.84-5.34) for the heaviest users vs non-users."
+
+cambridge_ijpm_heavy_cannabis:
+  name: From heavy cannabis use to psychosis - is it time to take action?
+  publisher: Irish Journal of Psychological Medicine (Cambridge)
+  url: https://www.cambridge.org/core/journals/irish-journal-of-psychological-medicine/article/from-heavy-cannabis-use-to-psychosis-is-it-time-to-take-action/5823A4A8C798F0AE8A88078DEF9C45FC
+  year: 2023
+  note: "Independent second quote of Marconi et al. 2016: OR 3.90 (95% CI 2.84-5.34) for heaviest users, ~twofold for average users; meta-analysis re-examined raw data as an exposure continuum and excluded baseline-psychosis participants."
+
+cdpc_cannabis_driving_2017:
+  name: Cannabis Use and Driving - Evidence Review
+  publisher: Canadian Drug Policy Coalition
+  url: https://drugpolicy.ca/wp-content/uploads/2016/11/CDPC_Cannabis-and-Driving_Evidence-Review-Full_Jan31-2017_FINAL.pdf
+  year: 2017
+  note: "Evidence review of driving after cannabis use: Asbridge et al. 2012 OR 1.92, Li et al. 2012 OR 2.66, and the adjusted Rogeberg & Elvik 2016 estimate OR 1.22. Notes many source studies did not control for concurrent alcohol use."
+
+nsc_cannabis_driving_position:
+  name: NSC Position on Cannabis and Driving
+  publisher: National Safety Council
+  url: https://nsc.org/getmedia/8840b317-9960-48b9-a3ae-3fec77a9448b/Position-on-Cannabis-and-Driving.pdf
+  note: "Tabulates meta-analytic crash-risk ORs: Li et al. 2012 OR 2.66 (95% CI 2.07-3.41), Asbridge et al. 2012 OR 1.92 (95% CI 1.35-2.73); French responsibility analysis showing risk rising with blood THC."
+
+swartz_chs_jama_network_open:
+  name: Cannabinoid Hyperemesis Syndrome - Lighting Up an Emergency Department Near You
+  publisher: ResearchGate (JAMA Network Open publication page)
+  url: https://www.researchgate.net/publication/363109451_Cannabinoid_Hyperemesis_Syndrome_Lighting_Up_an_Emergency_Department_Near_You
+  note: "Swartz & Franceschini, JAMA Network Open: Nationwide Emergency Department Sample (~85% of US ED visits), ages 12+: CHS-proxy ED visits rose from 4.4 per 100,000 visits (2016) to 33.1 (Q2 2020 peak) and 22.3 (2022); highest risk ages 18-25."
+
+hempgazette_chs_2025:
+  name: Study - Cannabinoid Hyperemesis Syndrome Prevalence
+  publisher: Hemp Gazette
+  url: https://hempgazette.com/news/cannabinoid-hyperemesis-study-hg2611/
+  year: 2025
+  note: "Independent report of the Swartz & Franceschini JAMA Network Open CHS study: 188,610,906 unweighted ED visits (806M weighted); 18-25y = 35.7% of CHS patients."
+
+cdc_mmwr_chs_2026:
+  name: Trends in Emergency Department Visits Involving Cannabis Hyperemesis Syndrome Identified Using a New Diagnosis Code - United States, January 2023-May 2026
+  publisher: CDC MMWR
+  url: https://cdc.gov/mmwr/volumes/75/wr/mm7530a2.htm
+  year: 2026
+  note: "CDC surveillance using the new CHS diagnosis code; national ED-visit estimates by age, sex, race/ethnicity."
+
+pubmed_habboushe_chs_2018:
+  name: The Prevalence of Cannabinoid Hyperemesis Syndrome Among Regular Marijuana Smokers in an Urban Public Hospital
+  publisher: PubMed (Basic & Clinical Pharmacology & Toxicology)
+  url: https://pubmed.ncbi.nlm.nih.gov/29327809/
+  year: 2018
+  note: "Habboushe et al.: among 155 ED patients smoking marijuana 20+ days/month, 32.9% (95% CI 25.5-40.3%) met the CHS symptom criterion. Authors' extrapolation (2.75M Americans) rests on a single-ED convenience sample - treat as an upper-bound illustration, not a population estimate."
+
+labroots_gorelick_2024:
+  name: 31% Americans who use Marijuana have Cannabis Use Disorder
+  publisher: Labroots
+  url: https://www.labroots.com/trending/cannabis-sciences/26401/31-americans-marijuana-cannabis-disorder
+  year: 2024
+  note: "Reports Gorelick's New England Journal of Medicine review: ~52.4M Americans 12+ used cannabis in 2021 and ~16.2M met cannabis use disorder criteria (~31%); CUD co-occurs with depression, PTSD, anxiety; young adults disproportionately affected."
+
+medscape_meier_2012:
+  name: Cannabis Use in Teens Linked to Irreparable Drop in IQ
+  publisher: Medscape
+  url: https://www.medscape.com/viewarticle/803197?src=smo_PSYCH
+  year: 2012
+  note: "Reports Meier et al. 2012, PNAS (Dunedin cohort, n=1,037, followed age 7+): adolescent-onset persistent cannabis users lost an average of 8 IQ points between ages 8 and 38; quitting did not restore IQ; adult-onset use showed no effect."
+
+livescience_meier_rogeberg:
+  name: Does Pot Really Lower IQ?
+  publisher: Live Science
+  url: https://www.livescience.com/26247-does-pot-lower-iq.html
+  year: 2013
+  note: "Covers both Meier et al. 2012 and Rogeberg 2013's critique: a socioeconomic-confounding model reproduces the Dunedin IQ association, so the causal estimate may be overstated and the true effect could be zero."
+
+pmc_rogeberg_2013:
+  name: Correlations between cannabis use and IQ change in the Dunedin cohort are consistent with confounding from socioeconomic status
+  publisher: PNAS (via PMC)
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3600466/
+  year: 2013
+  note: "Rogeberg 2013, PNAS 110:4251-4254, PMCID PMC3600466: simulation shows time-varying socioeconomic confounding can reproduce the reported Dunedin associations; Meier et al.'s causal estimates are likely overestimates."
+
+cdpe_mokrysz_2014:
+  name: ICSDP short single - cannabis and IQ claim review
+  publisher: Canadian Drug Policy Coalition
+  url: https://cdpe.org/wp-content/uploads/dlm_uploads/2020/12/ICSDP-short-singles-5.pdf
+  year: 2020
+  note: "Reviews the 'cannabis lowers IQ by 8 points' claim: single small-subsample finding (38 participants, 3.7% of cohort); Mokrysz et al. 2014 (larger ALSPAC cohort) found alcohol, not cannabis, associated with IQ decline."

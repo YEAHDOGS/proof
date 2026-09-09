@@ -1,0 +1,50 @@
+# Population-attributable fraction of first-episode psychosis (Di Forti 2019).
+# Companion to cannabis_harm_psychosis_daily_or.yaml: same study, different
+# measure (population share, not individual odds). Site-level observations
+# live in notes so the file stays one-measure-per-file.
+
+id: health.cannabis.world.psychosis_paf
+substance: CANNABIS
+geo: WORLD
+metric: first_episode_psychosis_attributable_fraction
+unit: percent
+title: Share of first-episode psychosis attributable to cannabis use (EU-GEI, 11 sites)
+verification: cross-checked
+description: >-
+  Population-attributable fractions from Di Forti et al. 2019 (Lancet
+  Psychiatry, doi:10.1016/S2215-0366(19)30048-3): across all 11 sites,
+  ~1 in 5 new psychosis cases (20.4%) attributable to daily cannabis use and
+  ~1 in 10 (12.2%) to high-potency cannabis use - i.e. the share that could
+  in theory be prevented if the exposure were removed, ASSUMING CAUSALITY.
+  Where high-potency cannabis dominates the market the attributed share is
+  far larger: London 30.3%, Amsterdam 50.3%. The authors' own incidence
+  calculation: removing daily high-potency use would drop psychosis incidence
+  in Amsterdam from 37.9 to 18.8 per 100,000 person-years. Honest caveat: the
+  PAF math is only meaningful if the association is causal, which critics
+  dispute (heritability ~80%, possible reverse direction).
+
+observations:
+  - year: 2019
+    val: 12.2
+    basis: reported
+    citations:
+      - src: healio_diforti_2019
+        url: https://www.healio.com/news/psychiatry/20190320/daily-highpotency-cannabis-use-increases-psychosis-risk
+        val: 12.2
+        note: "PAF 12.2% (95% CI 3-16.1) for high-potency cannabis across all 11 sites; London 30.3% (15.2-40), Amsterdam 50.3% (27.4-66)."
+      - src: medscape_diforti_2019
+        url: https://www.medscape.com/viewarticle/910658
+        val: 12.2
+        note: "1 in 10 new cases attributable to high-potency cannabis overall; 1 in 5 (20.4%) to daily cannabis use; Amsterdam 50.3%, London 30.3%."
+  - year: 2019
+    val: 20.4
+    basis: reported
+    citations:
+      - src: healio_diforti_2019
+        url: https://www.healio.com/news/psychiatry/20190320/daily-highpotency-cannabis-use-increases-psychosis-risk
+        val: 20.4
+        note: PAF 20.4% (95% CI 17.6-22) for DAILY cannabis use (any potency) across all 11 sites; Amsterdam daily-use PAF 43.8%.
+      - src: medscape_diforti_2019
+        url: https://www.medscape.com/viewarticle/910658
+        val: 20.4
+        note: "Independent report of the 20.4% daily-use figure and the Amsterdam 43.8% daily-use share."

@@ -1,0 +1,50 @@
+# Cannabis use disorder (dependence) prevalence among users.
+# Seeded 2026-09-09. The honest version of "cannabis is not addictive":
+# roughly 3 in 10 users develop some degree of cannabis use disorder
+# (CDC, citing Hasin et al. JAMA Psychiatry 2015; NIDA concurs at ~30%).
+
+id: health.cannabis.us.cud_share_of_users
+substance: CANNABIS
+geo: US
+metric: cannabis_use_disorder_share_of_users
+unit: percent
+title: Share of cannabis users meeting cannabis use disorder criteria, United States
+verification: cross-checked
+description: >-
+  Cannabis use disorder (DSM-5: continued use despite clinically significant
+  impairment) is real and common: about 3 in 10 people who use cannabis meet
+  the criteria (CDC, citing Hasin et al., JAMA Psychiatry 2015); NIDA puts
+  the figure at ~30% of users developing some degree of marijuana use
+  disorder. Gorelick's 2024 NEJM review translates it to absolute numbers:
+  ~16.2M of ~52.4M past-year US users in 2021 (~31%). Risk concentrates in
+  young and early-onset users: NIDA reports people who begin before age 18
+  are 4-7x more likely than adults to develop a use disorder (roughly 1 in 6
+  vs 1 in 10 overall). CUD commonly co-occurs with major depression, PTSD,
+  and anxiety. This does not make cannabis as dependence-forming as nicotine
+  or opioids - but "non-addictive" is not the science.
+
+observations:
+  - year: 2015
+    val: 30
+    basis: reported
+    citations:
+      - src: cdc_cannabis_addiction
+        url: https://www.cdc.gov/marijuana/health-effects/addiction.html
+        val: 30
+        note: "CDC: 'about 3 in 10 cannabis users' meet cannabis use disorder criteria, citing Hasin et al., JAMA Psychiatry 2015."
+      - src: nida_cannabis
+        url: https://nida.nih.gov/research-topics/cannabis-marijuana
+        val: 30
+        note: "NIDA: 'research suggests that 30 percent of those who use marijuana may develop some degree of marijuana use disorder.'"
+  - year: 2021
+    val: 31
+    basis: derived
+    citations:
+      - src: labroots_gorelick_2024
+        url: https://www.labroots.com/trending/cannabis-sciences/26401/31-americans-marijuana-cannabis-disorder
+        val: 31
+        note: "Gorelick NEJM 2024 review: ~16.2M of ~52.4M past-year US users (2021) met CUD criteria = 30.9%, rounded here. Derived share from reported counts."
+      - src: cdc_cannabis_addiction
+        url: https://www.cdc.gov/marijuana/health-effects/addiction.html
+        val: 30
+        note: CDC's ~3-in-10 figure is consistent with the 2021-derived 31%.

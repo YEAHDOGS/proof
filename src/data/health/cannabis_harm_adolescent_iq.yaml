@@ -1,0 +1,41 @@
+# Adolescent-onset cannabis use and IQ change (Meier 2012, with the critique).
+# Seeded 2026-09-09. Included precisely BECAUSE the claim is contested -
+# the honest version keeps the headline finding AND the refutation side by
+# side instead of cherry-picking whichever flatters the campaign.
+
+id: health.cannabis.world.adolescent_iq_change
+substance: CANNABIS
+geo: WORLD
+metric: iq_points_lost_persistent_adolescent_use
+unit: iq_points
+title: IQ change for adolescent-onset persistent cannabis users (Dunedin cohort)
+verification: cross-checked
+description: >-
+  The contested headline: Meier et al. 2012, PNAS (Dunedin birth cohort,
+  n=1,037, IQ tested at ages 8, 11, 13 pre-use and 38 after use patterns were
+  established) found adolescent-onset persistent cannabis users lost an
+  average of 8 IQ points between ages 8 and 38, quitting did not restore IQ,
+  and adult-onset use showed no effect. THE CRITIQUE: Rogeberg 2013 (PNAS,
+  PMCID PMC3600466) showed a socioeconomic-confounding simulation reproduces
+  the Dunedin associations - the causal estimate is likely overstated and
+  the true effect could be zero; biostatisticians noted the finding rests on
+  just 38 dependent participants (3.7% of the cohort). A later, larger
+  prospective cohort (Mokrysz et al. 2014, ALSPAC) found ALCOHOL, not
+  cannabis, associated with IQ decline. Bottom line for the campaign: the
+  8-point number is a real published finding that survives in every news
+  cycle, but the honest version is that the causal story is unsettled -
+  citing it without the critique would be exactly the kind of one-sided
+  stat this project exists to avoid.
+
+observations:
+  - year: 2012
+    val: 8
+    basis: reported
+    citations:
+      - src: medscape_meier_2012
+        url: https://www.medscape.com/viewarticle/803197?src=smo_PSYCH
+        val: 8
+        note: "Meier et al. 2012: adolescent-onset persistent users lost an average of 8 IQ points (ages 8-38); cessation did not restore IQ; adult-onset use had no effect. Controlled for alcohol/drug dependence, SES, education."
+      - src: pmc_rogeberg_2013
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3600466/
+        note: "Rogeberg 2013 (PMCID PMC3600466): confounding from socioeconomic status can reproduce the Dunedin associations; Meier et al.'s causal estimates likely overestimates, true effect could be zero."

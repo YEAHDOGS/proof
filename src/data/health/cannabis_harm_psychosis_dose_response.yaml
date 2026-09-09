@@ -1,0 +1,36 @@
+# Psychosis risk - dose-response (Marconi et al. 2016 meta-analysis).
+# Seeded 2026-09-09 from primary/peer-reviewed reporting of the paper.
+# Same study as the EU-GEI file's family, but a different measure (frequency
+# dose-response from a meta-analysis of 10 studies), hence its own file.
+
+id: health.cannabis.world.psychosis_dose_response
+substance: CANNABIS
+geo: WORLD
+metric: psychosis_odds_ratio_by_use_frequency
+unit: odds_ratio
+title: Psychosis/schizophrenia odds by cannabis-use frequency vs non-users (Marconi 2016)
+verification: cross-checked
+description: >-
+  Dose-response from Marconi, Di Forti, Lewis, Murray & Vassos 2016,
+  Schizophrenia Bulletin (meta-analysis of 10 studies): pooled odds of
+  developing psychotic symptoms or a psychotic disorder - OR 3.90
+  (95% CI 2.84-5.34) for the heaviest users vs non-users, roughly twofold for
+  average users. Strength: re-examined raw study data on an exposure
+  continuum (not just extreme categories) and excluded participants with
+  psychosis symptoms at baseline, making reverse-causation less likely - the
+  authors argue this supports a causal role. Caveat: meta-analytic; potency
+  was not modeled (that gap was filled later by Di Forti 2019).
+
+observations:
+  - year: 2016
+    val: 3.9
+    basis: reported
+    citations:
+      - src: cambridge_bjp_cannabis_psychosis
+        url: https://www.cambridge.org/core/journals/the-british-journal-of-psychiatry/article/cannabis-and-psychosis-what-do-we-know-and-what-should-we-do/D09D5E6B7A77D475B3BD63D81462BF7A
+        val: 3.9
+        note: "OR 3.90 (95% CI 2.84-5.34) among the heaviest users vs non-users; 10 of 13 longitudinal studies found cannabis users at significantly increased risk."
+      - src: cambridge_ijpm_heavy_cannabis
+        url: https://www.cambridge.org/core/journals/irish-journal-of-psychological-medicine/article/from-heavy-cannabis-use-to-psychosis-is-it-time-to-take-action/5823A4A8C798F0AE8A88078DEF9C45FC
+        val: 3.9
+        note: "Independent quote of the same result: 3.90 (95% CI 2.84-5.34) for heaviest users, ~twofold increase for average users; potency not accounted for in this meta-analysis."
