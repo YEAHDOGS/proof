@@ -21,8 +21,14 @@ jobs:
       - name: Install Dependencies
         run: npm i
 
+      - name: Typecheck (JSDoc types -> .d.ts contract)
+        run: npx tsc -p jsconfig.json --noEmit
+
       - name: Build Project
         run: npm run build
 
+      - name: Build Library
+        run: npm run build:lib
+
       - name: Run Tests
-        run: npm run test:run --if-present
+        run: npm run test:run
