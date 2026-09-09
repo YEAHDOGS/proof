@@ -85,3 +85,7 @@ npm run dev        # documentation site (live examples + charts)
 npm run test       # vitest
 npm run build:lib  # library build + .d.ts emit
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
