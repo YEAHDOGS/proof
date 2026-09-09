@@ -1,0 +1,54 @@
+# Psychosis risk - daily cannabis use (EU-GEI multicentre case-control).
+# The schizophrenia/mental-health science, researched honestly: this is the
+# strongest modern estimate of the cannabis-psychosis link, and it comes with
+# real caveats (case-control design; critics dispute how much is causal -
+# see description).
+
+id: health.cannabis.world.psychosis_daily_or
+substance: CANNABIS
+geo: WORLD
+metric: psychosis_odds_ratio_daily_use
+unit: odds_ratio
+title: Psychotic disorder odds - daily cannabis use vs never use (EU-GEI, 11 sites)
+verification: cross-checked
+description: >-
+  Adjusted odds ratios from Di Forti et al. 2019, "The contribution of cannabis
+  use to variation in the incidence of psychotic disorder across Europe
+  (EU-GEI)", The Lancet Psychiatry 2019;6:427-436 (doi:10.1016/S2215-0366(19)30048-3):
+  901 first-episode psychosis patients and 1,237 matched controls across 11
+  sites in Europe and Brazil. Daily cannabis users had ~3x the odds of a
+  psychotic disorder vs never-users (aOR 3.2, 95% CI 2.2-4.1); daily users of
+  HIGH-POTENCY cannabis (THC >= 10%) had ~5x the odds (aOR 4.8, 95% CI 2.5-6.3).
+  HONEST CAVEATS: this is a case-control association, not proof of causation.
+  Critics note schizophrenia's heritability (~80%), that 33.6% of the patients
+  had never used cannabis, and bidirectional Mendelian-randomization work
+  suggests causal flow can run both ways (predisposition -> use). The study
+  authors argue the dose-response pattern and adjustment for tobacco,
+  stimulants, and demographics support a contributing-cause role - real
+  science does not yet settle it fully.
+
+observations:
+  - year: 2019
+    val: 3.2
+    basis: reported
+    citations:
+      - src: healio_diforti_2019
+        url: https://www.healio.com/news/psychiatry/20190320/daily-highpotency-cannabis-use-increases-psychosis-risk
+        val: 3.2
+        note: aOR 3.2 (95% CI 2.2-4.1), daily cannabis use vs never use, adjusted for sociodemographics, tobacco, stimulants, ketamine, hallucinogens.
+      - src: medscape_diforti_2019
+        url: https://www.medscape.com/viewarticle/910658
+        val: 3.2
+        note: Independent report of the same aOR 3.2 figure (daily use, never-users as reference).
+  - year: 2019
+    val: 4.8
+    basis: reported
+    citations:
+      - src: healio_diforti_2019
+        url: https://www.healio.com/news/psychiatry/20190320/daily-highpotency-cannabis-use-increases-psychosis-risk
+        val: 4.8
+        note: aOR 4.8 (95% CI 2.5-6.3) for DAILY use of HIGH-POTENCY cannabis (THC >= 10%) vs never use.
+      - src: medscape_diforti_2019
+        url: https://www.medscape.com/viewarticle/910658
+        val: 4.8
+        note: Independent report - daily high-potency users had nearly 5x the odds of first-episode psychosis vs never-users.
