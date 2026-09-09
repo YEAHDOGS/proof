@@ -1,0 +1,39 @@
+# Maximum published THC metabolite detection window in urine ("up to" hours).
+# Urine labs detect THCCOOH, the THC metabolite - so urine answers "have
+# you used in the last month," not "are you impaired today." The gap
+# between this figure and the oral-fluid figure is the core legislative
+# argument for recency-based testing in employment law. SEEDED -
+# re-verify each figure against the cited tables before flipping to
+# cross-checked.
+
+id: testing.cannabis.us.detection_window_urine
+substance: CANNABIS
+geo: US
+metric: detection_window_urine
+unit: hours_up_to
+title: THC metabolite detection window in urine, United States
+verification: seeded
+description: >-
+  Maximum published THC-metabolite detection window in urine, up to 67
+  days (1,608 hours) in chronic users at the EMIT 20 ng/mL cutoff, per
+  the cited study table. The standard workplace range runs 1-30 days
+  depending on use frequency and cutoff - a once-a-month user and a daily
+  user produce wildly different urine results for identical impairment on
+  the day of the test. That asymmetry is the honest argument for
+  oral-fluid testing (see
+  testing.cannabis.us.detection_window_oral_fluid), and the reason swab
+  testing is simultaneously the stricter gate for recent use.
+
+observations:
+  - year: 2026
+    val: 1608
+    basis: contested
+    period: published ranges compiled 2026-09-09; source tables predate this pass
+    citations:
+      - src: pmc_cannabinoid_urine_chronic
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2700061/
+        val: 1608
+        note: "Study table - cannabinoid metabolites detectable up to 67 days (1,608 hours) in chronic users at EMIT 20 ng/mL. NEEDS-CITATION: re-verify the exact cutoff context and that the 67-day figure is THC-metabolite (not other cannabinoids) before cross-checked."
+      - src: pmc_thc_detection_windows
+        url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920965/table/T1/
+        note: Detection-window table - urine 1-30 days at standard workplace cutoffs (occasional-to-regular-use end of the range; the chronic ceiling comes from the study table above).
