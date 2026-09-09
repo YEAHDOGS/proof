@@ -223,3 +223,45 @@ ndasa_marijuana_impairment_testing:
   url: https://ndasa.com/2021/11/09/marijuana-impairment-and-drug-testing/
   year: 2021
   note: NDASA explainer; source of oral-fluid detection within ~15 minutes of use and the 3-10 hour marijuana impairment window.
+
+marconi_2016_psychosis_meta:
+  name: Meta-analysis of the Association Between the Level of Cannabis Use and Risk of Psychosis
+  publisher: Schizophrenia Bulletin (Oxford Academic)
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4988731/
+  year: 2016
+  note: Dose-response meta-analysis - ever-use vs never OR 1.41; heaviest/frequent use OR 2.09. SEEDED from review knowledge; re-verify the ORs against the published tables before flipping any dataset to cross-checked.
+
+diforti_2019_eugei:
+  name: The contribution of cannabis use to variation in the incidence of psychotic disorder across Europe (EU-GEI)
+  publisher: The Lancet Psychiatry (Elsevier)
+  url: https://doi.org/10.1016/S2215-0366(19)30048-3
+  year: 2019
+  note: Multicentre case-control study - daily use of high-potency cannabis carried a headline ~5x adjusted odds of psychotic disorder vs never-use, varying by site. SEEDED; re-verify against the published tables before cross-checked.
+
+asbridge_2012_driving_meta:
+  name: Acute cannabis consumption and motor vehicle collision risk
+  publisher: The BMJ
+  url: https://doi.org/10.1136/bmj.e536
+  year: 2012
+  note: Systematic review and meta-analysis - acute cannabis consumption associated with roughly doubled collision risk (OR 1.92), higher with greater THC exposure. SEEDED; re-verify against the published figures before cross-checked.
+
+meier_2012_dunedin:
+  name: Persistent cannabis users show neuropsychological decline from childhood to midlife
+  publisher: Proceedings of the National Academy of Sciences (PNAS)
+  url: https://doi.org/10.1073/pnas.1206820109
+  year: 2012
+  note: Dunedin cohort - persistent cannabis dependence from adolescence associated with ~8 IQ-point decline by age 38, not fully restored by cessation. Findings contested; see rogeberg_2013_dunedin_reanalysis. SEEDED; re-verify before cross-checked.
+
+rogeberg_2013_dunedin_reanalysis:
+  name: Correlations between cannabis use and IQ change in the Dunedin cohort are consistent with confounding from socioeconomic status
+  publisher: Proceedings of the National Academy of Sciences (PNAS)
+  url: https://doi.org/10.1073/pnas.1215678110
+  year: 2013
+  note: Re-analysis arguing the Dunedin IQ-decline association is consistent with socioeconomic confounding rather than a causal cannabis effect. Why the adolescent IQ dataset carries basis 'contested'. SEEDED; re-verify before cross-checked.
+
+nhtsa_marijuana_congress_report:
+  name: Marijuana-Impaired Driving - A Report to Congress
+  publisher: NHTSA
+  url: https://www.nhtsa.gov/behavioral-research/marijuana-impaired-driving-report-congress
+  year: 2017
+  note: NHTSA concluded the science could not support a per-se THC impairment threshold analogous to 0.08 BAC - the federal impairment number is honestly 'unknown'. SEEDED; re-verify the report text before cross-checked.
