@@ -45,7 +45,9 @@ import { caseless, normalizeGeo, resolvePoint, resolveSource } from './core.js'
 /**
  * Options accepted by every family accessor.
  * @typedef {Object} QueryOpts
- * @property {Geo} [geo]        Geography, default 'US'.
+ * @property {Geo | string} [geo] Geography, default 'US'. Friendly aliases
+ *                                work here exactly as on the geo selector —
+ *                                'us', 'texas', 'world', etc.
  * @property {string} [metric]  Disambiguates when a family has several measures
  *                              for one (substance, geo), e.g. 'past_year_use'.
  */
@@ -297,11 +299,14 @@ function coverageSummary(canon) {
  * @returns {MetricFile}
  */
 function pickFile(canon, familyName, variant, { geo = DEFAULT_GEO, metric } = {}) {
+  // Geography aliases work here exactly as on the callable geo selector —
+  // { geo: 'texas' } and { geo: 'TX' } resolve to the same dataset.
+  const resolvedGeo = normalizeGeo(geo)
   const prefix = FAMILY_PREFIXES[/** @type {keyof typeof FAMILY_PREFIXES} */ (familyName)]
   let candidates = METRICS.filter(
     (m) =>
       m.substance === canon &&
-      m.geo === geo &&
+      m.geo === resolvedGeo &&
       m.id.startsWith(`${prefix}.`) &&
       (variant ? m.variant === variant : !m.variant)
   )
@@ -313,7 +318,7 @@ function pickFile(canon, familyName, variant, { geo = DEFAULT_GEO, metric } = {}
     if (preferred.length === 1) candidates = preferred
   }
   if (candidates.length === 1) return candidates[0]
-  const scope = `${canon}${variant ? ` (${variant})` : ''} ${familyName} in ${geo}`
+  const scope = `${canon}${variant ? ` (${variant})` : ''} ${familyName} in ${resolvedGeo}`
   if (candidates.length === 0) {
     throw new Error(`No ${scope} dataset. ${coverageSummary(canon)}`)
   }
@@ -382,7 +387,7 @@ function makeFamily(canon, familyName, variant) {
     const point = file.observations.find((p) => p.year === y)
     if (!point) {
       const years = file.observations.map((p) => p.year).sort((a, b) => a - b)
-      const hint = siblingHint(canon, familyName, variant, opts?.geo ?? DEFAULT_GEO, file)
+      const hint = siblingHint(canon, familyName, variant, normalizeGeo(opts?.geo ?? DEFAULT_GEO), file)
       throw new Error(`No ${y} observation in ${file.id}. Years available: ${years.join(', ')}.${hint}`)
     }
     return resolvePoint(file, point)
@@ -447,12 +452,13 @@ function makeFamily(canon, familyName, variant) {
   /** @type {MetricFamilyMethods['Files']} */
   const Files = ({ geo, metric } = {}) => {
     const prefix = FAMILY_PREFIXES[/** @type {keyof typeof FAMILY_PREFIXES} */ (familyName)]
+    const resolvedGeo = geo === undefined ? undefined : normalizeGeo(geo)
     return METRICS.filter(
       (m) =>
         m.substance === canon &&
         m.id.startsWith(`${prefix}.`) &&
         (variant ? m.variant === variant : !m.variant) &&
-        (!geo || m.geo === geo) &&
+        (resolvedGeo === undefined || m.geo === resolvedGeo) &&
         (!metric || m.metric === metric)
     )
   }

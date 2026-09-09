@@ -71,7 +71,9 @@ matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
 | `.Series(opts?)` | All observations, sorted (`order: 'asc' | 'desc'`), each a Stat. |
 | `.Files(opts?)` | The raw `MetricFile` datasets behind the family. |
 
-`opts.geo` defaults to `'US'`; pass `'TX'` for Texas. `opts.metric`
+`opts.geo` defaults to `'US'`; pass `'TX'` for Texas. Friendly aliases work
+here too — `'us'`, `'usa'`, `'texas'`, `'world'` — the same spellings the
+callable geo selector accepts. `opts.metric`
 disambiguates when a family carries several measures for one geography.
 
 ### The geo selector — families are callable
