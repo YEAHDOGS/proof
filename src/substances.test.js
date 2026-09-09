@@ -317,3 +317,11 @@ describe('Marijuana compounds', () => {
     expect(Substances.marijuana.ThCa.key).toBe('thca')
   })
 })
+
+describe('normalizeGeo input hygiene', () => {
+  it('tolerates padding and mixed case in geo aliases', () => {
+    expect(Substances.Marijuana.Usage.Year(2023, { geo: '  texas  ' }).geo).toBe('TX')
+    expect(Substances.Marijuana.Usage.Year(2023, { geo: 'TeXaS' }).geo).toBe('TX')
+    expect(Substances.Marijuana.Usage.Year(2023, { geo: ' Usa ' }).geo).toBe('US')
+  })
+})
