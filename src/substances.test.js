@@ -94,6 +94,31 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Marijuana.Usage.Day(2023, 2, 30)).toThrow(/Invalid day/)
   })
 
+  it('accepts strict month/day spellings like the year and delta selectors', () => {
+    // numeric strings and padding are tolerated, matching toYear/strictInt
+    const byNumber = Substances.Opioids.Deaths.Month(2023, 6)
+    expect(Substances.Opioids.Deaths.Month(2023, '6')).toEqual(byNumber)
+    expect(Substances.Opioids.Deaths.Month(2023, ' 06 ')).toEqual(byNumber)
+    const day = Substances.Fentanyl.Deaths.Day(2023, 3, 14)
+    expect(Substances.Fentanyl.Deaths.Day(2023, '3', '14')).toEqual(day)
+    expect(Substances.Fentanyl.Deaths.Day('2023', ' 3 ', '14')).toEqual(day)
+    // loose spellings are rejected, not silently truncated
+    expect(() => Substances.Opioids.Deaths.Month(2023, '6abc')).toThrow(/Invalid month/)
+    expect(() => Substances.Opioids.Deaths.Month(2023, 6.5)).toThrow(/Invalid month/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2023, 3, '14x')).toThrow(/Invalid day/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2023, 3, 14.5)).toThrow(/Invalid day/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2023, '3.5', 14)).toThrow(/Invalid month/)
+    // month stays clamped to 1-12, day to the real calendar (leap-aware)
+    expect(() => Substances.Opioids.Deaths.Month(2023, 0)).toThrow(/Invalid month/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2023, 3, 0)).toThrow(/Invalid day/)
+    // day is clamped to the real calendar (leap-aware); validation runs
+    // before the year lookup, so Feb 29 2024 passes validation and reaches
+    // the year check instead of the day check
+    expect(() => Substances.Fentanyl.Deaths.Day(2024, 2, 29)).toThrow(/No 2024 observation/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2023, 2, 29)).toThrow(/Invalid day/)
+    expect(() => Substances.Fentanyl.Deaths.Day(2024, 2, 30)).toThrow(/Invalid day/)
+  })
+
   it('rejects loose year spellings instead of silently truncating them', () => {
     // parseInt('2023.5') used to return 2023; now it must throw.
     expect(() => Substances.Marijuana.Usage.Year('2023.5')).toThrow(/Invalid year/)

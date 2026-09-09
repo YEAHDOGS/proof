@@ -386,7 +386,8 @@ function makeFamily(canon, familyName, variant) {
   /** @type {MetricFamilyNode['Month']} */
   const Month = (year, month, opts) => {
     const y = toYear(year)
-    if (!Number.isInteger(month) || month < 1 || month > 12) {
+    const m = strictInt(month, 'month')
+    if (m < 1 || m > 12) {
       throw new Error(`Invalid month: ${month} (expected 1-12)`)
     }
     // TODO: serve real monthly series directly once a dataset publishes one.
@@ -394,7 +395,7 @@ function makeFamily(canon, familyName, variant) {
     const annual = Year(y, opts)
     return {
       year: y,
-      month,
+      month: m,
       val: annual.val / 12,
       metric: annual.metric,
       unit: annual.unit,
@@ -407,10 +408,12 @@ function makeFamily(canon, familyName, variant) {
   /** @type {MetricFamilyNode['Day']} */
   const Day = (year, month, day, opts) => {
     const y = toYear(year)
-    if (!Number.isInteger(month) || month < 1 || month > 12) {
+    const m = strictInt(month, 'month')
+    if (m < 1 || m > 12) {
       throw new Error(`Invalid month: ${month} (expected 1-12)`)
     }
-    if (!Number.isInteger(day) || day < 1 || day > daysInMonth(y, month)) {
+    const d = strictInt(day, 'day')
+    if (d < 1 || d > daysInMonth(y, m)) {
       throw new Error(`Invalid day: ${y}-${month}-${day}`)
     }
     assertDerivable(pickFile(canon, familyName, variant, opts))
@@ -418,8 +421,8 @@ function makeFamily(canon, familyName, variant) {
     const days = daysInYear(y)
     return {
       year: y,
-      month,
-      day,
+      month: m,
+      day: d,
       val: annual.val / days,
       metric: annual.metric,
       unit: annual.unit,
