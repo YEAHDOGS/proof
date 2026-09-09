@@ -68,6 +68,13 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Marijuana.Usage.Year(1999)).toThrow(/Years available: 2021, 2022, 2023, 2024/)
   })
 
+  it('points at sibling datasets when the default file lacks the year', () => {
+    // The default alcohol Usage dataset only carries 2026; the cross-checked
+    // 2021-2024 series lives under another metric for the same family+geo.
+    expect(() => Substances.Alcohol.Usage.Year(2023)).toThrow(/usage\.alcohol\.us\.past_month/)
+    expect(() => Substances.Alcohol.Usage.Year(2023)).toThrow(/\{ metric: 'past_month_use' \}/)
+  })
+
   it('validates year, month, and day inputs', () => {
     expect(() => Substances.Marijuana.Usage.Year('soon')).toThrow(/Invalid year/)
     expect(() => Substances.Marijuana.Usage.Month(2023, 13)).toThrow(/Invalid month/)
