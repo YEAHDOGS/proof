@@ -107,7 +107,7 @@ function makeBaseline(family) {
     const latest = file.observations.reduce((a, b) => (b.year > a.year ? b : a))
     const stat = resolvePoint(file, latest)
     return /** @type {ScopedStat} */ (
-      Object.assign(/** @type {object} */ (stat), {
+      Object.assign(stat, {
         Year: (/** @type {number|string} */ year) => yearPoint(file, year),
         Month: () => {
           throw new Error(`${file.id} is an annual baseline; no sub-annual derivation is offered.`)
