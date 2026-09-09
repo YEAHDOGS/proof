@@ -108,6 +108,11 @@ describe('getSortedPoints', () => {
   it('throws on an unknown metric id', () => {
     expect(() => getSortedPoints('nope.nothing')).toThrow(/Unknown metric id/)
   })
+
+  it('rejects invalid sort orders', () => {
+    expect(() => getSortedPoints('usage.cannabis.us.past_year', 'ascending')).toThrow(/Invalid order/)
+    expect(() => getSortedPoints('usage.cannabis.us.past_year', 'DESC')).toThrow(/Invalid order/)
+  })
 })
 
 describe('sources and citations', () => {

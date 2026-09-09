@@ -35,6 +35,10 @@ describe('World.Population', () => {
     expect(series.every((p) => typeof p.period === 'string')).toBe(true)
   })
 
+  it('rejects invalid Series sort orders', () => {
+    expect(() => World.Population('us', 'texas').Series({ order: 'newest' })).toThrow(/Invalid order/)
+  })
+
   it('is case-insensitive and alias-friendly', () => {
     expect(World.population('USA').val).toBe(341_145_670)
     expect(World.Population('Global').val).toBe(8_230_000_000)

@@ -24,7 +24,7 @@
 /** @typedef {import('./types.js').SourceCitation} SourceCitation */
 
 import { METRICS, REPS } from './registry.js'
-import { caseless, normalizeGeo, resolvePoint, resolveSource, toYear } from './core.js'
+import { caseless, normalizeGeo, resolvePoint, resolveSource, toYear, validateOrder } from './core.js'
 
 /**
  * One chamber of a legislature (seats, and members once M3 lands).
@@ -114,11 +114,13 @@ function makeBaseline(family) {
         Day: () => {
           throw new Error(`${file.id} is an annual baseline; no sub-annual derivation is offered.`)
         },
-        Series: (/** @type {{ order?: 'asc'|'desc' }} */ { order = 'asc' } = {}) =>
-          file.observations
+        Series: (/** @type {{ order?: 'asc'|'desc' }} */ { order = 'asc' } = {}) => {
+          const direction = validateOrder(order)
+          return file.observations
             .slice()
-            .sort((a, b) => (order === 'desc' ? b.year - a.year : a.year - b.year))
-            .map((p) => resolvePoint(file, p)),
+            .sort((a, b) => (direction === 'desc' ? b.year - a.year : a.year - b.year))
+            .map((p) => resolvePoint(file, p))
+        },
         Files: () => [file]
       })
     )

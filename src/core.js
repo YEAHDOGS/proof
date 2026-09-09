@@ -75,6 +75,19 @@ export function toYear(year) {
 }
 
 /**
+ * Strictly validate a sort-order selector for Series()/getSortedPoints().
+ * The sort expressions all read `order === 'desc' ? ... : ...`, so any
+ * other value silently degraded to ascending — the same class of silent
+ * coercion the selector-validation work eliminated everywhere else.
+ * @param {unknown} order
+ * @returns {'asc'|'desc'}
+ */
+export function validateOrder(order) {
+  if (order === 'asc' || order === 'desc') return order
+  throw new Error(`Invalid order: ${JSON.stringify(order)} (expected 'asc' or 'desc')`)
+}
+
+/**
  * Wrap an object (or function) so property access is case-insensitive
  * (node.Usage === node.usage === node.USAGE). Calling a wrapped function
  * still works — only `get` is trapped.

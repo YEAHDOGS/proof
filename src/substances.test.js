@@ -94,6 +94,15 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Marijuana.Usage.Day(2023, 2, 30)).toThrow(/Invalid day/)
   })
 
+  it('rejects invalid Series sort orders', () => {
+    // 'asc'/'desc' only — anything else used to silently sort ascending
+    expect(() => Substances.Marijuana.Usage.Series({ order: 'ascending' })).toThrow(/Invalid order/)
+    expect(() => Substances.Marijuana.Usage('us').Series({ order: 'DESC' })).toThrow(/Invalid order/)
+    // the valid spellings still behave
+    expect(Substances.Marijuana.Usage.Series({ order: 'desc' })[0].year).toBe(2024)
+    expect(Substances.Marijuana.Usage.Series({ order: 'asc' })[0].year).toBe(2021)
+  })
+
   it('accepts strict month/day spellings like the year and delta selectors', () => {
     // numeric strings and padding are tolerated, matching toYear/strictInt
     const byNumber = Substances.Opioids.Deaths.Month(2023, 6)

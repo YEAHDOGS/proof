@@ -40,7 +40,7 @@
 /** @typedef {import('./types.js').ScopedStat} ScopedStat */
 
 import { METRICS, COMPOUNDS } from './registry.js'
-import { caseless, normalizeGeo, resolvePoint, resolveSource, strictInt, toYear } from './core.js'
+import { caseless, normalizeGeo, resolvePoint, resolveSource, strictInt, toYear, validateOrder } from './core.js'
 
 /**
  * Options accepted by every family accessor.
@@ -435,10 +435,11 @@ function makeFamily(canon, familyName, variant) {
   /** @type {MetricFamilyNode['Series']} */
   const Series = (opts = {}) => {
     const { order = 'asc', ...query } = opts
+    const direction = validateOrder(order)
     const file = pickFile(canon, familyName, variant, query)
     const points = file.observations
       .slice()
-      .sort((a, b) => (order === 'desc' ? b.year - a.year : a.year - b.year))
+      .sort((a, b) => (direction === 'desc' ? b.year - a.year : a.year - b.year))
     return points.map((p) => resolvePoint(file, p))
   }
 
