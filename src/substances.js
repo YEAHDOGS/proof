@@ -337,7 +337,38 @@ function assertDerivable(file) {
 }
 
 /**
- * Build one metric-family accessor (Deaths, Usage, ...) for a substance/variant.
+ * Point the user at sibling datasets when the resolved file lacks the
+ * requested year — the series they want often lives under another metric
+ * for the same (substance, family, geo) (e.g. the cross-checked past-month
+ * alcohol series next to the default past-year persons dataset).
+ * @param {Substance} canon
+ * @param {string} familyName
+ * @param {Variant | null} variant
+ * @param {Geo} geo
+ * @param {MetricFile} file  The dataset the query resolved to (excluded).
+ * @returns {string} '' when there are no siblings, else a hint sentence.
+ */
+function siblingHint(canon, familyName, variant, geo, file) {
+  const prefix = FAMILY_PREFIXES[/** @type {keyof typeof FAMILY_PREFIXES} */ (familyName)]
+  const siblings = METRICS.filter(
+    (m) =>
+      m !== file &&
+      m.substance === canon &&
+      m.geo === geo &&
+      m.id.startsWith(`${prefix}.`) &&
+      (variant ? m.variant === variant : !m.variant)
+  )
+  if (siblings.length === 0) return ''
+  const list = siblings
+    .map((m) => {
+      const years = m.observations.map((p) => p.year)
+      return `${m.id} (${Math.min(...years)}-${Math.max(...years)}, { metric: '${m.metric}' })`
+    })
+    .join('; ')
+  return ` Other ${canon} ${familyName} datasets in ${geo}: ${list}.`
+}
+
+/**
  * @param {Substance} canon
  * @param {string} familyName
  * @param {Variant | null} variant
@@ -351,7 +382,8 @@ function makeFamily(canon, familyName, variant) {
     const point = file.observations.find((p) => p.year === y)
     if (!point) {
       const years = file.observations.map((p) => p.year).sort((a, b) => a - b)
-      throw new Error(`No ${y} observation in ${file.id}. Years available: ${years.join(', ')}`)
+      const hint = siblingHint(canon, familyName, variant, opts?.geo ?? DEFAULT_GEO, file)
+      throw new Error(`No ${y} observation in ${file.id}. Years available: ${years.join(', ')}.${hint}`)
     }
     return resolvePoint(file, point)
   }

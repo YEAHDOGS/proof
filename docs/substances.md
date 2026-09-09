@@ -130,6 +130,16 @@ Available PSYCHEDELICS datasets: usage.psychedelics.us.past_year (2023-2023).
 No 1999 observation in usage.cannabis.us.past_year. Years available: 2021, 2022, 2023, 2024
 ```
 
+When the resolved dataset lacks the year but a sibling dataset covers the
+same (substance, family, geo) under another metric, the error names it —
+the default alcohol Usage dataset only carries 2026, while the
+cross-checked series sits one option away:
+
+```
+No 2023 observation in usage.alcohol.us.past_year_users. Years available: 2026.
+Other ALCOHOL Usage datasets in US: usage.alcohol.us.past_month (2021-2024, { metric: 'past_month_use' }).
+```
+
 ## Compound sheets
 
 `Substances.Marijuana('thc')` (or `.thc`) returns a `ResolvedCompound`:
