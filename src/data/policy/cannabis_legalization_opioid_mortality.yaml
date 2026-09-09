@@ -1,0 +1,34 @@
+# Reported effect of recreational cannabis legalization on opioid-overdose
+# mortality, US (relative change vs prohibition baseline; 0.0 = no detected effect).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+# Split from policy.cannabis.us.legalization_outcomes on 2026-09-09: one
+# measure per file, per the dataset schema — Year()/getCitations() resolve by
+# (id, year), so bundling three different outcomes under one id silently hid
+# two of them behind the first observation.
+
+id: policy.cannabis.us.legalization_opioid_mortality
+substance: CANNABIS
+geo: US
+metric: legalization_opioid_mortality_effect
+unit: relative_change
+title: Reported effect of recreational cannabis legalization on opioid-overdose mortality, US
+verification: seeded
+description: >-
+  Effect estimate from the legalization-outcomes literature, expressed as
+  relative change versus prohibition baselines (0.0 = no detected effect).
+  A meta-review of 16 studies (Chihuri & Li, Injury Epidemiology 2019) finds
+  the evidence on opioid-mortality reduction "inconsistent and inconclusive" -
+  modest at best, limited to states with operational dispensaries. Marinello &
+  Powell found no effect on suicide. Sibling outcome measures live in the
+  adjacent files policy.cannabis.us.legalization_traffic_fatalities and
+  policy.cannabis.us.legalization_youth_use.
+
+observations:
+  - year: 2023
+    val: -0.11
+    basis: reported
+    citations:
+      - src: marinello_powell_2023
+        url: https://publichealth.uic.edu/news-stories/legal-cannabis-markets-linked-to-increased-motor-vehicle-deaths/
+        val: -0.11
+        note: Recreational markets associated with 11% fewer opioid-overdose deaths on average (range 3-28%); 7 states, death certificates 2009-2019 (Marinello & Powell, Social Science & Medicine 2023).

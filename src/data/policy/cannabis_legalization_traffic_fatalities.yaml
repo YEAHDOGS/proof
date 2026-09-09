@@ -1,0 +1,34 @@
+# Reported effect of recreational cannabis legalization on motor-vehicle
+# crash fatalities, US (relative change vs prohibition baseline; 0.0 = no
+# detected effect).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+# Split from policy.cannabis.us.legalization_outcomes on 2026-09-09: one
+# measure per file, per the dataset schema — Year()/getCitations() resolve by
+# (id, year), so bundling three different outcomes under one id silently hid
+# two of them behind the first observation.
+
+id: policy.cannabis.us.legalization_traffic_fatalities
+substance: CANNABIS
+geo: US
+metric: legalization_traffic_fatality_effect
+unit: relative_change
+title: Reported effect of recreational cannabis legalization on motor-vehicle crash fatalities, US
+verification: seeded
+description: >-
+  Effect estimate from the legalization-outcomes literature, expressed as
+  relative change versus prohibition baselines (0.0 = no detected effect).
+  Impaired-driving risk is one of the two robust cautions in the research
+  (the other: rising cannabis-use-disorder rates tied to higher THC
+  potency). Sibling outcome measures live in the adjacent files
+  policy.cannabis.us.legalization_opioid_mortality and
+  policy.cannabis.us.legalization_youth_use.
+
+observations:
+  - year: 2023
+    val: 0.19
+    basis: reported
+    citations:
+      - src: marinello_powell_2023
+        url: https://publichealth.uic.edu/news-stories/legal-cannabis-markets-linked-to-increased-motor-vehicle-deaths/
+        val: 0.19
+        note: 16-22% more motor-vehicle crash fatalities in some states (Colorado 16%, Oregon 22%, Alaska 20%, California 14%); midpoint of the 16-22% range.

@@ -141,6 +141,38 @@ describe('sources and citations', () => {
   })
 })
 
+describe('one measure per dataset', () => {
+  it('keeps legalization outcome measures in separate files', () => {
+    // Regression: these three outcomes used to share one id with three
+    // same-year observations, so Year()/getCitations() silently returned
+    // only the first (-0.11) and hid the other two. One file, one measure.
+    const mortality = getMetric('policy.cannabis.us.legalization_opioid_mortality')
+    const traffic = getMetric('policy.cannabis.us.legalization_traffic_fatalities')
+    const youth = getMetric('policy.cannabis.us.legalization_youth_use')
+    expect(mortality).toBeDefined()
+    expect(traffic).toBeDefined()
+    expect(youth).toBeDefined()
+    expect(getMetric('policy.cannabis.us.legalization_outcomes')).toBeUndefined()
+    for (const metric of [mortality, traffic, youth]) {
+      expect(metric.observations.length).toBe(1)
+      expect(validateDataset(metric)).toEqual([])
+    }
+    expect(mortality.observations[0].val).toBe(-0.11)
+    expect(traffic.observations[0].val).toBe(0.19)
+    expect(youth.observations[0].val).toBe(0.0)
+    expect(mortality.observations[0].year).toBe(2023)
+  })
+
+  it('resolves citations for every split outcome independently', () => {
+    const mortality = getCitations('policy.cannabis.us.legalization_opioid_mortality', 2023)
+    expect(mortality[0].source.publisher).toBeTruthy()
+    expect(mortality[0].val).toBe(-0.11)
+    const comparison = compareClaims('policy.cannabis.us.legalization_traffic_fatalities', 2023)
+    expect(comparison.consensus).toBe(0.19)
+    expect(comparison.claimed).toContain(0.19)
+  })
+})
+
 describe('citation policy integrity', () => {
   it('every observation in every dataset passes validateDataset', () => {
     for (const metric of getAllMetrics()) {

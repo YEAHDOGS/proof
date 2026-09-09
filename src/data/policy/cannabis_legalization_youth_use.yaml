@@ -1,0 +1,32 @@
+# Reported effect of recreational cannabis legalization on
+# adolescent/young-adult cannabis use, US (relative change vs prohibition
+# baseline; 0.0 = no detected effect).
+# SEEDED 2026-09-09 from the vice-mortality comparison research report.
+# Split from policy.cannabis.us.legalization_outcomes on 2026-09-09: one
+# measure per file, per the dataset schema — Year()/getCitations() resolve by
+# (id, year), so bundling three different outcomes under one id silently hid
+# two of them behind the first observation.
+
+id: policy.cannabis.us.legalization_youth_use
+substance: CANNABIS
+geo: US
+metric: legalization_youth_use_effect
+unit: relative_change
+title: Reported effect of recreational cannabis legalization on adolescent/young-adult cannabis use, US
+verification: seeded
+description: >-
+  Effect estimate from the legalization-outcomes literature, expressed as
+  relative change versus prohibition baselines (0.0 = no detected effect).
+  Sibling outcome measures live in the adjacent files
+  policy.cannabis.us.legalization_opioid_mortality and
+  policy.cannabis.us.legalization_traffic_fatalities.
+
+observations:
+  - year: 2023
+    val: 0.0
+    basis: reported
+    citations:
+      - src: rml_systematic_review_2023
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9874703/
+        val: 0.0
+        note: "Systematic review of 32 studies (2023): no effect of recreational legalization on adolescent/young-adult use - reported as no detected effect, encoded 0.0 on the relative-change scale. Also: possible increases in traffic crashes/fatalities and health-service use; association with decreased opioid prescriptions."
