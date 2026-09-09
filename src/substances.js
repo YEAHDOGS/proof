@@ -40,7 +40,7 @@
 /** @typedef {import('./types.js').ScopedStat} ScopedStat */
 
 import { METRICS, COMPOUNDS } from './registry.js'
-import { caseless, normalizeGeo, resolvePoint, resolveSource } from './core.js'
+import { caseless, normalizeGeo, resolvePoint, resolveSource, strictInt, toYear } from './core.js'
 
 /**
  * Options accepted by every family accessor.
@@ -248,16 +248,6 @@ const VARIANT_ALIASES = { LSD: 'Acid', Shrooms: 'Mushrooms', Psilocybin: 'Mushro
 const VALID_DELTAS = [8, 9, 10]
 // Matches '8', 'd8', 'delta-8', 'delta 8', 'δ9' (lowercased 'Δ9') and friends.
 const DELTA_RE = /^(?:d|delta[-\s]?|δ)?(8|9|10)$/
-
-/**
- * @param {number|string} year
- * @returns {number}
- */
-function toYear(year) {
-  const y = typeof year === 'string' ? Number.parseInt(year, 10) : year
-  if (!Number.isInteger(y)) throw new Error(`Invalid year: ${JSON.stringify(year)}`)
-  return y
-}
 
 /** @param {number} year */
 function daysInYear(year) {
@@ -557,7 +547,7 @@ function makeSubstance(def) {
   if (sheet) for (const key of Object.keys(sheet)) selectorMap[key] = key
 
   const deltaCompound = (/** @type {number|string} */ n) => {
-    const num = typeof n === 'string' ? Number.parseInt(n, 10) : n
+    const num = strictInt(n, 'delta isomer number')
     if (!def.compounds || !VALID_DELTAS.includes(num)) {
       throw new Error(`Unknown delta isomer: delta-${n}. Known: ${VALID_DELTAS.join(', ')}`)
     }
