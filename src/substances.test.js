@@ -131,6 +131,30 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Marijuana.Testing.Year(2026)).toThrow(/Multiple.*pass \{ metric \}/)
   })
 
+  it('exposes the Harms family with disambiguated harms datasets', () => {
+    // Several harms datasets share CANNABIS/US - { metric } picks one.
+    const ever = Substances.Marijuana.Harms.Year(2016, { metric: 'psychosis_risk_ever_use' })
+    expect(ever.val).toBe(1.41)
+    expect(ever.basis).toBe('reported')
+    expect(ever.citations.length).toBeGreaterThanOrEqual(2)
+    const heavy = Substances.Marijuana.Harms.Year(2016, { metric: 'psychosis_risk_heavy_use' })
+    expect(heavy.val).toBe(2.09)
+    const potency = Substances.Marijuana.Harms.Year(2019, { metric: 'psychosis_risk_high_potency_daily' })
+    expect(potency.val).toBe(5)
+    const driving = Substances.Marijuana.Harms.Year(2012, { metric: 'driving_crash_risk' })
+    expect(driving.val).toBe(1.92)
+    const nhtsaNote = driving.citations.find((c) => c.src === 'nhtsa_marijuana_congress_report')
+    expect(nhtsaNote.note).toMatch(/unknown/i)
+    const iq = Substances.Marijuana.Harms.Year(2012, { metric: 'adolescent_iq_decline' })
+    expect(iq.val).toBe(8)
+    expect(iq.basis).toBe('contested')
+    const cud = Substances.Marijuana.Harms.Year(2023, { metric: 'cannabis_use_disorder' })
+    expect(cud.val).toBe(19.7)
+    const dependence = Substances.Marijuana.Harms.Year(2024, { metric: 'dependence_risk' })
+    expect(dependence.val).toBe(9)
+    expect(() => Substances.Marijuana.Harms.Year(2024)).toThrow(/Multiple.*pass \{ metric \}/)
+  })
+
   it('derives month and day values from count units, formula disclosed', () => {
     const month = Substances.Opioids.Deaths.Month(2023, 6)
     expect(month.val).toBeCloseTo(79358 / 12)

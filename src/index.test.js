@@ -50,6 +50,8 @@ describe('queryMetrics', () => {
     expect(families).toContain('deaths')
     expect(families).toContain('er_visits')
     expect(families).toContain('sales')
+    expect(families).toContain('testing')
+    expect(families).toContain('harms')
   })
 
   it('filters by substance and geo together', () => {
