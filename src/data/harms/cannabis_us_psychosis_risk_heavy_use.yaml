@@ -1,0 +1,30 @@
+# Cannabis use and psychosis risk, heaviest/frequent use vs never-use
+# (Marconi et al. 2016). The top of the dose-response gradient.
+# SEEDED - re-verify the OR against the published tables before flipping to
+# cross-checked.
+
+id: harms.cannabis.us.psychosis_risk_heavy_use
+substance: CANNABIS
+geo: US
+metric: psychosis_risk_heavy_use
+unit: odds_ratio_vs_never_use
+title: Psychosis risk for heaviest/frequent cannabis users vs never-users (meta-analysis)
+verification: seeded
+description: >-
+  Adjusted odds ratio for developing psychosis among the heaviest or most
+  frequent cannabis users versus never-users, from the same 2016
+  Marconi et al. dose-response meta-analysis (Schizophrenia Bulletin) as the
+  ever-use figure. The steep gradient (1.41 ever-use -> 2.09 heaviest use)
+  is the core quantitative evidence that frequency and dose matter for
+  psychosis risk, even as causality remains debated.
+
+observations:
+  - year: 2016
+    val: 2.09
+    basis: reported
+    period: meta-analysis, published 2016
+    citations:
+      - src: marconi_2016_psychosis_meta
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4988731/
+        val: 2.09
+        note: Marconi et al. 2016 - pooled adjusted OR ~2.09 for the highest-exposure group (frequent/heavy use) vs never-use. Re-verify against the results tables before cross-checked.

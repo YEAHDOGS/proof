@@ -1,0 +1,35 @@
+# High-potency cannabis, daily use, and psychotic disorder (Di Forti et al.
+# 2019, EU-GEI multicentre case-control study). The potency dimension of the
+# schizophrenia question: daily use of high-potency cannabis carried a
+# headline ~5x adjusted odds of psychotic disorder vs never-use.
+# SEEDED - re-verify against the published tables (site-specific adjusted
+# estimates vary) before flipping to cross-checked.
+
+id: harms.cannabis.us.psychosis_risk_high_potency_daily
+substance: CANNABIS
+geo: US
+metric: psychosis_risk_high_potency_daily
+unit: odds_ratio_vs_never_use
+title: Psychotic disorder risk for daily high-potency cannabis users vs never-users (EU-GEI)
+verification: seeded
+description: >-
+  Adjusted odds ratio for first-episode psychotic disorder among daily users
+  of high-potency cannabis versus never-users, from Di Forti et al.'s 2019
+  Lancet Psychiatry multicentre case-control study (EU-GEI). The headline
+  figure commonly reported is ~5x; site-specific adjusted estimates vary
+  across the study sites - see the paper's tables rather than treating 5 as
+  a single universal number. The study also estimated a population
+  attributable fraction: roughly a third of first-episode cases at the
+  highest-use sites might have been avoided without daily cannabis use.
+  Honest caveat: case-control design; residual confounding possible.
+
+observations:
+  - year: 2019
+    val: 5
+    basis: reported
+    period: study published 2019
+    citations:
+      - src: diforti_2019_eugei
+        url: https://doi.org/10.1016/S2215-0366(19)30048-3
+        val: 5
+        note: Di Forti et al. 2019 - headline adjusted OR ~5 for daily high-potency use vs never-use; exact site-specific estimates vary. Re-verify against the results tables before cross-checked.

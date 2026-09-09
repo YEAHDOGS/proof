@@ -1,0 +1,33 @@
+# Lifetime cannabis dependence risk among people who use, United States (NIDA).
+# The widely cited gradient: roughly 9% of ever-users develop dependence,
+# rising to ~17% for those who start in adolescence and 25-50% for daily
+# users. Encoded as the headline ever-user figure; the stratified figures
+# live in the citation note rather than as separate observations pending
+# verification against NIDA's primary citations.
+# SEEDED - re-verify against the NIDA research report before flipping to
+# cross-checked.
+
+id: harms.cannabis.us.dependence_risk
+substance: CANNABIS
+geo: US
+metric: dependence_risk
+unit: percent_ever_users
+title: Lifetime dependence risk among people who use cannabis, United States
+verification: seeded
+description: >-
+  Share of people who ever use marijuana who go on to develop cannabis
+  dependence, as summarized by NIDA from epidemiological surveys. The risk
+  is strongly stratified by onset age and frequency: NIDA reports about 9%
+  among all ever-users, rising to about 17% among those who begin using in
+  their teens, and 25-50% among people who use daily.
+
+observations:
+  - year: 2024
+    val: 9
+    basis: reported
+    period: NIDA research report, current as of 2024
+    citations:
+      - src: nida_cannabis
+        url: https://nida.nih.gov/publications/research-reports/marijuana
+        val: 9
+        note: "NIDA marijuana research report - 'about 9 percent of those who use marijuana will become dependent on it'; ~17% for adolescent-onset use; 25-50% for daily use. Re-verify the exact passage and NIDA's primary citations before cross-checked."

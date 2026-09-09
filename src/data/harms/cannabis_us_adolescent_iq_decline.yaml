@@ -1,0 +1,39 @@
+# Adolescent-onset persistent cannabis use and IQ decline (Meier et al. 2012,
+# Dunedin cohort) - the adolescent brain-development figure, carried as
+# 'contested' because the finding was challenged by a peer-reviewed
+# re-analysis (Rogeberg 2013) showing the association is consistent with
+# socioeconomic confounding. The dataset presents both sides; it does not
+# average the debate away.
+# SEEDED - re-verify both papers against the published text before flipping
+# to cross-checked.
+
+id: harms.cannabis.us.adolescent_iq_decline
+substance: CANNABIS
+geo: US
+metric: adolescent_iq_decline
+unit: iq_points_decline
+title: IQ decline from adolescence to midlife in persistent adolescent-onset cannabis users (Dunedin)
+verification: seeded
+description: >-
+  Estimated IQ-point decline between childhood and midlife among people with
+  persistent cannabis dependence beginning in adolescence, from Meier et
+  al.'s 2012 PNAS study of the Dunedin birth cohort. Persistent
+  adolescent-onset users showed roughly an 8-point decline by age 38 that was
+  not fully restored by later cessation. Contested: Rogeberg's 2013 PNAS
+  re-analysis of the same cohort found the cannabis-IQ association to be
+  consistent with confounding from socioeconomic status rather than a causal
+  cannabis effect. Where the science is unresolved, this dataset says so.
+
+observations:
+  - year: 2012
+    val: 8
+    basis: contested
+    period: Dunedin cohort, age 13 to 38, published 2012
+    citations:
+      - src: meier_2012_dunedin
+        url: https://doi.org/10.1073/pnas.1206820109
+        val: 8
+        note: Meier et al. 2012 - ~8 IQ-point decline by age 38 in persistent adolescent-onset cannabis dependence; not fully restored by cessation. Re-verify the exact figure against the published text before cross-checked.
+      - src: rogeberg_2013_dunedin_reanalysis
+        url: https://doi.org/10.1073/pnas.1215678110
+        note: Rogeberg 2013 - re-analysis of the same Dunedin data; the cannabis-IQ association is consistent with socioeconomic confounding rather than a causal effect. This challenge is why the observation carries basis 'contested'.

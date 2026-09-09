@@ -1,0 +1,45 @@
+# Acute cannabis consumption and motor-vehicle collision risk (Asbridge et al.
+# 2012, BMJ systematic review and meta-analysis). The impaired-driving
+# number: acute cannabis use roughly doubles collision risk, with higher
+# risk at greater THC exposure.
+# SEEDED - re-verify against the published figures before flipping to
+# cross-checked.
+#
+# Honest unknown, stated outright: unlike alcohol, there is NO federally
+# established THC blood-concentration impairment threshold. NHTSA's 2017
+# report to Congress concluded the science could not support a per-se THC
+# limit analogous to 0.08 BAC. The number that would answer "how high is too
+# high to drive" is unknown - the dataset records the risk ratio, not a
+# threshold, and the description says so plainly.
+
+id: harms.cannabis.us.driving_crash_risk
+substance: CANNABIS
+geo: US
+metric: driving_crash_risk
+unit: odds_ratio_vs_sober
+title: Motor-vehicle collision risk after acute cannabis consumption (meta-analysis)
+verification: seeded
+description: >-
+  Adjusted odds ratio for motor-vehicle collision after acute cannabis
+  consumption versus no consumption, from Asbridge, Hayden & Cartwright's
+  2012 systematic review and meta-analysis in The BMJ. Acute cannabis
+  consumption approximately doubled collision risk (OR 1.92), with
+  dose-response evidence of higher risk at greater THC exposure.
+  The threshold question is honestly unresolved: unlike alcohol's 0.08 BAC
+  per-se limit, no federally established THC blood-concentration impairment
+  threshold exists - NHTSA's 2017 report to Congress concluded the science
+  could not support one. "How high is too high to drive" is unknown.
+
+observations:
+  - year: 2012
+    val: 1.92
+    basis: reported
+    period: meta-analysis, published 2012
+    citations:
+      - src: asbridge_2012_driving_meta
+        url: https://doi.org/10.1136/bmj.e536
+        val: 1.92
+        note: Asbridge et al. 2012 - pooled adjusted OR 1.92 for collision after acute cannabis consumption; dose-response at higher THC. Re-verify against the published figures before cross-checked.
+      - src: nhtsa_marijuana_congress_report
+        url: https://www.nhtsa.gov/behavioral-research/marijuana-impaired-driving-report-congress
+        note: NHTSA 2017 report to Congress - insufficient scientific basis for a per-se THC impairment threshold analogous to 0.08 BAC. Source of the honest 'unknown' on the impairment number.
