@@ -15,6 +15,7 @@
 /** @typedef {import('./types.js').ClaimComparison} ClaimComparison */
 
 import { METRICS, SOURCES } from './registry.js'
+import { validateOrder } from './core.js'
 
 export { Substances } from './substances.js'
 export { World } from './world.js'
@@ -65,13 +66,14 @@ export function getMetric(metricId) {
  * @param {string} metricId
  * @param {'asc' | 'desc'} [order]
  * @returns {DataPoint[]}
- * @throws {Error} when the metric id is unknown.
+ * @throws {Error} when the metric id is unknown, or `order` is not 'asc'/'desc'.
  */
 export function getSortedPoints(metricId, order = 'asc') {
+  const direction = validateOrder(order)
   const metric = getMetric(metricId)
   if (!metric) throw new Error(`Unknown metric id: ${metricId}`)
   const points = metric.observations.slice()
-  points.sort((a, b) => (order === 'desc' ? b.year - a.year : a.year - b.year))
+  points.sort((a, b) => (direction === 'desc' ? b.year - a.year : a.year - b.year))
   return points
 }
 
