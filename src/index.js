@@ -18,6 +18,9 @@ import { METRICS, SOURCES } from './registry.js'
 
 export { Substances } from './substances.js'
 export { World } from './world.js'
+export { metricToMapCountries } from './map.js'
+export { deathsPerDay, deathsToday } from './today.js'
+export { rampStep } from './ramp.js'
 
 /**
  * Every dataset in the library, unfiltered.
