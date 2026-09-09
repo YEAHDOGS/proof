@@ -48,7 +48,7 @@
     "build": "vite build",
     "build:lib": "vite build --mode lib && tsc -p jsconfig.json --emitDeclarationOnly",
     "test": "vitest",
-    "test:ui": "vitest run --ui",
+    "test:run": "vitest run",    "test:ui": "vitest run --ui",
     "test:ui:coverage": "vitest run --ui --coverage"
   },
   "devDependencies": {
