@@ -57,11 +57,21 @@ export function strictInt(value, label) {
 }
 
 /**
+ * Strictly parse a year selector: strictInt plus a sane calendar range.
+ * Years are clamped to 1-9999 (the 4-digit proleptic Gregorian range ISO
+ * 8601 writes as YYYY). This rejects absurd inputs like -44, 0, or 100000
+ * before they reach the observation lookup — previously those passed
+ * parsing and died later with a confusing "no observation" error (or, for
+ * year 0, hit Date's two-digit-year offset quirk in daysInMonth).
  * @param {number|string} year
  * @returns {number}
  */
 export function toYear(year) {
-  return strictInt(year, 'year')
+  const y = strictInt(year, 'year')
+  if (y < 1 || y > 9999) {
+    throw new Error(`Invalid year: ${JSON.stringify(year)} (expected a calendar year 1-9999)`)
+  }
+  return y
 }
 
 /**
