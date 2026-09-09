@@ -1,0 +1,35 @@
+# Cannabis use and psychosis risk, ever-use vs never-use (Marconi et al. 2016
+# dose-response meta-analysis). The schizophrenia-science anchor the site
+# needed: not "weed has never killed anyone," but the actual risk ratio.
+# SEEDED - re-verify the ORs against the published tables before flipping to
+# cross-checked.
+
+id: harms.cannabis.us.psychosis_risk_ever_use
+substance: CANNABIS
+geo: US
+metric: psychosis_risk_ever_use
+unit: odds_ratio_vs_never_use
+title: Psychosis risk for ever-users of cannabis vs never-users (meta-analysis)
+verification: seeded
+description: >-
+  Adjusted odds ratio for developing psychosis among people who have ever
+  used cannabis versus never-users, from Marconi, Di Forti, Lewis, Murray &
+  Vassos's 2016 dose-response meta-analysis in Schizophrenia Bulletin. The
+  headline finding: a clear dose-response gradient - ever-use OR ~1.41,
+  heaviest/frequent use OR ~2.09 (separate dataset). Association is not
+  settled causation: observational studies cannot fully rule out reverse
+  causation or shared vulnerability, and the authors discuss these limits.
+
+observations:
+  - year: 2016
+    val: 1.41
+    basis: reported
+    period: meta-analysis, published 2016
+    citations:
+      - src: marconi_2016_psychosis_meta
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4988731/
+        val: 1.41
+        note: Marconi et al. 2016 - pooled adjusted OR 1.41 for ever-use vs never-use across studies. Re-verify against the results tables before cross-checked.
+      - src: nida_cannabis
+        url: https://nida.nih.gov/research-topics/cannabis-marijuana
+        note: NIDA's cannabis health-effects summary corroborates the association between cannabis use and psychosis/schizophrenia without restating the odds ratio.

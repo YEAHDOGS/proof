@@ -1,0 +1,30 @@
+# Past-year cannabis use disorder (CUD), United States, ages 12+ (SAMHSA NSDUH).
+# The clinical-harm number: how many Americans meet DSM-5 criteria for
+# cannabis dependence/abuse - distinct from mere use, and the honest
+# counterweight to the zero-overdose-deaths figure.
+# SEEDED - re-verify against the NSDUH 2023 annual report before flipping to
+# cross-checked.
+
+id: harms.cannabis.us.cannabis_use_disorder
+substance: CANNABIS
+geo: US
+metric: cannabis_use_disorder
+unit: millions_people_12_plus
+title: Past-year cannabis use disorder, United States, ages 12 or older
+verification: seeded
+description: >-
+  Estimated number of people aged 12 or older meeting DSM-5 criteria for
+  marijuana use disorder in the past year, from the National Survey on Drug
+  Use and Health. CUD covers impaired control, social impairment, risky use,
+  and pharmacological criteria - it is the clinical measure of cannabis
+  dependence in the population, not just use.
+
+observations:
+  - year: 2023
+    val: 19.7
+    basis: reported
+    citations:
+      - src: nsduh_2023_annual_report
+        url: https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-nsduh-annual-national.htm
+        val: 19.7
+        note: 2023 NSDUH annual national report - 19.7 million people aged 12+ (7.0%) had a past-year marijuana use disorder. Re-verify the exact table/paragraph before cross-checked.
