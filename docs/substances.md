@@ -65,7 +65,7 @@ matching metric-file id prefixes `deaths.` `usage.` `sales.` `er_visits.`
 
 | Method | Returns |
 | --- | --- |
-| `.Year(year, opts?)` | The observation for that year (`year` may be a number or string), as a **Stat** — the number itself, with every citation resolved. |
+| `.Year(year, opts?)` | The observation for that year (`year` may be an integer number or an integer-only string, e.g. `'2023'` — `'2023.5'` and `'2023abc'` throw), as a **Stat** — the number itself, with every citation resolved. |
 | `.Month(year, month, opts?)` | *Derived:* annual ÷ 12, `basis: 'derived'`, formula in `note`, source observation in `from`. |
 | `.Day(year, month, day, opts?)` | *Derived:* annual ÷ 365/366. Same honesty contract. |
 | `.Series(opts?)` | All observations, sorted (`order: 'asc' | 'desc'`), each a Stat. |

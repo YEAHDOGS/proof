@@ -45,6 +45,12 @@ describe('World.Population', () => {
     expect(() => World.Population().Year(1999)).toThrow(/Years available: 2024, 2025/)
     expect(() => World.Population().Month(2025, 6)).toThrow(/annual baseline/)
   })
+
+  it('rejects loose year spellings instead of silently truncating them', () => {
+    expect(() => World.Population().Year('2024abc')).toThrow(/Invalid year/)
+    expect(() => World.Population().Year('2024.0')).toThrow(/Invalid year/)
+    expect(World.Population().Year(' 2024 ').val).toBe(8_160_000_000)
+  })
 })
 
 describe('World.Representatives', () => {

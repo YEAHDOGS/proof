@@ -37,6 +37,33 @@ export function normalizeGeo(selector) {
   throw new Error(`Unknown geography '${selector}'. Valid: ${valid}.`)
 }
 
+const INTEGER_STRING_RE = /^[+-]?\d+$/
+
+/**
+ * Strictly parse an integer selector: numbers must be integers, strings
+ * must be nothing but an optional sign and digits (surrounding whitespace
+ * is fine). parseInt() is NOT used — '2023abc' and '2023.5' silently became
+ * 2023 under it, the same class of silent coercion the geo-alias work
+ * eliminated from the geo paths.
+ * @param {number|string} value
+ * @param {string} label  Selector kind, used in the thrown error.
+ * @returns {number}
+ */
+export function strictInt(value, label) {
+  const s = typeof value === 'string' ? value.trim() : null
+  if (s !== null && INTEGER_STRING_RE.test(s)) return Number(s)
+  if (typeof value === 'number' && Number.isInteger(value)) return value
+  throw new Error(`Invalid ${label}: ${JSON.stringify(value)}`)
+}
+
+/**
+ * @param {number|string} year
+ * @returns {number}
+ */
+export function toYear(year) {
+  return strictInt(year, 'year')
+}
+
 /**
  * Wrap an object (or function) so property access is case-insensitive
  * (node.Usage === node.usage === node.USAGE). Calling a wrapped function

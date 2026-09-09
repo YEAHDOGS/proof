@@ -24,7 +24,7 @@
 /** @typedef {import('./types.js').SourceCitation} SourceCitation */
 
 import { METRICS, REPS } from './registry.js'
-import { caseless, normalizeGeo, resolvePoint, resolveSource } from './core.js'
+import { caseless, normalizeGeo, resolvePoint, resolveSource, toYear } from './core.js'
 
 /**
  * One chamber of a legislature (seats, and members once M3 lands).
@@ -91,8 +91,7 @@ function makeBaseline(family) {
 
   /** @param {MetricFile} file @param {number|string} year @returns {Stat} */
   const yearPoint = (file, year) => {
-    const y = typeof year === 'string' ? Number.parseInt(year, 10) : year
-    if (!Number.isInteger(y)) throw new Error(`Invalid year: ${JSON.stringify(year)}`)
+    const y = toYear(year)
     const point = file.observations.find((p) => p.year === y)
     if (!point) {
       const years = file.observations.map((p) => p.year).sort((a, b) => a - b)

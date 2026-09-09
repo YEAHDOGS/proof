@@ -94,6 +94,16 @@ describe('Substances fluent tree', () => {
     expect(() => Substances.Marijuana.Usage.Day(2023, 2, 30)).toThrow(/Invalid day/)
   })
 
+  it('rejects loose year spellings instead of silently truncating them', () => {
+    // parseInt('2023.5') used to return 2023; now it must throw.
+    expect(() => Substances.Marijuana.Usage.Year('2023.5')).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Year('2023abc')).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Year('0x2023')).toThrow(/Invalid year/)
+    expect(() => Substances.Marijuana.Usage.Year(2023.5)).toThrow(/Invalid year/)
+    // padding stays tolerated, like the geo aliases
+    expect(Substances.Marijuana.Usage.Year(' 2023 ').val).toBe(21.8)
+  })
+
   it('carries the metric name on every resolved and derived value', () => {
     expect(Substances.Fentanyl.Deaths.Year(2023).metric).toBe('overdose_deaths')
     expect(Substances.Marijuana.Usage.Year(2023).metric).toBe('past_year_use')
@@ -310,6 +320,11 @@ describe('Marijuana compounds', () => {
     expect(Substances.Marijuana.delta('8').key).toBe('delta-8')
     expect(Substances.Marijuana['delta-10'].key).toBe('delta-10')
     expect(() => Substances.Marijuana.delta(11)).toThrow(/Known: 8, 9, 10/)
+  })
+
+  it('rejects loose delta spellings instead of silently parsing them', () => {
+    expect(() => Substances.Marijuana.delta('8x')).toThrow(/Invalid delta isomer number/)
+    expect(Substances.Marijuana.delta(' 8 ').key).toBe('delta-8')
   })
 
   it('is case-insensitive for compounds too', () => {
