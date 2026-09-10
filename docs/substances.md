@@ -119,23 +119,26 @@ the published tables; the brief's Honest unknowns section
 
 Built from the research pass in `docs/market-sizes.md` — the total-market
 figures Brando asked the campaign to carry so a legislator can see how much
-cash each substance's market moves. The brief is a research document, not a
-dataset family: one `sales.` dataset exists in the repo
-(`sales.cannabis.tx.retail`), the rest of the table's figures live in
-`src/data/sources.yaml` until they graduate to datasets.
+cash each substance's market moves. The brief graduated to a `sales.`
+dataset family; modelled vs counted figures are separated by `basis`
+(`modelled` for analyst/RAND/UNODC estimates, `reported` for counted state
+sales/tax data). All datasets are `seeded` until the primary tables are
+re-read; the per-drug splits that don't exist anywhere (heroin, fentanyl,
+methamphetamine current-market) stay documented as honest unknowns in the
+brief, not as datasets.
 
-| Vice | Figure | Basis |
+| Dataset id | Figure | Basis |
 | --- | --- | --- |
-| US cannabis, all sources | ~$52B retail spend (2016, RAND) | modelled |
-| US cannabis, legal retail only | $30.1B sales; $20B+ in state tax revenue since 2014 (2024, Vangst/Whitney, NORML) | reported |
-| Texas hemp-derived cannabis | $5.5B retail (2025) — `sales.cannabis.tx.retail` | modelled |
-| Global cocaine | ~$85B retail (2009, UNODC — dated, most recent valuation) | modelled |
-| US alcohol | $543B market (2024, analyst estimate) | reported |
-| Global tobacco | $966B (2024, analyst estimate) | reported |
+| `sales.cannabis.us.retail_all_sources` | ~$52B retail spend, all sources (2016, RAND; $34B in 2006) | modelled |
+| `sales.cannabis.us.retail_legal` | $30.1B legal sales (2024, Vangst/Whitney); $20B+ state tax since 2014 (NORML) | reported |
+| `sales.cannabis.tx.retail` | $5.5B Texas hemp retail (2025) | modelled |
+| `sales.alcohol.us.market_size` | $543B market (2024, analyst estimate); $158B consumer spend (2017, RAND) | modelled |
+| `sales.nicotine.world.market_size` | $966B global tobacco (2024, analyst estimate) | modelled |
+| `sales.cocaine.world.retail_market` | ~$85B retail (2009, UNODC — dated, most recent valuation) | modelled |
 
-The campaign reads it as: cannabis is roughly the size of the cocaine and
-methamphetamine markets combined, and the legal channel pays taxes while the
-illicit channels pay cartels. Rows are not additive — the brief's
+Query like any family:
+`Substances.Marijuana.Sales.Year(2016, { metric: 'retail_spend_all_sources' })`.
+Rows are not additive — the brief's
 [methodology note](market-sizes.md#reading-the-numbers-honestly-methodology)
 says why.
 
