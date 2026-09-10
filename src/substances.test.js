@@ -117,6 +117,27 @@ describe('Substances fluent tree', () => {
     expect(sales.basis).toBe('modelled')
   })
 
+  it('serves the market-size family with modelled vs counted basis separated', () => {
+    // modelled (estimated) figures - the illicit-market numbers
+    const allSources = Substances.Marijuana.Sales.Year(2016, { metric: 'retail_spend_all_sources' })
+    expect(allSources.val).toBe(52000000000)
+    expect(allSources.basis).toBe('modelled')
+    expect(allSources.period).toBe('2018 dollars')
+    // counted figures - the legal retail numbers
+    const legal = Substances.Marijuana.Sales.Year(2024, { metric: 'retail_sales_legal' })
+    expect(legal.val).toBe(30100000000)
+    expect(legal.basis).toBe('reported')
+    const alcohol = Substances.Alcohol.Sales.Year(2024, { metric: 'market_size' })
+    expect(alcohol.val).toBe(543130000000)
+    expect(alcohol.basis).toBe('modelled')
+    const tobacco = Substances.Tobacco.Sales.Year(2024, { metric: 'market_size', geo: 'WORLD' })
+    expect(tobacco.val).toBe(966220000000)
+    const cocaine = Substances.Cocaine.Sales.Year(2009, { metric: 'retail_market_value', geo: 'WORLD' })
+    expect(cocaine.val).toBe(85000000000)
+    expect(cocaine.basis).toBe('modelled')
+    expect(cocaine.citations.length).toBeGreaterThanOrEqual(1)
+  })
+
   it('exposes the Testing family with disambiguated testing datasets', () => {
     // Several testing datasets share CANNABIS/US - { metric } picks one.
     const oralFluid = Substances.Marijuana.Testing.Year(2026, { metric: 'detection_window_oral_fluid' })

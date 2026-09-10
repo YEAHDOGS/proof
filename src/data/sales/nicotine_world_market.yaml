@@ -1,0 +1,42 @@
+# Global tobacco products market size (carried under NICOTINE, the repo's
+# substance canon; Tobacco is its alias in substances.js).
+# Industry-analyst estimates: MRFR puts the 2024 global market at $966.22B
+# (cigarettes $600B, roll-your-own $216.22B), projected $1,426.02B by 2035
+# at 3.6% CAGR; the Tobacco Global Strategic Business Report put 2023 at
+# $904.9B rising to $1.1T by 2030. Analyst estimates, not official
+# statistics; no US-specific total is carried. SEEDED.
+
+id: sales.nicotine.world.market_size
+substance: NICOTINE
+geo: WORLD
+metric: market_size
+unit: usd_per_year
+title: Global tobacco products market size
+verification: seeded
+description: >-
+  The global tobacco products market - approaching $1 trillion, the
+  largest of the campaign's vice markets by an order of magnitude, and
+  fully legal, taxed, age-gated, and labeled. Carried under the repo's
+  NICOTINE substance canon (Tobacco is its alias). Both figures are
+  industry-analyst estimates with non-public methodology; they are the
+  best widely quoted numbers, not official statistics. SEEDED.
+
+observations:
+  - year: 2024
+    val: 966_220_000_000
+    basis: modelled
+    period: industry-analyst estimate
+    citations:
+      - src: marketresearchfuture_tobacco_2024
+        url: https://www.marketresearchfuture.com/reports/tobacco-products-market/market-trends
+        val: 966_220_000_000
+        note: Market Research Future - global tobacco products market $966.22B in 2024 (cigarettes $600B, roll-your-own $216.22B), projected $1,426.02B by 2035 at 3.6% CAGR. Analyst estimate, not official statistics.
+  - year: 2023
+    val: 904_900_000_000
+    basis: modelled
+    period: cross-check source, different vendor
+    citations:
+      - src: marketresearchfuture_tobacco_2024
+        url: https://www.marketresearchfuture.com/reports/tobacco-products-market/market-trends
+        val: 904_900_000_000
+        note: Tobacco Global Strategic Business Report (GlobeNewswire, 2024), via the MRFR source notes - 2023 global market $904.9B, rising to $1.1T by 2030. Second vendor, same order of magnitude.

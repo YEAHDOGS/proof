@@ -1,0 +1,37 @@
+# Global cocaine retail market valuation (UNODC).
+# The most recent comprehensive UNODC valuation: ~$85B (constant 2009
+# dollars; range $75-100B) in 2009, with ~$84B in estimated global profit -
+# money flowing entirely through organized crime, untaxed. US ~$37B and
+# Europe ~$33B are held in the citation notes (2011 Fedotov statement, via
+# UN News). DATED - UNODC has not published an updated comprehensive
+# valuation since, even as 2023-2025 coca production hit records, so the
+# current value is an honest unknown. SEEDED - re-verify the WDR 2010
+# market tables before cross-checked.
+
+id: sales.cocaine.world.retail_market
+substance: COCAINE
+geo: WORLD
+metric: retail_market_value
+unit: usd_per_year
+title: Global cocaine retail market value (UNODC, 2009-era)
+verification: seeded
+description: >-
+  The most recent comprehensive valuation of the global cocaine retail
+  market, from UNODC's World Drug Report 2010: ~$85B (constant 2009
+  dollars; range $75-100B) in 2009, with ~$84B in estimated global profit.
+  The 2009 report estimated US retail at ~$37B and Europe at ~$33B (2011
+  Fedotov statement, via UN News). DATED: UNODC has not published an
+  updated global market-value estimate since, even as 2023-2025 production
+  hit records - the current value is an honest unknown. Every year
+  without regulation is a year this money stays untaxed and criminal.
+
+observations:
+  - year: 2009
+    val: 85_000_000_000
+    basis: modelled
+    period: constant 2009 dollars
+    citations:
+      - src: unodc_cocaine_market_2010
+        url: https://news.un.org/en/story/2011/05/374612
+        val: 85_000_000_000
+        note: UNODC World Drug Report 2010 - global cocaine retail market ~$85B (constant 2009 dollars; range $75-100B) in 2009; ~$84B in estimated global profit. US ~$37B / Europe ~$33B (2011 Fedotov statement, via UN News). DATED - no updated comprehensive valuation has been published since.

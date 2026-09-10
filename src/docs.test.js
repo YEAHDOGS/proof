@@ -54,10 +54,32 @@ describe('docs', () => {
     expect(existsSync(brief), 'docs/market-sizes.md is missing').toBe(true)
   })
 
-  it('carries the repo dataset the market-sizes brief cites', () => {
-    // the brief's table names sales.cannabis.tx.retail as the only
-    // dataset-carried market figure; the rest live in src/data/sources.yaml
-    // until they graduate to datasets.
-    expect(getMetric('sales.cannabis.tx.retail'), 'sales.cannabis.tx.retail cited by the brief is missing').toBeDefined()
+  it('carries every sales dataset the market-sizes brief cites', () => {
+    // the brief's table graduated from docs/research to a dataset family:
+    // every market-size figure the brief quotes is now a sales. dataset;
+    // the per-drug splits that don't exist anywhere (heroin, fentanyl,
+    // meth current-market) stay documented as honest unknowns in the brief.
+    for (const id of [
+      'sales.cannabis.us.retail_all_sources',
+      'sales.cannabis.us.retail_legal',
+      'sales.cannabis.tx.retail',
+      'sales.alcohol.us.market_size',
+      'sales.nicotine.world.market_size',
+      'sales.cocaine.world.retail_market'
+    ]) {
+      expect(getMetric(id), `${id} cited by the brief is missing`).toBeDefined()
+    }
+  })
+
+  it('labels every sales dataset as seeded until the primary tables are re-read', () => {
+    for (const id of [
+      'sales.cannabis.us.retail_all_sources',
+      'sales.cannabis.us.retail_legal',
+      'sales.alcohol.us.market_size',
+      'sales.nicotine.world.market_size',
+      'sales.cocaine.world.retail_market'
+    ]) {
+      expect(getMetric(id).verification, `${id} verification`).toBe('seeded')
+    }
   })
 })
