@@ -93,6 +93,28 @@ description says so, and the certification-lab count stays an honest
 brief). Query like any family:
 `Substances.Marijuana.Testing.Year(2026, { metric: 'detection_window_urine' })`.
 
+### Cannabis & psychosis (`.Harms` coverage)
+
+Built from the research pass in `docs/cannabis-psychosis.md` — the honest
+quantification of cannabis's non-fatal mental-health harms Brando asked the
+site to carry alongside its cited zero on cannabis overdose deaths. The
+family is the deliberately adversarial dataset (§4.2 of GOALS.md): figures
+that cut against the campaign, kept, with the literature's own disagreements
+preserved rather than adjudicated:
+
+| Dataset id | Figure | Basis |
+| --- | --- | --- |
+| `harms.cannabis.us.psychosis_risk_ever_use` | adjusted OR **1.41** vs never-use (Marconi 2016 meta-analysis) | reported |
+| `harms.cannabis.us.psychosis_risk_heavy_use` | adjusted OR **2.09**, heaviest/frequent use (same meta-analysis) | reported |
+| `harms.cannabis.us.psychosis_risk_high_potency_daily` | adjusted OR **~5** headline, daily high-potency use (Di Forti 2019 EU-GEI; site-specific estimates vary) | reported |
+| `harms.cannabis.us.cannabis_use_disorder` | **19.7M** people 12+ (7.0%), past year (NSDUH 2023) | reported |
+| `harms.cannabis.us.adolescent_iq_decline` | ~8-point Dunedin IQ decline — contested by the Rogeberg re-analysis | contested |
+
+All psychosis datasets stay `seeded` until the ORs are re-verified against
+the published tables; the brief's Honest unknowns section
+(`docs/cannabis-psychosis.md`) gates every flip. Query like any family:
+`Substances.Marijuana.Harms.Year(2016, { metric: 'psychosis_risk_heavy_use' })`.
+
 ### The geo selector — families are callable
 
 Calling a family with a geography resolves its default dataset for that geo
