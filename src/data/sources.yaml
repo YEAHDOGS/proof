@@ -265,3 +265,45 @@ nhtsa_marijuana_congress_report:
   url: https://www.nhtsa.gov/behavioral-research/marijuana-impaired-driving-report-congress
   year: 2017
   note: NHTSA concluded the science could not support a per-se THC impairment threshold analogous to 0.08 BAC - the federal impairment number is honestly 'unknown'. SEEDED; re-verify the report text before cross-checked.
+
+rand_spending_2019:
+  name: What America's Users Spend on Illegal Drugs, 2006-2016 (RR-3140-ONDCP)
+  publisher: RAND Corporation (for the White House Office of National Drug Control Policy)
+  url: https://www.rand.org/pubs/research_reports/RR3140.html
+  year: 2019
+  note: Model-based estimates (price, use, and consumption data; partly built on the now-discontinued ADAM arrestee program) of US retail spending on cannabis, cocaine (incl. crack), heroin, and methamphetamine. Headline number is ~$150 billion (2018 dollars) across the four drugs in 2016; cannabis $34B (2006) -> $52B (2016) covering legal and illegal sources; cannabis market roughly the size of cocaine + meth combined; heroin market closer to marijuana's size than to the others. Alcohol consumer spending in a companion comparison came to $158B (2017). SEEDED; re-verify the report's per-drug table before cross-checked.
+
+vangst_whitney_cannabis_sales_2025:
+  name: The State of Cannabis Jobs (2025 Vangst Jobs Report, in partnership with Whitney Economics)
+  publisher: Vangst / Whitney Economics
+  url: https://ganjapreneur.com/report-u-s-cannabis-sales-reached-30-1-billion-in-2024/
+  year: 2025
+  note: Secondary reporting (Ganjapreneur) of the annual Vangst jobs report. US regulated cannabis retail reached $30.1B in 2024 (+4.5% YoY), ~425,000 full-time jobs, ~$34B forecast for 2025. BDSA's broader estimate cited alongside is ~$31.6B (adult-use $23.9B + medical $7.7B), showing how much the number moves with coverage assumptions. Figures are industry-analyst estimates, not government statistics. SEEDED; re-verify against the primary report before cross-checked.
+
+norml_legal_sales_2025:
+  name: "Analysis: State-Legal Cannabis Sales Top $30 Billion in 2024"
+  publisher: NORML
+  url: https://norml.org/blog/2025/05/13/analysis-state-legal-cannabis-sales-top-30-billion-in-2024/
+  year: 2025
+  note: NORML synthesis of state cannabis sales data. State-legal retail sales topped $30B in 2024; adult-use sales have generated $20B+ in state tax revenue since 2014. Corroborates the Vangst/Whitney $30.1B figure from the tax-revenue direction. SEEDED; re-verify before cross-checked.
+
+unodc_cocaine_market_2010:
+  name: World Drug Report 2010 - The global cocaine market
+  publisher: UN Office on Drugs and Crime
+  url: https://news.un.org/en/story/2011/05/374612
+  year: 2010
+  note: The most recent comprehensive UNODC valuation of the global cocaine market is ~$85B (constant 2009 dollars; range $75-100B) in 2009, with US ~$37B and Europe ~$33B (2011 Fedotov statement, via UN News) and ~$84B in estimated global profit. DATED - UNODC has not published an updated global market-value estimate since; current value is an honest unknown even as 2023-2025 production hit records. SEEDED; re-verify the WDR 2010 tables before cross-checked.
+
+researchandmarkets_us_alcohol_2025:
+  name: United States Alcoholic Beverages Market Size and Share Analysis - Growth Trends and Forecast Report 2025-2033
+  publisher: Research and Markets (press release via Business Wire)
+  url: https://businesswire.com/news/home/20250321928282/en/United-States-Alcoholic-Beverages-Market-Trends-and-Forecast-Report-2025-2033-Increasing-Consumer-Demand-for-Craft-Beers-Premium-Spirits-and-Healthy-Options---ResearchAndMarkets.com
+  year: 2025
+  note: Industry-analyst market sizing puts the US alcoholic beverages market at $543.13B in 2024, forecast $806.44B by 2033 (~5% CAGR). Not government statistics - methodology not public. Compare RAND's consumer-spending figure ($158B, 2017); the two measure different things (total market vs. consumer retail spend). SEEDED; re-verify before cross-checked.
+
+marketresearchfuture_tobacco_2024:
+  name: Tobacco Products Market Trends (Market Research Future)
+  publisher: Market Research Future
+  url: https://www.marketresearchfuture.com/reports/tobacco-products-market/market-trends
+  year: 2025
+  note: Industry-analyst sizing puts the global tobacco products market at $966.22B in 2024 (cigarettes $600B, roll-your-own $216.22B), projected $1,426.02B by 2035 at 3.6% CAGR. Separately, the Tobacco Global Strategic Business Report (GlobeNewswire, 2024) put the 2023 global market at $904.9B, rising to $1.1T by 2030. Analyst estimates, not official statistics; no US-specific total carried. SEEDED; re-verify before cross-checked.

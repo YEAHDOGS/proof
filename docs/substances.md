@@ -115,6 +115,30 @@ the published tables; the brief's Honest unknowns section
 (`docs/cannabis-psychosis.md`) gates every flip. Query like any family:
 `Substances.Marijuana.Harms.Year(2016, { metric: 'psychosis_risk_heavy_use' })`.
 
+### Total market sizes of the vices (market-sizes brief)
+
+Built from the research pass in `docs/market-sizes.md` — the total-market
+figures Brando asked the campaign to carry so a legislator can see how much
+cash each substance's market moves. The brief is a research document, not a
+dataset family: one `sales.` dataset exists in the repo
+(`sales.cannabis.tx.retail`), the rest of the table's figures live in
+`src/data/sources.yaml` until they graduate to datasets.
+
+| Vice | Figure | Basis |
+| --- | --- | --- |
+| US cannabis, all sources | ~$52B retail spend (2016, RAND) | modelled |
+| US cannabis, legal retail only | $30.1B sales; $20B+ in state tax revenue since 2014 (2024, Vangst/Whitney, NORML) | reported |
+| Texas hemp-derived cannabis | $5.5B retail (2025) — `sales.cannabis.tx.retail` | modelled |
+| Global cocaine | ~$85B retail (2009, UNODC — dated, most recent valuation) | modelled |
+| US alcohol | $543B market (2024, analyst estimate) | reported |
+| Global tobacco | $966B (2024, analyst estimate) | reported |
+
+The campaign reads it as: cannabis is roughly the size of the cocaine and
+methamphetamine markets combined, and the legal channel pays taxes while the
+illicit channels pay cartels. Rows are not additive — the brief's
+[methodology note](market-sizes.md#reading-the-numbers-honestly-methodology)
+says why.
+
 ### The geo selector — families are callable
 
 Calling a family with a geography resolves its default dataset for that geo

@@ -45,4 +45,19 @@ describe('docs', () => {
       expect(getMetric(id), `${id} cited by the brief is missing`).toBeDefined()
     }
   })
+
+  it('ships the market-sizes brief the library docs link to', () => {
+    // docs/substances.md names docs/market-sizes.md as the research pass
+    // behind the market-size figures; a renamed or deleted brief must not
+    // go unnoticed and leave readers hitting a dead link.
+    const brief = resolve(REPO_ROOT, 'docs', 'market-sizes.md')
+    expect(existsSync(brief), 'docs/market-sizes.md is missing').toBe(true)
+  })
+
+  it('carries the repo dataset the market-sizes brief cites', () => {
+    // the brief's table names sales.cannabis.tx.retail as the only
+    // dataset-carried market figure; the rest live in src/data/sources.yaml
+    // until they graduate to datasets.
+    expect(getMetric('sales.cannabis.tx.retail'), 'sales.cannabis.tx.retail cited by the brief is missing').toBeDefined()
+  })
 })
