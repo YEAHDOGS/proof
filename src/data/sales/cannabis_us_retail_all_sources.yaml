@@ -1,0 +1,47 @@
+# US cannabis retail spending, all sources (RAND).
+# Model-based estimates (price, use, and consumption data; partly built on
+# the now-discontinued ADAM arrestee program) of what Americans spent at
+# retail on cannabis from legal AND illegal sources. Headline figure is
+# ~$52B in 2016 (2018 dollars); the series starts at $34B in 2006. RAND
+# notes the US cannabis market is roughly the size of the cocaine and
+# methamphetamine markets COMBINED, and the heroin market is closer to
+# marijuana's size than to the others. SEEDED - re-verify the RR-3140
+# per-drug table before flipping to cross-checked.
+
+id: sales.cannabis.us.retail_all_sources
+substance: CANNABIS
+geo: US
+metric: retail_spend_all_sources
+unit: usd_per_year
+title: US cannabis retail spending, all sources (legal + illegal)
+verification: seeded
+description: >-
+  Model-based estimates of US retail spending on cannabis across legal and
+  illegal sources, from the RAND Corporation's ONDCP-commissioned
+  "What America's Users Spend on Illegal Drugs, 2006-2016" (RR-3140, 2019).
+  Figures are in 2018 dollars. Exact per-drug splits of RAND's $150B combined
+  total (cannabis, cocaine, heroin, methamphetamine) for cocaine and
+  methamphetamine individually are not yet carried - see
+  docs/market-sizes.md honest unknowns. A current (2024-2026) total-market
+  figure does not exist in repo-carried sources; the legal channel alone is
+  carried in sales.cannabis.us.retail_legal.
+
+observations:
+  - year: 2006
+    val: 34_000_000_000
+    basis: modelled
+    period: 2018 dollars
+    citations:
+      - src: rand_spending_2019
+        url: https://www.rand.org/pubs/research_reports/RR3140.html
+        val: 34_000_000_000
+        note: RAND RR-3140 - US cannabis retail spending ~$34B in 2006, covering legal and illegal sources (2018 dollars).
+  - year: 2016
+    val: 52_000_000_000
+    basis: modelled
+    period: 2018 dollars
+    citations:
+      - src: rand_spending_2019
+        url: https://www.rand.org/pubs/research_reports/RR3140.html
+        val: 52_000_000_000
+        note: RAND RR-3140 - US cannabis retail spending ~$52B in 2016, covering legal and illegal sources (2018 dollars). Roughly the size of the cocaine + methamphetamine markets combined.

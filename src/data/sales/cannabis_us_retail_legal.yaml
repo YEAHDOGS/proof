@@ -1,0 +1,37 @@
+# US regulated (legal) cannabis retail sales and state tax revenue.
+# COUNTED figures, not modelled: state POS/tax data aggregated by industry
+# analysts and NORML. The $30.1B is the number the campaign should quote to
+# a legislator; the $20B+ cumulative state tax take is the tax-revenue
+# corroboration from the same direction. BDSA's broader ~$31.6B estimate
+# shows how much the number moves with coverage assumptions. SEEDED -
+# re-verify against the primary reports before cross-checked.
+
+id: sales.cannabis.us.retail_legal
+substance: CANNABIS
+geo: US
+metric: retail_sales_legal
+unit: usd_per_year
+title: US legal cannabis retail sales (regulated channel)
+verification: seeded
+description: >-
+  Regulated dispensary retail sales in the United States, from industry
+  analyst and NORML aggregation of state sales data. Unlike the RAND
+  all-sources estimate (sales.cannabis.us.retail_all_sources), these are
+  counted from state tax and POS data. Companion figure held in the citation
+  notes: adult-use sales have generated $20B+ in state tax revenue since
+  2014 (NORML).
+
+observations:
+  - year: 2024
+    val: 30_100_000_000
+    basis: reported
+    period: calendar year 2024
+    citations:
+      - src: vangst_whitney_cannabis_sales_2025
+        url: https://ganjapreneur.com/report-u-s-cannabis-sales-reached-30-1-billion-in-2024/
+        val: 30_100_000_000
+        note: Vangst/Whitney Economics via Ganjapreneur - US regulated cannabis retail reached $30.1B in 2024 (+4.5% YoY). BDSA's broader estimate cited alongside is ~$31.6B (adult-use $23.9B + medical $7.7B); coverage assumptions move the number.
+      - src: norml_legal_sales_2025
+        url: https://norml.org/blog/2025/05/13/analysis-state-legal-cannabis-sales-top-30-billion-in-2024/
+        val: 30_100_000_000
+        note: NORML synthesis of state data - state-legal retail sales topped $30B in 2024; $20B+ in state tax revenue generated since 2014. Corroborates the Vangst/Whitney figure from the tax-receipts direction.

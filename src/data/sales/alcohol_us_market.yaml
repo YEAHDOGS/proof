@@ -1,0 +1,42 @@
+# US alcohol market size and consumer spending.
+# Two figures that measure DIFFERENT things and must never be compared
+# directly: the industry-analyst total market sizing ($543.13B, 2024;
+# methodology not public - treated as modelled) vs. RAND's companion
+# consumer-spending estimate ($158B, 2017). Carried side by side so the
+# campaign always quotes the right one for the claim being made. SEEDED.
+
+id: sales.alcohol.us.market_size
+substance: ALCOHOL
+geo: US
+metric: market_size
+unit: usd_per_year
+title: US alcoholic beverages market size
+verification: seeded
+description: >-
+  The US alcoholic beverages market. The analyst total-market figure
+  ($543.13B, 2024, forecast $806.44B by 2033 at ~5% CAGR) dwarfs every
+  illicit market in the campaign comparison - the substance that kills in
+  overdose sits on regulated shelves at this scale. The companion
+  consumer-spending figure ($158B, 2017, from RAND's RR-3140 comparison)
+  is narrower in scope: do not quote the two as the same measure.
+  SEEDED - re-verify the Research and Markets report before cross-checked.
+
+observations:
+  - year: 2024
+    val: 543_130_000_000
+    basis: modelled
+    period: nominal dollars, industry-analyst estimate
+    citations:
+      - src: researchandmarkets_us_alcohol_2025
+        url: https://businesswire.com/news/home/20250321928282/en/United-States-Alcoholic-Beverages-Market-Trends-and-Forecast-Report-2025-2033-Increasing-Consumer-Demand-for-Craft-Beers-Premium-Spirits-and-Healthy-Options---ResearchAndMarkets.com
+        val: 543_130_000_000
+        note: Research and Markets - US alcoholic beverages market $543.13B in 2024, forecast $806.44B by 2033 (~5% CAGR). Industry-analyst estimate; methodology not public; not government statistics.
+  - year: 2017
+    val: 158_000_000_000
+    basis: modelled
+    period: consumer spending, not total market
+    citations:
+      - src: rand_spending_2019
+        url: https://www.rand.org/pubs/research_reports/RR3140.html
+        val: 158_000_000_000
+        note: RAND RR-3140 companion comparison - US alcohol consumer spending ~$158B (2017). Different scope than the analyst total-market figure; quote for consumer-spend claims only.
