@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://proof.wearedogs.net/</loc><lastmod>2026-08-12</lastmod></url>
-  <url><loc>https://proof.wearedogs.net/privacy.html</loc><lastmod>2026-08-12</lastmod></url>
-  <url><loc>https://proof.wearedogs.net/derp.html</loc><lastmod>2026-08-12</lastmod></url>
+  <url><loc>https://yeahdogs.github.io/proof/</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://yeahdogs.github.io/proof/privacy.html</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://yeahdogs.github.io/proof/terms.html</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://yeahdogs.github.io/proof/derp.html</loc><lastmod>2026-09-11</lastmod></url>
 </urlset>
