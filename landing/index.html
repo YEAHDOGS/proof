@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PROOF — Every number chiseled in stone</title>
-  <meta name="description" content="PROOF delivers cited substance statistics with multi-source citations for cannabis, alcohol, and more, plus laws, representatives, and map components. Work in progress — more information estimated by 2027.">
+  <title>PROOF — Every statistic cited, every number with receipts</title>
+  <meta name="description" content="PROOF publishes cited substance statistics: cannabis vs alcohol, tobacco, cocaine and opioids. Every figure carries its source. A DOGS project.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#faf9f5">
+  <meta name="theme-color" content="#0d0d10">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://proof.wearedogs.net/">
+  <link rel="apple-touch-icon" href="./favicon.svg">
+  <link rel="canonical" href="https://yeahdogs.github.io/proof/">
   <meta property="og:site_name" content="PROOF">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PROOF — Every number chiseled in stone">
-  <meta property="og:description" content="PROOF delivers cited substance statistics with multi-source citations for cannabis, alcohol, and more, plus laws, representatives, and map components. Work in progress — more information estimated by 2027.">
-  <meta property="og:url" content="https://proof.wearedogs.net/">
-  <meta property="og:image" content="https://proof.wearedogs.net/og.png">
+  <meta property="og:title" content="PROOF — Every statistic cited, every number with receipts">
+  <meta property="og:description" content="Cited substance statistics for the people who write the laws: cannabis vs alcohol, tobacco, cocaine and opioids. Every figure carries its source.">
+  <meta property="og:url" content="https://yeahdogs.github.io/proof/">
+  <meta property="og:image" content="https://yeahdogs.github.io/proof/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PROOF — Every number chiseled in stone — work in progress, more information by 2027">
+  <meta property="og:image:alt" content="PROOF — cited substance statistics from DOGS">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"PROOF","url":"https://yeahdogs.github.io/proof/","publisher":{"@type":"Organization","name":"DOGS","url":"https://wearedogs.net"}}
+  </script>
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
@@ -30,105 +31,147 @@
     <div class="nav">
       <div class="brand">
         <a class="wordmark" href="https://wearedogs.net">
-          <img src="./dogs-logo.svg" alt="DOGS logo: a black-and-white Labrador with its tongue out" width="34" height="34" decoding="async">
+          <img src="./dogs-logo.svg" alt="DOGS logo: a black-and-white Labrador with its tongue out" width="30" height="30" decoding="async">
           <span>DOGS</span>
         </a>
         <span class="sep" aria-hidden="true">/</span>
         <a class="project" href="./">PROOF</a>
       </div>
       <nav aria-label="Primary">
-        <a href="./privacy.html">Privacy</a>
+        <a href="#data">Data</a>
+        <a href="#receipts">Sources</a>
         <a href="https://github.com/YEAHDOGS/proof">GitHub</a>
       </nav>
     </div>
   </header>
+
   <main id="content">
-    <nav class="dots" aria-label="Sections">
-      <a href="#top" class="active"><span>Top</span></a>
-      <a href="#roadmap"><span>Roadmap</span></a>
-      <a href="#building"><span>What we're building</span></a>
-      <a href="#notify"><span>Get notified</span></a>
-    </nav>
-
-    <section class="panel" id="top" aria-label="PROOF">
+    <section class="hero" aria-label="Introduction">
       <div class="wrap">
-        <p class="eyebrow">DOGS &middot; Every number chiseled in stone</p>
-        <h1>Numbers with receipts.</h1>
-        <p class="lede">Cited substance statistics — multi-source citations, laws, representatives, and maps.</p>
-        <p class="badge"><span class="pip" aria-hidden="true"></span> Work in progress &mdash; more information estimated by 2027</p>
-        <p><a class="scroll-hint" href="#roadmap">See where we are</a></p>
+        <p class="eyebrow reveal">DOGS &middot; Cited substance statistics</p>
+        <h1 class="reveal">The facts around<br>the world&rsquo;s vices.</h1>
+        <p class="lede reveal">Cannabis vs alcohol, tobacco, cocaine and opioids. Every number below ships with its receipt, straight from the federal surveys and studies that published it.</p>
+        <p class="cta-row reveal">
+          <a class="btn" href="#data">See the comparison</a>
+          <a class="btn ghost" href="#receipts">Read the sources</a>
+        </p>
+        <p class="method-note reveal">Built for legislators, journalists and anyone arguing from evidence. Figures are quoted from the @dogs/proof dataset; verification status is shown per number.</p>
       </div>
     </section>
 
-    <section class="panel alt" id="roadmap" aria-labelledby="roadmap-h">
+    <section class="section" id="data" aria-labelledby="data-h">
       <div class="wrap">
-        <p class="eyebrow">Roadmap</p>
-        <h2 id="roadmap-h">The road to 2027</h2>
-        <p class="lede" style="margin-bottom:0">Where PROOF is on its way to a proper launch.</p>
-        <ol class="timeline">
-          <li class="done"><span class="dot" aria-hidden="true"></span><strong>Idea</strong><span class="when">2025 &mdash; done</span></li>
-          <li class="done"><span class="dot" aria-hidden="true"></span><strong>Repo live</strong><span class="when">2026 &mdash; done</span></li>
-          <li class="now"><span class="dot" aria-hidden="true"></span><strong>Building</strong><span class="when">Now &mdash; in progress</span></li>
-          <li class="future"><span class="dot" aria-hidden="true"></span><strong>More information</strong><span class="when">Estimated 2027</span></li>
-        </ol>
-      </div>
-    </section>
+        <p class="eyebrow">The comparison</p>
+        <h2 id="data-h">One metric at a time.<br>No spin.</h2>
+        <p class="lede slim">Switch metrics. Every row names its year, its basis, and its sources.</p>
 
-    <section class="panel" id="building" aria-labelledby="building-h">
-      <div class="wrap">
-        <p class="eyebrow">The plan</p>
-        <h2 id="building-h">What we're building</h2>
-        
-        <div class="grid">
-          <div class="card">
-            <span class="tick" aria-hidden="true"></span>
-            <h3>Multi-source citations</h3>
-            <p>Every statistic ships with its receipts — multiple sources, chiseled in stone.</p>
-          </div>
-          <div class="card">
-            <span class="tick" aria-hidden="true"></span>
-            <h3>Laws and lawmakers</h3>
-            <p>Substance laws and the representatives behind them, for the US and Texas.</p>
-          </div>
-          <div class="card">
-            <span class="tick" aria-hidden="true"></span>
-            <h3>Ready-made components</h3>
-            <p>npm i @dogs/proof — stats, maps, and visual components for your own pages.</p>
-          </div>
+        <div class="tabs" role="tablist" aria-label="Metrics">
+          <button role="tab" id="tab-deaths" aria-selected="true" aria-controls="panel-chart" data-metric="deaths">Deaths</button>
+          <button role="tab" id="tab-er" aria-selected="false" aria-controls="panel-chart" data-metric="er" tabindex="-1">ER visits</button>
+          <button role="tab" id="tab-use" aria-selected="false" aria-controls="panel-chart" data-metric="use" tabindex="-1">Use</button>
+        </div>
+
+        <div id="panel-chart" role="tabpanel" aria-labelledby="tab-deaths">
+          <p class="chart-kicker" id="chart-kicker"></p>
+          <ul class="bars" id="bars"></ul>
+          <p class="chart-note" id="chart-note"></p>
         </div>
       </div>
     </section>
 
-    <section class="panel dark notify" id="notify" aria-labelledby="notify-h">
+    <section class="section alt" aria-labelledby="zero-h">
+      <div class="wrap">
+        <p class="eyebrow">The honest part</p>
+        <h2 id="zero-h">Zero is real.<br>So are the harms.</h2>
+        <div class="split">
+          <div class="fact">
+            <p class="big-num"><span data-count="0">0</span></p>
+            <p class="fact-label">cannabis overdose deaths, US, 2023</p>
+            <p class="fact-src">DEA: no deaths from marijuana overdose have been reported. NIDA: a fatal cannabis overdose is not documented. <a href="https://www.dea.gov/factsheets/marijuana-cannabis">Receipt</a></p>
+          </div>
+          <div class="fact">
+            <p class="big-num"><span data-count="896418">0</span></p>
+            <p class="fact-label">cannabis-involved ER visits, US, 2023</p>
+            <p class="fact-src">SAMHSA DAWN. &ldquo;Involving&rdquo; means cannabis was recorded among the substances, not the sole cause. <a href="https://www.samhsa.gov/data/data-we-collect/dawn-drug-abuse-warning-network">Receipt</a></p>
+          </div>
+        </div>
+        <p class="lede slim">Cannabis harms show up in ERs, not morgues. The documented non-lethal harms: impairment, dependence, acute anxiety and psychosis episodes. Cannabis-linked psychosis and schizophrenia risk is real science the dataset does not yet quantify; it sits on the project&rsquo;s open question list, not in its charts.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="money-h">
+      <div class="wrap">
+        <p class="eyebrow">The money</p>
+        <h2 id="money-h">One market sized so far.</h2>
+        <div class="money-card">
+          <p class="big-num money"><span data-count="5500000000" data-format="usd">$0</span></p>
+          <p class="fact-label">Texas hemp-derived cannabinoid retail sales, 2025 estimate</p>
+          <p class="fact-src">Whitney Economics 2025 market analysis. Modelled estimate of the pre-ban market. <a href="https://whitneyeconomics.com/">Receipt</a></p>
+        </div>
+        <p class="lede slim">Total market sizes per vice are still being seeded. The dataset quotes what it can cite and says so plainly.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="receipts" aria-labelledby="receipts-h">
+      <div class="wrap">
+        <p class="eyebrow">Sources, not claims</p>
+        <h2 id="receipts-h">The receipts.</h2>
+        <p class="lede slim">Two kinds of numbers. <strong>Reported</strong> counts come straight from mortality records and surveys. <strong>Modelled</strong> estimates attribute deaths across conditions (alcohol, tobacco) and are a different, broader kind of figure. Categories overlap: a death involving fentanyl and cocaine appears in both series, so never sum the rows.</p>
+        <ul class="sources">
+          <li><a href="https://www.samhsa.gov/data/data-we-collect/nsduh-national-survey-drug-use-and-health">SAMHSA NSDUH</a><span>Use figures. Annual survey, ages 12+.</span></li>
+          <li><a href="https://nccd.cdc.gov/DPH_ARDI/default/default.aspx">CDC ARDI</a><span>Alcohol-attributable deaths, modelled.</span></li>
+          <li><a href="https://nida.nih.gov/research-topics/trends-statistics/overdose-death-rates">NIDA overdose death rates</a><span>Overdose counts from NCHS final data.</span></li>
+          <li><a href="https://wonder.cdc.gov/mcd.html">CDC WONDER</a><span>Underlying mortality records.</span></li>
+          <li><a href="https://www.samhsa.gov/data/data-we-collect/dawn-drug-abuse-warning-network">SAMHSA DAWN</a><span>Emergency department visits.</span></li>
+          <li><a href="https://www.dea.gov/factsheets/marijuana-cannabis">DEA drug fact sheet</a><span>The cited zero.</span></li>
+          <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK179276/">2014 Surgeon General&rsquo;s report</a><span>Smoking-attributable deaths, still cited by CDC.</span></li>
+          <li><a href="https://www.who.int/publications/i/item/9789240096745">WHO</a><span>~2.3 billion current drinkers worldwide.</span></li>
+          <li><a href="https://whitneyeconomics.com/">Whitney Economics</a><span>Texas hemp retail, 2025. Industry-commissioned.</span></li>
+        </ul>
+        <p class="lede slim">The full machine-readable dataset lives in the repo: <a href="https://github.com/YEAHDOGS/proof">YEAHDOGS/proof</a>, published as <code>@dogs/proof</code> on npm.</p>
+      </div>
+    </section>
+
+    <section class="section notify" aria-labelledby="notify-h">
       <div class="wrap">
         <p class="eyebrow">Stay in the loop</p>
-        <h2 id="notify-h">Get notified</h2>
-        <p class="lede">Want to know when PROOF wakes up from its nap? Leave your email.</p>
+        <h2 id="notify-h">New numbers, by email.</h2>
+        <p class="lede slim">When a dataset gets cross-checked or a new vice gets sized, hear about it first.</p>
         <form data-notify novalidate>
           <div class="fields">
-            <div>
+            <div class="field">
               <label for="email">Email address</label>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="email-error">
             </div>
-            <button type="submit"><span class="spinner" aria-hidden="true"></span><span>Notify me</span></button>
+            <button class="btn" type="submit"><span class="spinner" aria-hidden="true"></span><span class="btn-label">Notify me</span></button>
           </div>
           <p class="field-error" id="email-error" aria-live="polite"></p>
         </form>
-        <div class="foot">
-          <p class="madeby">
-            <img src="./dogs-logo.svg" alt="DOGS logo: a black-and-white Labrador with its tongue out" width="24" height="24" loading="lazy" decoding="async">
-            This product was made by <a href="https://wearedogs.net">DOGS</a>
-          </p>
-          <nav aria-label="Footer">
-            <a href="./">Home</a>
-            <a href="./privacy.html">Privacy</a>
-            <a href="https://github.com/YEAHDOGS/proof">GitHub</a>
-          </nav>
-          <p>&copy; 2026 DOGS &middot; PROOF is a work in progress &middot; more by 2027.</p>
-        </div>
+        <p class="micro">Front-end only for now: nothing is stored or sent anywhere.</p>
       </div>
     </section>
   </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="madeby">
+        <img src="./dogs-logo.svg" alt="DOGS logo: a black-and-white Labrador with its tongue out" width="22" height="22" loading="lazy" decoding="async">
+        This product was made by <a href="https://wearedogs.net">DOGS</a>
+      </p>
+      <nav aria-label="Footer">
+        <a href="./">Home</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+        <a href="https://github.com/YEAHDOGS/proof">GitHub</a>
+      </nav>
+      <p class="micro">No cookies. No analytics. No tracking. &copy; 2026 DOGS.</p>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" aria-hidden="false">
+    <a href="#receipts">Check the receipts</a>
+  </div>
+
   <script src="./app.js" defer></script>
 </body>
 </html>
